@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B98B9D0B-C108-4907-8ACA-E28AFE3C7530}</ProjectGuid>
+    <ProjectGuid>{B2041453-155D-497C-95F0-B77469B0BBA8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Информационная_система_для_больницы</RootNamespace>
     <AssemblyName>Информационная система для больницы</AssemblyName>
@@ -55,19 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MVVM\ViewModels\doctorMenuButtonsViewModel.cs" />
-    <Compile Include="MVVM\ViewModels\nurseMenuButtonsViewModel.cs" />
-    <Compile Include="MVVM\ViewModels\registrarMenuButtonsViewModel.cs" />
-    <Compile Include="MVVM\Views\doctorMenuButtonsView.xaml.cs">
-      <DependentUpon>doctorMenuButtonsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Views\nurseMenuButtonsView.xaml.cs">
-      <DependentUpon>nurseMenuButtonsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Views\registrarMenuButtonsView.xaml.cs">
-      <DependentUpon>registrarMenuButtonsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RelayCommand.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,31 +67,8 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MVVM\Views\doctorMenuButtonsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\Views\nurseMenuButtonsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\Views\registrarMenuButtonsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\menuButtonsStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\greyBlue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MVVM\Models\AppTheme.cs" />
-    <Compile Include="MVVM\ViewModels\menuViewModel.cs" />
-    <Compile Include="ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -129,10 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Images\hospitalIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

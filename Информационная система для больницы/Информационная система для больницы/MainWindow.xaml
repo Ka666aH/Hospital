@@ -4,44 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Информационная_система_для_больницы"
-        xmlns:view ="clr-namespace:Информационная_система_для_больницы.MVVM.Views"
-        xmlns:viewModel ="clr-namespace:Информационная_система_для_больницы.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="460" Width="900" MinHeight="460" MinWidth="900" WindowStyle="None"
-        Background="{DynamicResource backgroundColor}">
-
-    <Window.DataContext>
-        <viewModel:menuViewModel/>
-    </Window.DataContext>
-    
-    <Grid x:Name="windowGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-
-        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Background="{DynamicResource menuColor}"/>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
         
-        <Image Grid.Row="0" Grid.Column="0" Source="Images/hospitalIcon.png" Grid.RowSpan="2"/>
-
-            <ContentControl Grid.Column="0" Grid.Row="2" Content="{Binding CurrentView}"/>
-
-            <Separator Grid.Column="0" Grid.Row="3" VerticalAlignment="Top"/>
-
-            <StackPanel x:Name="generalMenu" Grid.Row="3" VerticalAlignment="Bottom">
-
-                <RadioButton x:Name="generalMenuView" Content="Вид" Style="{StaticResource menuButtonsStyle}"/>
-                <RadioButton x:Name="generalMenuChangeUser" Content="Сменить пользователя" Style="{StaticResource menuButtonsStyle}"/>
-                <RadioButton x:Name="generalMenuClose" Content="Выйти" Style="{StaticResource menuButtonsStyle}"/> 
-
-        </StackPanel>
-
-        </Grid>
-
+    </Grid>
 </Window>
