@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Информационная_система_для_больницы.RegistrarMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Информационная_система_для_больницы"
+             mc:Ignorable="d" 
+             d:DesignHeight="260" d:DesignWidth="260">
+    <StackPanel x:Name="registrarMenu" VerticalAlignment="Top" Margin="0 -1 0 0">
+
+        <RadioButton x:Name="registrarRegistrarions" Content="Оформления" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarPatients" Content="Пациенты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarStaff" Content="Сотрудники" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarDrugs" Content="Препараты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarProcedures" Content="Процедуры" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarWards" Content="Палаты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarIndicators" Content="Показатели" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+
+    </StackPanel>
+</UserControl>

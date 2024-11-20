@@ -5,8 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Информационная_система_для_больницы"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Информационная система для больницы" Height="460" Width="900" MinHeight="460" MinWidth="900" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True"
+        Background="Transparent" Icon="/Images/colorfulhospital.png">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Border x:Name="windowBorder" Background="{DynamicResource backgroundColor}" CornerRadius="10">
+        <Grid x:Name="windowGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/>
+                <!--<ColumnDefinition Width="260"/>-->
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="112"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" CornerRadius="10 10 10 10" Margin="10 10 0 10" Padding="10" Background="{DynamicResource menuColor}"/>
+
+            <Border Grid.Column="0" Grid.Row="2" Grid.RowSpan="4" CornerRadius="10 10 10 10" Margin="10 0 0 10" Background="{DynamicResource menuColor}"/>
+
+            <Image Grid.Row="0" Grid.Column="0" Source="{DynamicResource logo}" RenderOptions.BitmapScalingMode="HighQuality" Grid.RowSpan="2" Margin="20"/>
+
+            <ContentControl Grid.Column="0"  Grid.Row="2" VerticalAlignment="Stretch"/> <!--Content="{Binding CurrentMenuView}"-->
+
+            <Separator Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="0 0 0 5" Background="{DynamicResource backgroundColor}"/>
+
+            <StackPanel x:Name="generalMenu" Grid.Row="3" VerticalAlignment="Bottom" Margin="0 0 0 10">
+
+                <RadioButton x:Name="generalMenuView" Content="Вид" Style="{StaticResource menuButtonsStyle}" Click="View_Click"/> <!--Command="{Binding viewButtonClick}"-->
+                <RadioButton x:Name="generalMenuChangeUser" Content="Сменить пользователя" Style="{StaticResource menuButtonsStyle}"/>
+                <RadioButton x:Name="generalMenuClose" Content="Выйти" Style="{StaticResource menuButtonsStyle}" Click="Close_Click"/> <!--Command="{Binding closeButtonClick}"-->
+
+            </StackPanel>
+
+            <StackPanel x:Name="windowMenu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Background="Transparent" MouseLeftButtonDown="DragMove">
+                <Menu VerticalAlignment="Stretch" HorizontalAlignment="Right" Padding="0 5 10 0" Background="Transparent">
+                    <MenuItem Style="{StaticResource windowMenuButtonsStyle}" Margin="0 0 20 0" Click="Info_Click"><!--Command="{Binding infoButtonClick}"-->
+                        <MenuItem.Header>
+                            <Image Source="{DynamicResource info}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+
+                    <MenuItem Style="{StaticResource windowMenuButtonsStyle}" Click="Min_Click">
+                        <MenuItem.Header>
+                            <Image Source="{DynamicResource minus}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Style="{StaticResource windowMenuButtonsStyle}" Click="Max_Click">
+                        <MenuItem.Header>
+                            <Image Source="{DynamicResource square}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Style="{StaticResource windowMenuButtonsStyle}" Click="Close_Click">
+                        <MenuItem.Header>
+                            <Image Source="{DynamicResource cross}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+
+
+            <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="10 0 10 10" Padding="5" CornerRadius="10 10 10 10" Background="{DynamicResource pageColor}">
+                <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/><!--Настроить внешний вид навигации-->
+            </Border>
+
+        </Grid>
+
+    </Border>
+
 </Window>
