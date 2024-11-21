@@ -23,6 +23,7 @@ namespace Информационная_система_для_больницы
         Data.AppContext db;
         public AuthWindow()
         {
+            //MessageBox.Show(Guid.NewGuid().ToString());
             InitializeComponent();
             db = new Data.AppContext();
             FillUsers();
@@ -34,10 +35,52 @@ namespace Информационная_система_для_больницы
             List<Employee> employees = db.Employees.ToList();
             foreach (Employee employee in employees)
             {
-                //MessageBox.Show(employee.fullName);
                 userPicker.Items.Add(employee.fullName);
             }
-            //userPicker.ItemsSource = 
+
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            if(Application.Current.MainWindow != this)
+                this.DialogResult = false;
+            Close();
+        }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(userPicker.Text) && !string.IsNullOrEmpty(pass.Password))
+            {
+                var q1 = from em in db.Employees
+                         where em.fullName == userPicker.Text
+                         select em;
+                Employee employee = q1.FirstOrDefault();
+
+                if (employee.password == pass.Password)
+                {
+                    if (Application.Current.MainWindow == this)
+                    {
+                        MainWindow main = new MainWindow();
+                        Application.Current.MainWindow = main;
+                        Application.Current.MainWindow.Tag = employee.access;
+                        main.Show();
+                    }
+                    else
+                    {
+                        this.DialogResult = true;
+                        Application.Current.MainWindow.Tag = employee.access;
+                    }
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неправильное имя пользователя или пароль.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходимо заполнить все поля.");
+            }
         }
     }
 }

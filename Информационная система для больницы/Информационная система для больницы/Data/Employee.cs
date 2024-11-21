@@ -11,5 +11,6 @@ namespace Информационная_система_для_больницы.Da
         public string id { get; set; }
         public string fullName { get; set; }
         public int access { get; set; }
+        public string password { get; set; }
     }
 }

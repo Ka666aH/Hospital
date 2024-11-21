@@ -11,7 +11,7 @@
 
     <StackPanel>
         <Label Content="Тема" FontSize="15" FontFamily="Bahnschrift"/>
-        <ComboBox x:Name="themePicker" Height="Auto" Width="200" HorizontalAlignment="Left" FontSize="15" FontFamily="Bahnschrift"/>
+        <ComboBox x:Name="themePicker" Height="Auto" Width="200" HorizontalAlignment="Left" FontSize="15" FontFamily="Bahnschrift" SelectionChanged="themePicker_SelectionChanged"/>
 
     </StackPanel>
 </Page>

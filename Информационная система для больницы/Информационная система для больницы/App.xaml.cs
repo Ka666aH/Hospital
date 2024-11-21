@@ -13,5 +13,12 @@ namespace Информационная_система_для_больницы
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+
+            //AppTheme.ChangeTheme("Blue");
+            AppTheme.StartUpTheme();
+
+        }
     }
 }

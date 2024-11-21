@@ -21,11 +21,14 @@ namespace Информационная_система_для_больницы
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         ViewSettingsPage viewSettingsPage;
         InfoPage infoPage;
         public MainWindow()
         {
             InitializeComponent();
+            Height = MinHeight;
+            Width = MinWidth;
 
             infoPage = new InfoPage();
             viewSettingsPage = new ViewSettingsPage();
@@ -35,6 +38,26 @@ namespace Информационная_система_для_больницы
             MaxHeight = SystemParameters.WorkArea.Height;
             MaxWidth = SystemParameters.WorkArea.Width;
         }
+
+        private void GetUserMenu(int access)
+        {
+            switch (access)
+            {
+                case 1:
+                    //menuButtons.Content = new AdminMenu();
+                    break;
+                case 2:
+                    menuButtons.Content = new RegistrarMenu();
+                    break;
+                case 3:
+                    //menuButtons.Content = new DoctorMenu();
+                    break;
+                case 4:
+                    //menuButtons.Content = new NurseMenu();
+                    break;
+            }
+        }
+                    
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
@@ -100,6 +123,24 @@ namespace Информационная_система_для_больницы
         private void View_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = viewSettingsPage;
+        }
+
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            AuthWindow authWindow = new AuthWindow();
+            if(authWindow.ShowDialog() == true)
+            {
+                mainFrame.Content = infoPage;
+                GetUserMenu((int)Tag);
+                
+            }
+            else
+                generalMenuChangeUser.IsChecked = false;
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            GetUserMenu((int)Tag);
         }
     }
 }

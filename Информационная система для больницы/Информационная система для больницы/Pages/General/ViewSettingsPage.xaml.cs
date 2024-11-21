@@ -20,19 +20,23 @@ namespace Информационная_система_для_больницы.Pa
     /// </summary>
     public partial class ViewSettingsPage : Page
     {
-        
         public ViewSettingsPage()
         {
             InitializeComponent();
             themePicker.ItemsSource = AppTheme.themeList;
-            //foreach (ComboBoxItem item in AppTheme.themeList)
-            //{
-            //    //ComboBoxItem newitem = new ComboBoxItem();
-            //    //newitem.Name = item.Name;
-            //    //newitem.Content= item.Content;
+            //MessageBox.Show(Properties.Settings.Default.theme);
 
-            //}
+            foreach (ComboBoxItem item in themePicker.Items)
+            {
+                if (item.Name == Properties.Settings.Default.theme)
+                    themePicker.SelectedItem = item;
+            } 
+        }
 
+        private void themePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = themePicker.SelectedItem as ComboBoxItem;
+            AppTheme.ChangeTheme(item.Name);
         }
     }
 }
