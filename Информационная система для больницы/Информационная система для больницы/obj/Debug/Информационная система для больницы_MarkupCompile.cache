@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\App.xaml
-11714522363
+15-1624381858
 
-23-1504173637
+27144276892
 191790831918
-AuthWindow.xaml;MainWindow.xaml;Pages\General\InfoPage.xaml;Pages\General\ViewSettingsPage.xaml;RegistrarMenu.xaml;Styles\buttonsStyle.xaml;Styles\menuButtonsStyle.xaml;Styles\passwordBoxesStyle.xaml;Styles\windowMenuButtonsStyle.xaml;Themes\Blue.xaml;Themes\GreyBlue.xaml;
+AdminMenu.xaml;AuthWindow.xaml;DoctorMenu.xaml;MainWindow.xaml;NurseMenu.xaml;Pages\General\InfoPage.xaml;Pages\General\ViewSettingsPage.xaml;Pages\Registrar\RegistrarEmployees.xaml;RegistrarMenu.xaml;Styles\buttonsStyle.xaml;Styles\menuButtonsStyle.xaml;Styles\passwordBoxesStyle.xaml;Styles\windowMenuButtonsStyle.xaml;Themes\Blue.xaml;Themes\GreyBlue.xaml;
 
 False
 

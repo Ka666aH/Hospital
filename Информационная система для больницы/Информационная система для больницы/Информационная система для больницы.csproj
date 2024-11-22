@@ -74,12 +74,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminMenu.xaml.cs">
+      <DependentUpon>AdminMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorMenu.xaml.cs">
+      <DependentUpon>DoctorMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NurseMenu.xaml.cs">
+      <DependentUpon>NurseMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Registrar\RegistrarEmployees.xaml.cs">
+      <DependentUpon>RegistrarEmployees.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarMenu.xaml.cs">
       <DependentUpon>RegistrarMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AuthWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DoctorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,11 +130,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NurseMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\General\InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\General\ViewSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Registrar\RegistrarEmployees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,7 +234,6 @@
   <ItemGroup>
     <Folder Include="Pages\Doctor\" />
     <Folder Include="Pages\Nurse\" />
-    <Folder Include="Pages\Registrar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

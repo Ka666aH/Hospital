@@ -44,16 +44,16 @@ namespace Информационная_система_для_больницы
             switch (access)
             {
                 case 1:
-                    //menuButtons.Content = new AdminMenu();
+                    menuButtons.Content = new AdminMenu();
                     break;
                 case 2:
                     menuButtons.Content = new RegistrarMenu();
                     break;
                 case 3:
-                    //menuButtons.Content = new DoctorMenu();
+                    menuButtons.Content = new DoctorMenu();
                     break;
                 case 4:
-                    //menuButtons.Content = new NurseMenu();
+                    menuButtons.Content = new NurseMenu();
                     break;
             }
         }
