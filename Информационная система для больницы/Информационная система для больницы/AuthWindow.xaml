@@ -26,18 +26,18 @@
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
                 <Label Content="Авторизация" FontFamily="Bahnschrift" FontSize="15" HorizontalAlignment="Center"/>
             </StackPanel>
-            <Label Grid.Row="1" Grid.Column="0" Content="Сотрудник" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Margin="10 10 0 10"/>
-            <ComboBox x:Name="userPicker" Grid.Row="1" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" MaxDropDownHeight="90" IsEditable="True"/> <!--ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource comboBoxStyle}"-->
+            <Label Grid.Row="1" Grid.Column="0" Content="Сотрудник" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Margin="5 10 0 10"/>
+            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}" x:Name="userPicker" Grid.Row="1" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" MaxDropDownHeight="90" IsEditable="True"/> <!--ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource comboBoxStyle}"-->
 
-            <Label Grid.Row="2" Grid.Column="0" Content="Пароль" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Margin="10 10 0 10"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Пароль" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Margin="5 10 0 10"/>
 
             <PasswordBox x:Name="pass" Style="{StaticResource PasswordBoxStyle}" Grid.Row="2" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" >
                 
             </PasswordBox>
                 
         
-        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Bahnschrift" FontSize="10" Content="Вход" Margin="0 0 0 5" Click="Enter_Click"/>
-        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Bahnschrift" FontSize="10" Content="Отмена" Margin="0 0 10 5" Click="Close_Click"/>
+        <Button Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Bahnschrift" FontSize="10" Content="Вход" Margin="0 0 70 10" Padding="15 5 15 5" Click="Enter_Click"/>
+            <Button Style="{DynamicResource ButtonStyle1}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Bahnschrift" FontSize="10" Content="Закрыть" Margin="0 0 10 10" Padding="5" Click="Close_Click"/>
     </Grid>
     </Border>
 </Window>

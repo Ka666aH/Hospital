@@ -10,17 +10,52 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="125"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0">
-            <Label FontFamily="Bahnschrift" Content="Список сотрудников" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список сотрудников" FontSize="15" />
+
+        <!--<StackPanel Grid.Column="0" Grid.Row="1">
+            <DockPanel>
+                <Label FontFamily="Bahnschrift"  DockPanel.Dock="Left" Margin="0 5 0 5" Content="ФИО"/>
+                <TextBox x:Name="searchFullName" DockPanel.Dock="Right" FontFamily="Bahnschrift" Margin="0 5 0 5"/>
+            </DockPanel>
+            <DockPanel>
+                <Label FontFamily="Bahnschrift" DockPanel.Dock="Left" Margin="0 5 0 5" Content="Должность"/>
+                <ComboBox x:Name="searchAccess" DockPanel.Dock="Right" FontFamily="Bahnschrift" Margin="0 5 0 5"/>
+            </DockPanel>
+            <DockPanel>
+                <Label FontFamily="Bahnschrift" DockPanel.Dock="Left" Margin="0 5 0 5" Content="Статус"/>
+                <ComboBox x:Name="searchStatus" DockPanel.Dock="Right" FontFamily="Bahnschrift" Margin="0 5 0 5"/>
+            </DockPanel>
+        </StackPanel>-->
+        
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 0">
+            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="ФИО"/>
+            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="Должность"/>
+            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="Статус"/>
         </StackPanel>
 
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
+            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="searchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+            <ComboBox x:Name="searchAccess" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+            <ComboBox x:Name="searchStatus" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
+            <Button x:Name="addEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 5 0 5"/>
+            <Button x:Name="alterEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Margin="0 5 0 5"/>
+            <Button x:Name="deleteEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 5 0 5"/>
+        </StackPanel>
+
+        <DataGrid Style="{DynamicResource DataGridStyle1}"  Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 5 10 0"/> 
+        
     </Grid>
 </Page>

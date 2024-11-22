@@ -10,6 +10,9 @@
                 <ResourceDictionary Source="Styles/menuButtonsStyle.xaml"/>
                 <ResourceDictionary Source="Styles/windowMenuButtonsStyle.xaml"/>
                 <ResourceDictionary Source="Styles/buttonsStyle.xaml"/>
+                <ResourceDictionary Source="Styles/comboboxesStyle.xaml"/>
+                <ResourceDictionary Source="Styles/textboxesStyle.xaml"/>
+                <ResourceDictionary Source="Styles/datagridsStyle.xaml"/>
                 <ResourceDictionary Source="Styles/passwordBoxesStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
