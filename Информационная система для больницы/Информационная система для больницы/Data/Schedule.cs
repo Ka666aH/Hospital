@@ -9,9 +9,11 @@ namespace Информационная_система_для_больницы.Da
     class Schedule
     {
         public string id { get; set; }
-        public Appointment appointmentId { get; set; }
+        public string appointmentId { get; set; }
+        public virtual Appointment appointment { get; set; }
         public string dateTime { get; set; }
         public string note { get; set; }
-        public Status statusId { get; set; }
+        public string statusId { get; set; }
+        public virtual Status status { get; set; }
     }
 }

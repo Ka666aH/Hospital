@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Информационная_система_для_больницы"
         mc:Ignorable="d"
         Title="Информационная система для больницы" Height="460" Width="900" MinHeight="460" MinWidth="900" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True"
-        Background="Transparent" Icon="/Images/colorfulhospital.png" Activated="Window_Activated">
+        Background="Transparent" Icon="/Images/colorfulhospital.png" Activated="Window_Activated" WindowStartupLocation="CenterScreen">
         
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0,0,0,0" CornerRadius="0" CaptionHeight="0"/>
@@ -38,9 +38,9 @@
 
             <StackPanel x:Name="generalMenu" Grid.Row="3" VerticalAlignment="Bottom" Margin="0 0 0 10">
 
-                <RadioButton x:Name="generalMenuView" Content="Вид" Style="{StaticResource menuButtonsStyle}" Click="View_Click"/> <!--Command="{Binding viewButtonClick}"-->
-                <RadioButton x:Name="generalMenuChangeUser" Content="Сменить пользователя" Style="{StaticResource menuButtonsStyle}" Click="ChangeUser_Click"/>
-                <RadioButton x:Name="generalMenuClose" Content="Выйти" Style="{StaticResource menuButtonsStyle}" Click="Close_Click"/> <!--Command="{Binding closeButtonClick}"-->
+                <RadioButton x:Name="generalMenuView" Content="Вид" Style="{StaticResource menuButtonsStyle}" Foreground="{DynamicResource textColor}" Click="View_Click"/> 
+                <RadioButton x:Name="generalMenuChangeUser" Content="Сменить пользователя" Style="{StaticResource menuButtonsStyle}" Foreground="{DynamicResource textColor}" Click="ChangeUser_Click"/>
+                <RadioButton x:Name="generalMenuClose" Content="Выйти" Style="{StaticResource menuButtonsStyle}" Foreground="{DynamicResource textColor}" Click="Close_Click"/>
 
             </StackPanel>
 

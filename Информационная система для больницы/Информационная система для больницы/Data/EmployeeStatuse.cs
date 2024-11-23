@@ -9,8 +9,10 @@ namespace Информационная_система_для_больницы.Da
     class EmployeeStatus
     {
         public string id { get; set; }
-        public Employee employeeId { get; set; }
-        public Status statusId  { get; set; }
+        public string employeeId { get; set; }
+        public virtual Employee employee { get; set; }
+        public string statusId { get; set; }
+        public virtual Status status  { get; set; }
         public string start{ get; set; }
         public string end{ get; set; }
     }

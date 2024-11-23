@@ -10,6 +10,6 @@
       Title="InfoPage">
 
     <Grid>
-        <Label Content="Справка" FontSize="15" FontFamily="Bahnschrift" HorizontalAlignment="Center"/>
+        <Label Content="Справка" FontSize="15" FontFamily="Bahnschrift" HorizontalAlignment="Center" Foreground="{DynamicResource textColor}"/>
     </Grid>
 </Page>

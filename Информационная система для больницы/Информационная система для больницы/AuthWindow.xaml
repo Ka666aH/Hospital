@@ -24,12 +24,12 @@
                 <RowDefinition />
         </Grid.RowDefinitions>
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
-                <Label Content="Авторизация" FontFamily="Bahnschrift" FontSize="15" HorizontalAlignment="Center"/>
+                <Label Content="Авторизация" FontFamily="Bahnschrift" FontSize="15" HorizontalAlignment="Center" Foreground="{DynamicResource textColor}"/>
             </StackPanel>
-            <Label Grid.Row="1" Grid.Column="0" Content="Сотрудник" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Margin="5 10 0 10"/>
-            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}" x:Name="userPicker" Grid.Row="1" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" MaxDropDownHeight="90" IsEditable="True"/> <!--ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource comboBoxStyle}"-->
+            <Label Grid.Row="1" Grid.Column="0" Content="Сотрудник" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Foreground="{DynamicResource textColor}" Margin="5 10 0 10"/>
+            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}" x:Name="userPicker" Grid.Row="1" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" MaxDropDownHeight="90" IsEditable="True" DropDownClosed="userPicker_DropDownClosed"/> <!--ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource comboBoxStyle}"-->
 
-            <Label Grid.Row="2" Grid.Column="0" Content="Пароль" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Margin="5 10 0 10"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Пароль" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Foreground="{DynamicResource textColor}" Margin="5 10 0 10"/>
 
             <PasswordBox x:Name="pass" Style="{StaticResource PasswordBoxStyle}" Grid.Row="2" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" >
                 
@@ -38,6 +38,14 @@
         
         <Button Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Bahnschrift" FontSize="10" Content="Вход" Margin="0 0 70 10" Padding="15 5 15 5" Click="Enter_Click"/>
             <Button Style="{DynamicResource ButtonStyle1}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Bahnschrift" FontSize="10" Content="Закрыть" Margin="0 0 10 10" Padding="5" Click="Close_Click"/>
-    </Grid>
+
+            <Menu Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent">
+                <MenuItem Style="{StaticResource windowMenuButtonsStyle}" Height="20" Width="20" Padding="-15" Click="Close_Click">
+                <MenuItem.Header>
+                    <Image Height="5" Width="5" Source="{DynamicResource cross}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </MenuItem.Header>
+            </MenuItem>
+            </Menu>
+        </Grid>
     </Border>
 </Window>

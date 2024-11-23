@@ -11,24 +11,37 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\EntityFramework.SqlServer.xml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Data.SQLite.xml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.csproj.AssemblyReference.cache
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\buttonsStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\comboboxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\datagridsStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\menuButtonsStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\passwordBoxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\textboxesStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\windowMenuButtonsStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\Blue.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\GreyBlue.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AdminMenu.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AuthWindow.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\DoctorMenu.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\MainWindow.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\NurseMenu.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\General\InfoPage.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\General\ViewSettingsPage.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarEmployees.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\RegistrarMenu.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\App.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы_MarkupCompile.cache
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы_MarkupCompile.lref
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\App.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AdminMenu.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AuthWindow.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\DoctorMenu.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\MainWindow.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\NurseMenu.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\General\InfoPage.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\General\ViewSettingsPage.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarEmployees.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\RegistrarMenu.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.g.resources
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная_система_для_больницы.Properties.Resources.resources
@@ -37,15 +50,9 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информац.66CFDA7E.Up2Date
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.exe
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.pdb
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\DoctorMenu.g.cs
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\DoctorMenu.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AdminMenu.g.cs
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\NurseMenu.g.cs
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarEmployees.g.cs
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AdminMenu.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\NurseMenu.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarEmployees.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\buttonsStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\comboboxesStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\textboxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Admin\AdminEmployees.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarDrugs.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarPatients.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Admin\AdminEmployees.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarDrugs.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarPatients.baml

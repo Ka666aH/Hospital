@@ -7,17 +7,16 @@
     <BitmapImage x:Key="square" UriSource="../Images/boldsquare.png"/>
     <BitmapImage x:Key="cross" UriSource="../Images/boldcross.png"/>
     
-
     <SolidColorBrush x:Key="backgroundColor" Color="#f4FFFF"></SolidColorBrush>
     <SolidColorBrush x:Key="menuColor" Color="#009999"></SolidColorBrush>
     <SolidColorBrush x:Key="pageColor" Color="#7acccc"></SolidColorBrush>
     <SolidColorBrush x:Key="buttonColor" Color="#1D7373"></SolidColorBrush>
     <SolidColorBrush x:Key="textColor" Color="#000000"></SolidColorBrush>
 
-    <Color x:Key="menu">#009999</Color>
     <Color x:Key="background">#f4FFFF</Color>
+    <Color x:Key="menu">#009999</Color>
     <Color x:Key="page">#7acccc</Color>
-    <Color x:Key="text">#000000</Color>
     <Color x:Key="button">#1D7373</Color>
+    <Color x:Key="text">#000000</Color>
 
 </ResourceDictionary>

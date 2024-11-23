@@ -84,8 +84,17 @@
     <Compile Include="NurseMenu.xaml.cs">
       <DependentUpon>NurseMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin\AdminEmployees.xaml.cs">
+      <DependentUpon>AdminEmployees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Registrar\RegistrarDrugs.xaml.cs">
+      <DependentUpon>RegistrarDrugs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registrar\RegistrarEmployees.xaml.cs">
       <DependentUpon>RegistrarEmployees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Registrar\RegistrarPatients.xaml.cs">
+      <DependentUpon>RegistrarPatients.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarMenu.xaml.cs">
       <DependentUpon>RegistrarMenu.xaml</DependentUpon>
@@ -135,6 +144,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\AdminEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\General\InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,7 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Registrar\RegistrarDrugs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Registrar\RegistrarEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Registrar\RegistrarPatients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

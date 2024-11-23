@@ -16,6 +16,7 @@
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        FontSize="20" 
+                                       Foreground="{DynamicResource textColor}"
                                        Margin="30 5 0 5"
                                        FontFamily="Bahnschrift"/>
 

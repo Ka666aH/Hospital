@@ -9,11 +9,15 @@ namespace Информационная_система_для_больницы.Da
     class Appointment
     {
         public string id { get; set; }
-        public Registration registrationId { get; set; }
-        public Employee doctorId { get; set; }
-        public DrugProcedure drugProcedureId { get; set; }
+        public string registrationId {  get; set; }
+        public virtual Registration registration { get; set; }
+        public string doctorId { get; set; }
+        public virtual Employee doctor { get; set; }
+        public string drugProcedureId { get; set; }
+        public virtual DrugProcedure drugProcedure { get; set; }
         public string note { get; set; }
-        public Status statusId { get; set; }
+        public string statusId { get; set; }
+        public virtual Status status { get; set; }
 
     }
 }

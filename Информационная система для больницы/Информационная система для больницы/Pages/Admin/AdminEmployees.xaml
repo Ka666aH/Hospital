@@ -1,0 +1,54 @@
+﻿<Page x:Class="Информационная_система_для_больницы.Pages.Admin.AdminEmployees"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Информационная_система_для_больницы.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="415" d:DesignWidth="620"
+      Title="AdminEmployees">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список сотрудников" FontSize="15" Foreground="{DynamicResource textColor}"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 0">
+            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="ФИО" Foreground="{DynamicResource textColor}"/>
+            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="Должность" Foreground="{DynamicResource textColor}"/>
+            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="Статус" Foreground="{DynamicResource textColor}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
+            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="adminEmployeesSearchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+            <ComboBox x:Name="adminEmployeesSearchAccess" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+            <ComboBox x:Name="adminEmployeesSearchStatus" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
+            <Button x:Name="adminEmployeesAlterEmloyeePass" Height="25" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить пароль" Margin="0 5 0 5"/>
+            <Button x:Name="adminEmployeesAlterEmloyeeAccess" Height="25" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить уровень доступа" Margin="0 5 0 5"/>
+        </StackPanel>
+
+        <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="10">
+            <Grid>
+                <Border x:Name="adminEmployeesDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
+                <DataGrid x:Name="adminEmployeesDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column">
+                    <DataGrid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=adminEmployeesDataGridBorder}"/>
+                    </DataGrid.OpacityMask>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Page>

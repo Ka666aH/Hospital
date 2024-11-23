@@ -9,7 +9,8 @@ namespace Информационная_система_для_больницы.Da
     class BedRegistration
     {
         public string id { get; set; }
-        public Bed bedId { get; set; }
+        public string bedId { get; set; }
+        public virtual Bed bed { get; set; }
         public string start { get; set; }
         public string end { get; set; }
     }

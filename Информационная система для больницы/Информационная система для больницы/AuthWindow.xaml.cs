@@ -31,7 +31,7 @@ namespace Информационная_система_для_больницы
 
         public void FillUsers()
         {
-            
+
             List<Employee> employees = db.Employees.ToList();
             foreach (Employee employee in employees)
             {
@@ -81,6 +81,11 @@ namespace Информационная_система_для_больницы
             {
                 MessageBox.Show("Необходимо заполнить все поля.");
             }
+        }
+
+        private void userPicker_DropDownClosed(object sender, EventArgs e)
+        {
+            pass.Focus();
         }
     }
 }
