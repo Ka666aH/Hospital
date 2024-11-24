@@ -45,7 +45,14 @@
         <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="10">
             <Grid>
                 <Border x:Name="registrarEmployeesDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
-                <DataGrid x:Name="registrarEmployeesDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column">
+                    <DataGrid x:Name="registrarEmployeesDataGrid" Style="{DynamicResource DataGridStyle1}" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column">
+                        <!--<DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО" MinWidth="100" Width="15*"/>
+                            <DataGridTextColumn Header="Должность" MinWidth="80" MaxWidth="100" Width="10*" />
+                            <DataGridComboBoxColumn Header="Статус" MinWidth="80" MaxWidth="150" Width="10*"/>
+                            <DataGridTextColumn Header="Дата начала" Width="80"/>
+                            <DataGridTextColumn Header="Дата конца" Width="80"/>
+                        </DataGrid.Columns>-->
                     <DataGrid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=registrarEmployeesDataGridBorder}"/>
                     </DataGrid.OpacityMask>

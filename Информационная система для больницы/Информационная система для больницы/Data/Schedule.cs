@@ -14,6 +14,6 @@ namespace Информационная_система_для_больницы.Da
         public string dateTime { get; set; }
         public string note { get; set; }
         public string statusId { get; set; }
-        public virtual Status status { get; set; }
+        public virtual Status status{ get; set; }
     }
 }

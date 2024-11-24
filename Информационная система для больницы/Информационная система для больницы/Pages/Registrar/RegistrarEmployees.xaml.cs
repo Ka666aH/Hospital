@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,32 +35,54 @@ namespace Информационная_система_для_больницы.Pa
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             db = new Data.AppContext();
-            //var currentEmployees = from em in db.Employees
-            //                           //where !db.EmployeesStatuses.Any(x => x.employeeId.id == em.id) && !db.EmployeesStatuses.Any(x => x.statusId.id == fired)
-            //                       select em;
-            //var q = from s in db.Statuss
-            //        select s;
 
-            //foreach (var i in db.Employees.ToList())
+            var employeeData = from emp in db.Employees
+                               join empStatus in db.EmployeesStatuses on emp.id equals empStatus.employeeId into empStatusGroup
+                               from empStatus in empStatusGroup.DefaultIfEmpty() // Левое соединение
+                               join status in db.Statuses on empStatus.statusId equals status.id into statusGroup 
+                               from status in statusGroup.DefaultIfEmpty() // Левое соединение
+                               where status.id != fired && empStatus.end == null                                                    //Переделать запрос, дкмаю нужен ещё один. из одного сотрудники из другого последний статус
+                               select new
+                               {
+                                   Name = emp.fullName,
+                                   Access = emp.access,
+                                   Status = status != null ? status.statusName : null,
+                                   Start = empStatus != null ? empStatus.start : null,
+                                   End = empStatus != null ? empStatus.end : null
+                               };
+
+            registrarEmployeesDataGrid.ItemsSource = employeeData.ToList();
+            registrarEmployeesDataGrid.Columns[0].Header = "ФИО";
+            registrarEmployeesDataGrid.Columns[1].Header = "Должность";
+            registrarEmployeesDataGrid.Columns[2].Header = "Статус";
+            registrarEmployeesDataGrid.Columns[3].Header = "Дата начала статуса";
+            registrarEmployeesDataGrid.Columns[4].Header = "Дата окончания статуса";
+
+
+
+            //var q = from s in db.Statuses
+            //        where s.@group == "employee"
+            //        select s.statusName;
+
+            //List<string> statuses = q.ToList();
+
+            //List < EmployeeViewModel > employeesVM = new List<EmployeeViewModel>();
+            //foreach (var item in employeeData)
             //{
-            //    MessageBox.Show(i.id);
+            //    employeesVM.Add(new EmployeeViewModel(item.Name,item.Access,item.Status,statuses,item.Start,item.End));
             //}
 
-            //foreach (Status s in q)
+
+            //foreach (var item in employeeData)
             //{
-            //    MessageBox.Show(s.id);
-            //    MessageBox.Show(s.group);
-            //    MessageBox.Show(s.statusName);
-            //    MessageBox.Show(s.description);
+            //    MessageBox.Show(item.Name);
+            //    MessageBox.Show(item.Access.ToString());
+            //    MessageBox.Show(item.Status);
+            //    MessageBox.Show(item.Start);
+            //    MessageBox.Show(item.End);
             //}
 
-            //foreach (Employee emp in currentEmployees)
-            //{
-            //    MessageBox.Show(emp.id);
-            //    MessageBox.Show(emp.fullName);
-            //    MessageBox.Show(emp.password);
-            //    MessageBox.Show(emp.access.ToString());
-            //}
+
         }
 
         private void registrarEmployeesAddEmloyee_Click(object sender, RoutedEventArgs e)
@@ -150,11 +173,11 @@ namespace Информационная_система_для_больницы.Pa
                     {
                         if(!string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatusStart.Text) && !string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatus.Text) && string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatusEnd.Text))
                         {
-                            Employee employee = db.Employees.Find(id);
+                            Employee employee = db.Employees.Find();
 
                             if (registrarEmloyeesEmployeeFormFullName.Text != fullName)
                             {
-                                employee.fullName = registrarEmloyeesEmployeeFormFullName.Text.Text;
+                                employee.fullName = registrarEmloyeesEmployeeFormFullName.Text;
                             }
                             if (registrarEmloyeesEmployeeFormAccess.Text != access)
                             {
@@ -196,5 +219,38 @@ namespace Информационная_система_для_больницы.Pa
             registrarEmployeesMainPart.IsEnabled = true;
             registrarEmployeesEmployeeForm.Visibility = Visibility.Collapsed;
         }
+        //public class EmployeeViewModel
+        //{
+        //    public string fullName { get; set; }
+        //    public string access { get; set; }
+        //    public ComboBox status { get; set; }
+        //    public string start { get; set; }
+        //    public string end { get; set; }
+
+        //    public EmployeeViewModel(){}
+        //    public EmployeeViewModel(string _fullname,int _access, string _status,List<string> _statuses, string _start,string _end)
+        //    {
+        //        fullName = _fullname;
+                
+        //        switch(_access)
+        //        {
+        //            case 1: access = "Администратор"; break;
+        //            case 2: access = "Регистратор"; break;
+        //            case 3: access = "Врач"; break;
+        //            case 4: access = "Медицинский персонал"; break;
+        //        }
+
+        //        status = new ComboBox();
+        //        foreach (var item in _statuses)
+        //        {
+        //            status.Items.Add(item);
+        //        }
+        //        status.Text = _status;
+
+        //        start = _start;
+        //        end = _end;
+        //    }
+        //}
+
     }
 }

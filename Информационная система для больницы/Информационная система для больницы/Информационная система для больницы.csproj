@@ -129,7 +129,7 @@
     <Compile Include="Data\BedRegistration.cs" />
     <Compile Include="Data\DrugProcedure.cs" />
     <Compile Include="Data\Employee.cs" />
-    <Compile Include="Data\EmployeeStatuse.cs" />
+    <Compile Include="Data\EmployeeStatus.cs" />
     <Compile Include="Data\Indicator.cs" />
     <Compile Include="Data\Patient.cs" />
     <Compile Include="Data\PatientCondition.cs" />
