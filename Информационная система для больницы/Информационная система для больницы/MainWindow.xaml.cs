@@ -39,23 +39,25 @@ namespace Информационная_система_для_больницы
             MaxWidth = SystemParameters.WorkArea.Width;
         }
 
-        private void GetUserMenu(int access)
+        private void GetUserMenu(string access)
         {
-            switch (access)
-            {
-                case 1:
+           if(access == "Администратор")
                     menuButtons.Content = new AdminMenu();
-                    break;
-                case 2:
-                    menuButtons.Content = new RegistrarMenu();
-                    break;
-                case 3:
-                    menuButtons.Content = new DoctorMenu();
-                    break;
-                case 4:
-                    menuButtons.Content = new NurseMenu();
-                    break;
-            }
+            if (access == "Регистратор")
+                menuButtons.Content = new RegistrarMenu();
+            if (access == "Врач")
+                menuButtons.Content = new DoctorMenu();
+            if (access == "Медицинский персонал")
+                menuButtons.Content = new NurseMenu();
+            if (access == "Нет")
+                {
+                    MessageBox.Show("У вас пока нет доступа к системе. Обратитесь к системному администратору для получения доступа.");
+                    AuthWindow auth = new AuthWindow();
+                    Application.Current.MainWindow = auth;
+                    auth.Show();
+                    this.Close();
+                }
+                    
         }
                     
 
@@ -131,7 +133,7 @@ namespace Информационная_система_для_больницы
             if(authWindow.ShowDialog() == true)
             {
                 mainFrame.Content = infoPage;
-                GetUserMenu((int)Tag);
+                GetUserMenu((string)Tag);
                 
             }
             else
@@ -140,7 +142,7 @@ namespace Информационная_система_для_больницы
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            GetUserMenu((int)Tag);
+            GetUserMenu((string)Tag);
         }
     }
 }

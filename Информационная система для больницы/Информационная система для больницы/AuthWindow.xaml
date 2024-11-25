@@ -11,7 +11,7 @@
         Background="Transparent" Icon="/Images/colorfulhospital.png">
 
     
-    <Border Background="{DynamicResource backgroundColor}" CornerRadius="10">
+    <Border Background="{DynamicResource backgroundColor}" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
@@ -27,7 +27,7 @@
                 <Label Content="Авторизация" FontFamily="Bahnschrift" FontSize="15" HorizontalAlignment="Center" Foreground="{DynamicResource textColor}"/>
             </StackPanel>
             <Label Grid.Row="1" Grid.Column="0" Content="Сотрудник" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Foreground="{DynamicResource textColor}" Margin="5 10 0 10"/>
-            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}" x:Name="userPicker" Grid.Row="1" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" MaxDropDownHeight="90" IsEditable="True" DropDownClosed="userPicker_DropDownClosed"/> <!--ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource comboBoxStyle}"-->
+            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}"  x:Name="userPicker" Grid.Row="1" Grid.Column="1" FontFamily="Bahnschrift" FontSize="10" Margin="0 10 10 10" MaxDropDownHeight="90" IsEditable="True" DropDownClosed="userPicker_DropDownClosed"/> <!--ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource comboBoxStyle}"-->
 
             <Label Grid.Row="2" Grid.Column="0" Content="Пароль" FontFamily="Bahnschrift" FontSize="10"  HorizontalAlignment="Left" Foreground="{DynamicResource textColor}" Margin="5 10 0 10"/>
 

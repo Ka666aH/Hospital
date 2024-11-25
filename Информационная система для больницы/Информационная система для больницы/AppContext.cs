@@ -13,7 +13,7 @@ namespace Информационная_система_для_больницы.Da
     {
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<EmployeeStatus> EmployeesStatuses { get; set; }
+        //public DbSet<EmployeeStatus> EmployeesStatuses { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Bed> Beds { get; set; }
         public DbSet<BedRegistration> BedsRegistrations { get; set; }
@@ -35,8 +35,8 @@ namespace Информационная_система_для_больницы.Da
                 .ToTable("Statuses");
             modelBuilder.Entity<Employee>()
                 .ToTable("Employees");
-            modelBuilder.Entity<EmployeeStatus>()
-                .ToTable("EmployeesStatuses");
+            //modelBuilder.Entity<EmployeeStatus>()
+            //    .ToTable("EmployeesStatuses");
             //    .HasRequired(o => o.employee)
             //    .WithMany()
             //    .HasForeignKey(o => o.employeeId);

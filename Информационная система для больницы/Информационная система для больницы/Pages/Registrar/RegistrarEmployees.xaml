@@ -9,7 +9,7 @@
       Title="RegistrarEmployees" Loaded="Page_Loaded">
 
     <Grid>
-    <Grid Name="registrarEmployeesMainPart">
+    <Grid Name="registrarEmployeesMainPart" IsEnabledChanged="registrarEmployeesMainPart_IsEnabledChanged">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="3*"/>
@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -27,25 +27,31 @@
         <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 0">
             <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="ФИО" Foreground="{DynamicResource textColor}"/>
             <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Должность" Foreground="{DynamicResource textColor}"/>
-            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Статус" Foreground="{DynamicResource textColor}"/>
+            <!--<Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Статус" Foreground="{DynamicResource textColor}"/>-->
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
-            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarEmloyeesSearchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
-            <ComboBox x:Name="registrarEmloyeesSearchAccess" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
-            <ComboBox x:Name="registrarEmloyeesSearchStatus" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
+            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarEmloyeesSearchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarEmloyeesSearchFullName_TextChanged" />
+                <ComboBox x:Name="registrarEmloyeesSearchAccess" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5">
+                    <ComboBoxItem Content="" Selected="ComboBoxItem_Selected"/>
+                    <ComboBoxItem Content="Администратор" Selected="ComboBoxItem_Selected"/>
+                    <ComboBoxItem Content="Регистратор" Selected="ComboBoxItem_Selected"/>
+                    <ComboBoxItem Content="Врач" Selected="ComboBoxItem_Selected"/>
+                    <ComboBoxItem Content="Медицинский персонал" Selected="ComboBoxItem_Selected"/>
+                </ComboBox>
+                <!--<ComboBox x:Name="registrarEmloyeesSearchStatus" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>-->
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
             <Button x:Name="registrarEmployeesAddEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 5 0 5" Click="registrarEmployeesAddEmloyee_Click"/>
             <Button x:Name="registrarEmployeesAlterEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Margin="0 5 0 5" Click="registrarEmployeesAlterEmloyee_Click"/>
-            <Button x:Name="registrarEmployeesDeleteEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 5 0 5"/>
+            <Button x:Name="registrarEmployeesDeleteEmloyee" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 5 0 5" Click="registrarEmployeesDeleteEmloyee_Click"/>
         </StackPanel>
 
         <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="10">
             <Grid>
                 <Border x:Name="registrarEmployeesDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
-                    <DataGrid x:Name="registrarEmployeesDataGrid" Style="{DynamicResource DataGridStyle1}" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column">
+                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="registrarEmployeesDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" SelectedCellsChanged="registrarEmployeesDataGrid_SelectedCellsChanged">
                         <!--<DataGrid.Columns>
                             <DataGridTextColumn Header="ФИО" MinWidth="100" Width="15*"/>
                             <DataGridTextColumn Header="Должность" MinWidth="80" MaxWidth="100" Width="10*" />
@@ -63,10 +69,10 @@
         </Grid>
 
 
-        <Border x:Name="registrarEmployeesEmployeeForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="250" MaxWidth="450" Visibility="Collapsed">
+        <Border x:Name="registrarEmployeesEmployeeForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="140" MaxWidth="350" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -76,19 +82,19 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Форма сотрудника" FontSize="15" Foreground="{DynamicResource textColor}" />
                 <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
-                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="ФИО *" Foreground="{DynamicResource textColor}"/>
-                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Должность *" Foreground="{DynamicResource textColor}"/>
-                    <Label x:Name="registrarEmloyeesEmployeeFormStatusLabel" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Статус" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="ФИО" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Должность" Foreground="{DynamicResource textColor}"/>
+                    <!--<Label x:Name="registrarEmloyeesEmployeeFormStatusLabel" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Статус" Foreground="{DynamicResource textColor}"/>
                     <Label x:Name="registrarEmloyeesEmployeeFormStatusStartLabel" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Дата начала действия статуса" Foreground="{DynamicResource textColor}"/>
-                    <Label x:Name="registrarEmloyeesEmployeeFormStatusEndLabel" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Дата окончания действия статуса" Foreground="{DynamicResource textColor}"/>
+                    <Label x:Name="registrarEmloyeesEmployeeFormStatusEndLabel" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Дата окончания действия статуса" Foreground="{DynamicResource textColor}"/>-->
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <TextBox x:Name="registrarEmloyeesEmployeeFormFullName" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
-                    <ComboBox x:Name="registrarEmloyeesEmployeeFormAccess" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource ComboBoxStyle1}"/>
-                    <ComboBox x:Name="registrarEmloyeesEmployeeFormStatus" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource ComboBoxStyle1}"/>
+                    <TextBox x:Name="registrarEmloyeesEmployeeFormFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="registrarEmloyeesEmployeeFormAccess" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsReadOnly="True" Style="{StaticResource TextBoxStyle1}"/>
+                    <!--<ComboBox x:Name="registrarEmloyeesEmployeeFormStatus" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25"  Style="{StaticResource ComboBoxStyle1}"/>
                     <DatePickerTextBox x:Name="registrarEmloyeesEmployeeFormStatusStart" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
-                    <DatePickerTextBox x:Name="registrarEmloyeesEmployeeFormStatusEnd" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <DatePickerTextBox x:Name="registrarEmloyeesEmployeeFormStatusEnd" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>-->
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">

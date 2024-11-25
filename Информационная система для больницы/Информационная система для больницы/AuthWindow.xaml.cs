@@ -63,14 +63,16 @@ namespace Информационная_система_для_больницы
                         MainWindow main = new MainWindow();
                         Application.Current.MainWindow = main;
                         Application.Current.MainWindow.Tag = employee.access;
+                        this.Close();
                         main.Show();
                     }
                     else
                     {
                         this.DialogResult = true;
                         Application.Current.MainWindow.Tag = employee.access;
+                        this.Close();
                     }
-                    this.Close();
+                    //this.Close();
                 }
                 else
                 {

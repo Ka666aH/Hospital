@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -24,6 +26,8 @@ namespace Информационная_система_для_больницы.Pa
     {
         Data.AppContext db;
         bool addMode = false;
+        string selectedName = null;
+        string selectedAccess = null;
         string fired = "926BA4B4-4704-48DD-B286-CB2313B90368";
         public RegistrarEmployees()
         {
@@ -31,92 +35,68 @@ namespace Информационная_система_для_больницы.Pa
             InitializeComponent();
         }
 
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        public void GetEmployees()
         {
             db = new Data.AppContext();
 
-            var employeeData = from emp in db.Employees
-                               join empStatus in db.EmployeesStatuses on emp.id equals empStatus.employeeId into empStatusGroup
-                               from empStatus in empStatusGroup.DefaultIfEmpty() // Левое соединение
-                               join status in db.Statuses on empStatus.statusId equals status.id into statusGroup 
-                               from status in statusGroup.DefaultIfEmpty() // Левое соединение
-                               where status.id != fired && empStatus.end == null                                                    //Переделать запрос, дкмаю нужен ещё один. из одного сотрудники из другого последний статус
-                               select new
-                               {
-                                   Name = emp.fullName,
-                                   Access = emp.access,
-                                   Status = status != null ? status.statusName : null,
-                                   Start = empStatus != null ? empStatus.start : null,
-                                   End = empStatus != null ? empStatus.end : null
-                               };
+            var employess = from em in db.Employees
+                            //where (em.fullName.ToLower().Contains(registrarEmloyeesSearchFullName.Text.ToLower()) || string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text)) && (em.access == registrarEmloyeesSearchAccess.Text || string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text))
+                            select new
+                            {
+                                Name = em.fullName,
+                                Access = em.access
+                            };
 
-            registrarEmployeesDataGrid.ItemsSource = employeeData.ToList();
-            registrarEmployeesDataGrid.Columns[0].Header = "ФИО";
-            registrarEmployeesDataGrid.Columns[1].Header = "Должность";
-            registrarEmployeesDataGrid.Columns[2].Header = "Статус";
-            registrarEmployeesDataGrid.Columns[3].Header = "Дата начала статуса";
-            registrarEmployeesDataGrid.Columns[4].Header = "Дата окончания статуса";
+            if(string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text) && string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text))
+                registrarEmployeesDataGrid.ItemsSource = employess.ToList();
+            if (string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text) && !string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text))
+                registrarEmployeesDataGrid.ItemsSource = employess.ToList().Where(x => x.Access == registrarEmloyeesSearchAccess.Text);
+            if (!string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text) && string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text))
+                registrarEmployeesDataGrid.ItemsSource = employess.ToList().Where(x => x.Name.ToLower().Contains(registrarEmloyeesSearchFullName.Text.ToLower()));
+            if (!string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text) && !string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text))
+                registrarEmployeesDataGrid.ItemsSource = employess.ToList().Where(x => x.Name.ToLower().Contains(registrarEmloyeesSearchFullName.Text.ToLower()) && x.Access == registrarEmloyeesSearchAccess.Text);
 
 
-
-            //var q = from s in db.Statuses
-            //        where s.@group == "employee"
-            //        select s.statusName;
-
-            //List<string> statuses = q.ToList();
-
-            //List < EmployeeViewModel > employeesVM = new List<EmployeeViewModel>();
-            //foreach (var item in employeeData)
-            //{
-            //    employeesVM.Add(new EmployeeViewModel(item.Name,item.Access,item.Status,statuses,item.Start,item.End));
-            //}
+            if(registrarEmployeesDataGrid.Items.Count != 0)
+            {
+                registrarEmployeesDataGrid.Columns[0].Header = "ФИО";
+                registrarEmployeesDataGrid.Columns[1].Header = "Должность";
+                registrarEmployeesDataGrid.Columns[0].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+                registrarEmployeesDataGrid.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                registrarEmployeesDataGrid.SelectedIndex = 0;
+            }
+            
+        }
 
 
-            //foreach (var item in employeeData)
-            //{
-            //    MessageBox.Show(item.Name);
-            //    MessageBox.Show(item.Access.ToString());
-            //    MessageBox.Show(item.Status);
-            //    MessageBox.Show(item.Start);
-            //    MessageBox.Show(item.End);
-            //}
 
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetEmployees();
         }
 
         private void registrarEmployeesAddEmloyee_Click(object sender, RoutedEventArgs e)
         {
-            OpenEmployeeForm();
 
-            registrarEmloyeesEmployeeFormStatusLabel.Visibility = Visibility.Collapsed;
-            registrarEmloyeesEmployeeFormStatusStartLabel.Visibility = Visibility.Collapsed;
-            registrarEmloyeesEmployeeFormStatusEndLabel.Visibility = Visibility.Collapsed;
-            registrarEmloyeesEmployeeFormStatus.Visibility = Visibility.Collapsed;
-            registrarEmloyeesEmployeeFormStatusStart.Visibility = Visibility.Collapsed;
-            registrarEmloyeesEmployeeFormStatusEnd.Visibility = Visibility.Collapsed;
-
-            registrarEmployeesEmployeeForm.Height = 140;
-
+            registrarEmloyeesEmployeeFormAccess.Text = "Нет";
             addMode = true;
+            OpenEmployeeForm();
         }
 
         private void registrarEmployeesAlterEmloyee_Click(object sender, RoutedEventArgs e)
         {
-            OpenEmployeeForm();
 
-            registrarEmloyeesEmployeeFormStatusLabel.Visibility = Visibility.Visible;
-            registrarEmloyeesEmployeeFormStatusStartLabel.Visibility = Visibility.Visible;
-            registrarEmloyeesEmployeeFormStatusEndLabel.Visibility = Visibility.Visible;
-            registrarEmloyeesEmployeeFormStatus.Visibility = Visibility.Visible;
-            registrarEmloyeesEmployeeFormStatusStart.Visibility = Visibility.Visible;
-            registrarEmloyeesEmployeeFormStatusEnd.Visibility = Visibility.Visible;
+            var selectedEmployee = registrarEmployeesDataGrid.SelectedItem;
+            selectedName = selectedEmployee.GetType().GetProperty("Name").GetValue(selectedEmployee).ToString();
+            selectedAccess = selectedEmployee.GetType().GetProperty("Access").GetValue(selectedEmployee).ToString();
 
-            registrarEmployeesEmployeeForm.Height = 250;
+            registrarEmloyeesEmployeeFormFullName.Text = selectedName;
+            registrarEmloyeesEmployeeFormAccess.Text = selectedAccess;
 
             addMode = false;
+            OpenEmployeeForm();
 
-            //Если статус есть в таблице то registrarEmloyeesEmployeeFormStatus ридонли
         }
 
         private void registrarEmployeesEmployeeFormAccept_Click(object sender, RoutedEventArgs e)
@@ -126,80 +106,44 @@ namespace Информационная_система_для_больницы.Pa
 
                 if(!string.IsNullOrEmpty(registrarEmloyeesEmployeeFormFullName.Text) && !string.IsNullOrEmpty(registrarEmloyeesEmployeeFormAccess.Text))
                 {
-                    if(Convert.ToDateTime(registrarEmloyeesEmployeeFormStatusStart.Text) < Convert.ToDateTime(registrarEmloyeesEmployeeFormStatusEnd))
-                    {
                         Employee employee = new Employee();
                         employee.id = Guid.NewGuid().ToString();
                         employee.fullName = registrarEmloyeesEmployeeFormFullName.Text;
-                        employee.access = 0;
-                        if (registrarEmloyeesEmployeeFormAccess.Text == "Администратор")
-                            employee.access = 1;
-                        if (registrarEmloyeesEmployeeFormAccess.Text == "Регистратор")
-                            employee.access = 2;
-                        if (registrarEmloyeesEmployeeFormAccess.Text == "Врач")
-                            employee.access = 3;
-                        if (registrarEmloyeesEmployeeFormAccess.Text == "Медицинский персонал")
-                            employee.access = 4;
-                        if (employee.access == 0)
-                            MessageBox.Show("Должность указана неверно");
-                        
-                        //db.Employees.Add(employee);
-                        //db.SaveChanges();
+                        employee.access = "Нет";
+                        employee.password = "1";
+                    
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Дата окончания действия статуса не может быть раньше даты начала действия статуса.");
-                    }
+                    db.Employees.Add(employee);
+                    db.SaveChanges();
                 }
                 else
                 {
-                    MessageBox.Show("Необходимо заполнить все обязательные поля.");
+                    MessageBox.Show("Необходимо заполнить все поля.");
                 }
 
             }
             else
             {
-                //Получение полей
-                string fullName = string.Empty;
-                string access = string.Empty;
-                string status = string.Empty;
-                string statusStart = string.Empty;
-                string statusEnd = string.Empty;
+                
+                var q = from em in db.Employees
+                        where em.access == selectedAccess && em.fullName == selectedName
+                        select em;
 
                 if (!string.IsNullOrEmpty(registrarEmloyeesEmployeeFormFullName.Text) && !string.IsNullOrEmpty(registrarEmloyeesEmployeeFormAccess.Text))
                 {
-                    if(!string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatusStart.Text) == !string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatus.Text))
-                    {
-                        if(!string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatusStart.Text) && !string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatus.Text) && string.IsNullOrEmpty(registrarEmloyeesEmployeeFormStatusEnd.Text))
-                        {
-                            Employee employee = db.Employees.Find();
+                    
+                            Employee employee = q.FirstOrDefault();
 
-                            if (registrarEmloyeesEmployeeFormFullName.Text != fullName)
+                            if (registrarEmloyeesEmployeeFormFullName.Text != selectedName)
                             {
                                 employee.fullName = registrarEmloyeesEmployeeFormFullName.Text;
-                            }
-                            if (registrarEmloyeesEmployeeFormAccess.Text != access)
-                            {
-                                access = registrarEmloyeesEmployeeFormAccess.Text;
+                                db.SaveChanges();
                             }
 
-                            // Добавление связанной записи в EmployeeStatuss
-                            
-                        }
-                        else
-                        {
-                            MessageBox.Show("Невозможно задать дату окончания действия статуса без указания статуса и даты начала действия статуса");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Необходимо указать статус и дату начала его действия");
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Необходимо заполнить все обязательные поля.");
+                    MessageBox.Show("Необходимо заполнить все поля.");
                 }
             }
             CloseEmployeeForm();
@@ -219,38 +163,59 @@ namespace Информационная_система_для_больницы.Pa
             registrarEmployeesMainPart.IsEnabled = true;
             registrarEmployeesEmployeeForm.Visibility = Visibility.Collapsed;
         }
-        //public class EmployeeViewModel
-        //{
-        //    public string fullName { get; set; }
-        //    public string access { get; set; }
-        //    public ComboBox status { get; set; }
-        //    public string start { get; set; }
-        //    public string end { get; set; }
 
-        //    public EmployeeViewModel(){}
-        //    public EmployeeViewModel(string _fullname,int _access, string _status,List<string> _statuses, string _start,string _end)
-        //    {
-        //        fullName = _fullname;
-                
-        //        switch(_access)
-        //        {
-        //            case 1: access = "Администратор"; break;
-        //            case 2: access = "Регистратор"; break;
-        //            case 3: access = "Врач"; break;
-        //            case 4: access = "Медицинский персонал"; break;
-        //        }
+        private void registrarEmployeesMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            GetEmployees();
+        }
 
-        //        status = new ComboBox();
-        //        foreach (var item in _statuses)
-        //        {
-        //            status.Items.Add(item);
-        //        }
-        //        status.Text = _status;
+        private void registrarEmployeesDeleteEmloyee_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedEmployee = registrarEmployeesDataGrid.SelectedItem;
+            selectedName = selectedEmployee.GetType().GetProperty("Name").GetValue(selectedEmployee).ToString();
+            selectedAccess = selectedEmployee.GetType().GetProperty("Access").GetValue(selectedEmployee).ToString();
 
-        //        start = _start;
-        //        end = _end;
-        //    }
-        //}
+            var q = from em in db.Employees
+                    where em.access == selectedAccess && em.fullName == selectedName
+                    select em;
+            Employee employee = q.FirstOrDefault();
 
+            
+            MessageBoxResult result = MessageBox.Show($"Вы уверены, что хотите безвозвратно удалить сотрудника \"{selectedName}\"?\nЭто действие нельзя отменить.", "Удаление сотрудника", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+            {
+                db.Employees.Attach(employee);
+                db.Entry(employee).State = EntityState.Deleted;
+                db.SaveChanges();
+                GetEmployees();
+            }
+
+        }
+
+        private void registrarEmployeesDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if(registrarEmployeesDataGrid.SelectedItem == null)
+            {
+                registrarEmployeesAlterEmloyee.IsEnabled = false;
+                registrarEmployeesAddEmloyee.IsEnabled = false;
+            }
+            else
+            {
+                registrarEmployeesAlterEmloyee.IsEnabled = true;
+                registrarEmployeesAddEmloyee.IsEnabled = true;
+            }
+        }
+
+        private void registrarEmloyeesSearchFullName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            GetEmployees();
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem item  = sender as ComboBoxItem;
+            registrarEmloyeesSearchAccess.Text = item.Content.ToString();
+            GetEmployees();
+        }
     }
 }

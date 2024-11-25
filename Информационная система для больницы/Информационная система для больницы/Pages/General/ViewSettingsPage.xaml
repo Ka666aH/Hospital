@@ -11,7 +11,7 @@
 
     <StackPanel>
         <Label Content="Тема" FontSize="15" FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}"/>
-        <ComboBox x:Name="themePicker" Height="Auto" Width="200" HorizontalAlignment="Left" FontSize="15" FontFamily="Bahnschrift" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{StaticResource ComboBoxStyle1}" SelectionChanged="themePicker_SelectionChanged"/>
+        <ComboBox x:Name="themePicker" Height="Auto" Width="200" HorizontalAlignment="Left" FontSize="15" FontFamily="Bahnschrift" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="themePicker_SelectionChanged"/>
 
     </StackPanel>
 </Page>

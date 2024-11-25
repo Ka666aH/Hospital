@@ -9,8 +9,8 @@ namespace Информационная_система_для_больницы.Da
     class Bed
     {
         public string id { get; set; }
-        public int ward { get; set; }
-        public int bed { get; set; }
+        public string ward { get; set; }
+        public string bed { get; set; }
         public string type { get; set; }
     }
 }
