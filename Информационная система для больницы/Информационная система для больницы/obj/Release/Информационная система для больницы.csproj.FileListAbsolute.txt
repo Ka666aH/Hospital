@@ -1,0 +1,59 @@
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\Hospital.db
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\Информационная система для больницы.exe.config
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\Информационная система для больницы.exe
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\Информационная система для больницы.pdb
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\EntityFramework.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\EntityFramework.SqlServer.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\System.Data.SQLite.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\System.Data.SQLite.EF6.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\System.Data.SQLite.Linq.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\EntityFramework.xml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\EntityFramework.SqlServer.xml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\System.Data.SQLite.xml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.csproj.AssemblyReference.cache
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\buttonsStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\checkboxStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\comboboxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\datagridsStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\menuButtonsStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\passwordBoxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\textboxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\windowMenuButtonsStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Themes\Blue.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Themes\GreyBlue.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\AdminMenu.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\AuthWindow.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\DoctorMenu.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\MainWindow.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\NurseMenu.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Admin\AdminEmployees.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\General\InfoPage.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\General\ViewSettingsPage.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Registrar\RegistrarDrugs.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Registrar\RegistrarEmployees.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Registrar\RegistrarPatients.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\RegistrarMenu.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\App.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\GeneratedInternalTypeHelper.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы_MarkupCompile.cache
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы_MarkupCompile.lref
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\App.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\AdminMenu.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\AuthWindow.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\DoctorMenu.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\MainWindow.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\NurseMenu.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Admin\AdminEmployees.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\General\InfoPage.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\General\ViewSettingsPage.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Registrar\RegistrarDrugs.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Registrar\RegistrarEmployees.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Registrar\RegistrarPatients.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\RegistrarMenu.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.g.resources
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная_система_для_больницы.Properties.Resources.resources
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.csproj.GenerateResource.cache
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.csproj.CoreCompileInputs.cache
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информац.66CFDA7E.Up2Date
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.exe
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.pdb

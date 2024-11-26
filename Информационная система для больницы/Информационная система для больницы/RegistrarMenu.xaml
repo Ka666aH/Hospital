@@ -13,7 +13,7 @@
     <StackPanel x:Name="registrarMenu" VerticalAlignment="Top" >
 
         <RadioButton x:Name="registrarRegistrarions" Content="Оформления" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
-        <RadioButton x:Name="registrarPatients" Content="Пациенты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarPatients" Content="Пациенты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarPatients_Click"/>
         <RadioButton x:Name="registrarEmployees" Content="Сотрудники" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarEmployees_Click"/>
         <RadioButton x:Name="registrarDrugs" Content="Препараты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
         <RadioButton x:Name="registrarProcedures" Content="Процедуры" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>

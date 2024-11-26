@@ -8,7 +8,7 @@
              d:DesignHeight="260" d:DesignWidth="260">
     <StackPanel x:Name="nurseMenu" VerticalAlignment="Top">
 
-        <RadioButton x:Name="adminEmployees" Content="Сотрудники" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="adminEmployees" Content="Сотрудники" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="adminEmployees_Click"/>
 
     </StackPanel>
 </UserControl>

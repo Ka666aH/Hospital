@@ -40,7 +40,7 @@ namespace Информационная_система_для_больницы.Pa
             db = new Data.AppContext();
 
             var employess = from em in db.Employees
-                            //where (em.fullName.ToLower().Contains(registrarEmloyeesSearchFullName.Text.ToLower()) || string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text)) && (em.access == registrarEmloyeesSearchAccess.Text || string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text))
+                            where em.access != "Администратор"
                             select new
                             {
                                 Name = em.fullName,

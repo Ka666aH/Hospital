@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Информационная_система_для_больницы.Pages.Admin;
+using Информационная_система_для_больницы.Pages.Registrar;
 
 namespace Информационная_система_для_больницы
 {
@@ -20,9 +22,18 @@ namespace Информационная_система_для_больницы
     /// </summary>
     public partial class AdminMenu : UserControl
     {
+        AdminEmployees admEmployees = new AdminEmployees();
+
+        public static MainWindow main = (MainWindow)Application.Current.MainWindow;
+        Frame mainframe = (Frame)main.FindName("mainFrame");
         public AdminMenu()
         {
             InitializeComponent();
+        }
+
+        private void adminEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = admEmployees;
         }
     }
 }

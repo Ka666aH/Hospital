@@ -11,7 +11,7 @@
         Background="Transparent" Icon="/Images/colorfulhospital.png">
 
     
-    <Border Background="{DynamicResource backgroundColor}" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2">
+    <Border Background="{DynamicResource pageColor}" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>

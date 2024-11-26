@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Styles/textboxesStyle.xaml"/>
                 <ResourceDictionary Source="Styles/datagridsStyle.xaml"/>
                 <ResourceDictionary Source="Styles/passwordBoxesStyle.xaml"/>
+                <ResourceDictionary Source="Styles/checkboxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

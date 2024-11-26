@@ -22,6 +22,7 @@ namespace Информационная_система_для_больницы
     public partial class RegistrarMenu : UserControl
     {
         RegistrarEmployees regEmployees = new RegistrarEmployees();
+        RegistrarPatients regPatients = new RegistrarPatients();
 
         public static MainWindow main = (MainWindow)Application.Current.MainWindow;
         Frame mainframe = (Frame)main.FindName("mainFrame");
@@ -34,6 +35,11 @@ namespace Информационная_система_для_больницы
         private void registrarEmployees_Click(object sender, RoutedEventArgs e)
         {
             mainframe.Content = regEmployees;
+        }
+
+        private void registrarPatients_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = regPatients;
         }
     }
 }
