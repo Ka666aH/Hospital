@@ -1,0 +1,81 @@
+﻿<Page x:Class="Информационная_система_для_больницы.Pages.Registrar.RegistrarIndicators"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Информационная_система_для_больницы.Pages.Registrar"
+      mc:Ignorable="d" 
+      d:DesignHeight="415" d:DesignWidth="620"
+      Title="RegistrarIndicators">
+    
+    <Grid>
+        <Grid Name="registrarIndicatorsMainPart" IsEnabledChanged="registrarIndicatorsMainPart_IsEnabledChanged" Loaded="Page_Loaded">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="125"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список показателей состояния пациента" FontSize="15" Foreground="{DynamicResource textColor}"/>
+
+            <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 0">
+                <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Название" Foreground="{DynamicResource textColor}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarIndicatorsSearchName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarIndicatorsSearchFullName_TextChanged" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
+                <Button x:Name="registrarIndicatorsAddIndicator" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 5 0 5" Click="registrarIndicatorsAddIndicator_Click"/>
+                <Button x:Name="registrarIndicatorsAlterIndicator" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Margin="0 5 0 5" Click="registrarIndicatorsAlterIndicator_Click"/>
+                <Button x:Name="registrarIndicatorsDeleteIndicator" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 5 0 5" Click="registrarIndicatorsDeleteIndicator_Click"/>
+            </StackPanel>
+
+            <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="10">
+                <Grid>
+                    <Border x:Name="registrarIndicatorsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
+                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="registrarIndicatorsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="registrarIndicatorsDataGrid_SelectedCellsChanged">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=registrarIndicatorsDataGridBorder}"/>
+                        </DataGrid.OpacityMask>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border x:Name="registrarIndicatorsIndicatorForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Форма показателя" FontSize="15" Foreground="{DynamicResource textColor}" />
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Название" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Описание" Foreground="{DynamicResource textColor}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
+                    <TextBox x:Name="registrarIndicatorsIndicatorFormName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="registrarIndicatorsIndicatorFormDescription" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="registrarIndicatorsIndicatorFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" Click="registrarIndicatorsIndicatorFormAccept_Click"/>
+                    <Button x:Name="registrarIndicatorsIndicatorFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarIndicatorsIndicatorFormCancel_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

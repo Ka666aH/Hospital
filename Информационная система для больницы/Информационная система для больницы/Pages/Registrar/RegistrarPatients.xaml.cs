@@ -47,9 +47,7 @@ namespace Информационная_система_для_больницы.Pa
 
             if (registrarPatientsDataGrid.Items.Count != 0)
             {
-
                 registrarPatientsDataGrid.SelectedIndex = 0;
-            }
                 registrarPatientsDataGrid.Columns[0].Header = "Идентификатор";
                 registrarPatientsDataGrid.Columns[1].Header = "ФИО";
                 registrarPatientsDataGrid.Columns[2].Header = "Дата рождения";
@@ -63,11 +61,23 @@ namespace Информационная_система_для_больницы.Pa
                 registrarPatientsDataGrid.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
                 registrarPatientsDataGrid.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
                 registrarPatientsDataGrid.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            }
+            //else
+            //{
+            //    registrarPatientsDataGrid.Columns[0].Visibility = Visibility.Collapsed;
+            //    registrarPatientsDataGrid.Columns[1].Visibility = Visibility.Collapsed;
+            //    registrarPatientsDataGrid.Columns[2].Visibility = Visibility.Collapsed;
+            //    registrarPatientsDataGrid.Columns[3].Visibility = Visibility.Collapsed;
+            //    registrarPatientsDataGrid.Columns[4].Visibility = Visibility.Collapsed;
+            //}
+
+            CheckSelection();
 
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             GetPatients();
+            CheckSelection();
         }
         private void registrarPatientsMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -169,6 +179,18 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarPatientsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
+
+            CheckSelection();
+            
+        }
+
+        private void registrarPatientsSearchFullName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            GetPatients();
+        }
+
+        public void CheckSelection()
+        {
             if (registrarPatientsDataGrid.SelectedItem == null)
             {
                 registrarPatientsAlterPatient.IsEnabled = false;
@@ -179,11 +201,6 @@ namespace Информационная_система_для_больницы.Pa
                 registrarPatientsAlterPatient.IsEnabled = true;
                 registrarPatientsDeletePatient.IsEnabled = true;
             }
-        }
-
-        private void registrarPatientsSearchFullName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            GetPatients();
         }
     }
 }

@@ -23,6 +23,9 @@ namespace Информационная_система_для_больницы
     {
         RegistrarEmployees regEmployees = new RegistrarEmployees();
         RegistrarPatients regPatients = new RegistrarPatients();
+        RegistrarDrugs regDrugs = new RegistrarDrugs();
+        RegistrarProcedures regProcedures = new RegistrarProcedures();
+        RegistrarIndicators regIndicators = new RegistrarIndicators();
 
         public static MainWindow main = (MainWindow)Application.Current.MainWindow;
         Frame mainframe = (Frame)main.FindName("mainFrame");
@@ -40,6 +43,21 @@ namespace Информационная_система_для_больницы
         private void registrarPatients_Click(object sender, RoutedEventArgs e)
         {
             mainframe.Content = regPatients;
+        }
+
+        private void registrarDrugs_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = regDrugs;
+        }
+
+        private void registrarProcedures_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = regProcedures;
+        }
+
+        private void registrarIndicators_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = regIndicators;
         }
     }
 }

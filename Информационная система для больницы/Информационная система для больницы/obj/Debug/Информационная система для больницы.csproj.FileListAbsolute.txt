@@ -57,3 +57,20 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.exe
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.pdb
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\checkboxStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\Microsoft.CSharp.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\PresentationCore.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\PresentationFramework.Aero2.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\PresentationFramework.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.ComponentModel.DataAnnotations.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Data.DataSetExtensions.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Data.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Net.Http.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Xaml.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Xml.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Xml.Linq.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\WindowsBase.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarProcedures.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarProcedures.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarIndicators.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarIndicators.baml

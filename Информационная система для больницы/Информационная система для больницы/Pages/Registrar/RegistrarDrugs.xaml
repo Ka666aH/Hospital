@@ -9,43 +9,73 @@
       Title="RegistrarDrugs">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="125"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="125"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid Name="registrarDrugsMainPart" IsEnabledChanged="registrarDrugsMainPart_IsEnabledChanged" Loaded="Page_Loaded">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="125"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список препаратов" FontSize="15" Foreground="{DynamicResource textColor}"/>
+            <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список препаратов" FontSize="15" Foreground="{DynamicResource textColor}"/>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 0">
-            <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Content="Название" Foreground="{DynamicResource textColor}"/>
-        </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 0 0">
+                <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Название" Foreground="{DynamicResource textColor}"/>
+            </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
-            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="searchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5"/>
-        </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarDrugsSearchName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarDrugsSearchFullName_TextChanged" />
+            </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
-            <Button x:Name="addDrug" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 5 0 5"/>
-            <Button x:Name="alterDrug" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Margin="0 5 0 5"/>
-            <Button x:Name="deleteDrug" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 5 0 5"/>
-        </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
+                <Button x:Name="registrarDrugsAddDrug" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 5 0 5" Click="registrarDrugsAddDrug_Click"/>
+                <Button x:Name="registrarDrugsAlterDrug" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Margin="0 5 0 5" Click="registrarDrugsAlterDrug_Click"/>
+                <Button x:Name="registrarDrugsDeleteDrug" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 5 0 5" Click="registrarDrugsDeleteDrug_Click"/>
+            </StackPanel>
 
-        <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="10">
+            <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="10">
+                <Grid>
+                    <Border x:Name="registrarDrugsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
+                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="registrarDrugsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="registrarDrugsDataGrid_SelectedCellsChanged">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=registrarDrugsDataGridBorder}"/>
+                        </DataGrid.OpacityMask>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border x:Name="registrarDrugsDrugForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
             <Grid>
-                <Border x:Name="registrarDrugsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
-                <DataGrid x:Name="registrarDrugsDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column">
-                    <DataGrid.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=registrarDrugsDataGridBorder}"/>
-                    </DataGrid.OpacityMask>
-                </DataGrid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Форма препарата" FontSize="15" Foreground="{DynamicResource textColor}" />
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Название" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Описание" Foreground="{DynamicResource textColor}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
+                    <TextBox x:Name="registrarDrugsDrugFormName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="registrarDrugsDrugFormDescription" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="registrarDrugsDrugFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormAccept_Click"/>
+                    <Button x:Name="registrarDrugsDrugFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormCancel_Click"/>
+                </StackPanel>
             </Grid>
         </Border>
-
     </Grid>
 </Page>
