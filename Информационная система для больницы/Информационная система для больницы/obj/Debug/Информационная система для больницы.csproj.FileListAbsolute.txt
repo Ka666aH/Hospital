@@ -74,3 +74,5 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarProcedures.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarIndicators.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarIndicators.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\listboxesStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarWards.g.cs

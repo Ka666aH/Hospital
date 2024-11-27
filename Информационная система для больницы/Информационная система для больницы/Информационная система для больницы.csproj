@@ -129,6 +129,9 @@
     <Compile Include="Pages\Registrar\RegistrarProcedures.xaml.cs">
       <DependentUpon>RegistrarProcedures.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Registrar\RegistrarWards.xaml.cs">
+      <DependentUpon>RegistrarWards.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarMenu.xaml.cs">
       <DependentUpon>RegistrarMenu.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Registrar\RegistrarWards.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegistrarMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\datagridsStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\listboxesStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
