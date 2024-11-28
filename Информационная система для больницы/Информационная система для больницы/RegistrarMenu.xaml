@@ -17,7 +17,7 @@
         <RadioButton x:Name="registrarEmployees" Content="Сотрудники" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarEmployees_Click"/>
         <RadioButton x:Name="registrarDrugs" Content="Препараты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarDrugs_Click"/>
         <RadioButton x:Name="registrarProcedures" Content="Процедуры" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarProcedures_Click"/>
-        <RadioButton x:Name="registrarWards" Content="Палаты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <RadioButton x:Name="registrarWards" Content="Палаты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarWards_Click"/>
         <RadioButton x:Name="registrarIndicators" Content="Показатели" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="registrarIndicators_Click"/>
 
     </StackPanel>

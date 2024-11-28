@@ -28,7 +28,6 @@ namespace Информационная_система_для_больницы.Pa
         bool addMode = false;
         string selectedName = null;
         string selectedAccess = null;
-        string fired = "926BA4B4-4704-48DD-B286-CB2313B90368";
         public RegistrarEmployees()
         {
 

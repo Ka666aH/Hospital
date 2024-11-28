@@ -26,6 +26,7 @@ namespace Информационная_система_для_больницы
         RegistrarDrugs regDrugs = new RegistrarDrugs();
         RegistrarProcedures regProcedures = new RegistrarProcedures();
         RegistrarIndicators regIndicators = new RegistrarIndicators();
+        RegistrarWards regWards = new RegistrarWards();
 
         public static MainWindow main = (MainWindow)Application.Current.MainWindow;
         Frame mainframe = (Frame)main.FindName("mainFrame");
@@ -58,6 +59,11 @@ namespace Информационная_система_для_больницы
         private void registrarIndicators_Click(object sender, RoutedEventArgs e)
         {
             mainframe.Content = regIndicators;
+        }
+
+        private void registrarWards_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = regWards;
         }
     }
 }
