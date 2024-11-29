@@ -140,7 +140,8 @@ namespace Информационная_система_для_больницы.Pa
 
         private void adminEmployeesMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            GetEmployees();
+            if (adminEmployeesMainPart.IsEnabled)
+                GetEmployees();
         }
 
         private void adminEmployeesDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)

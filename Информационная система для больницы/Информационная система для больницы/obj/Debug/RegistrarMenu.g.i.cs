@@ -139,6 +139,12 @@ namespace Информационная_система_для_больницы {
             return;
             case 2:
             this.registrarRegistrarions = ((System.Windows.Controls.RadioButton)(target));
+            
+            #line 15 "..\..\RegistrarMenu.xaml"
+            this.registrarRegistrarions.Click += new System.Windows.RoutedEventHandler(this.registrarRegistrarions_Click);
+            
+            #line default
+            #line hidden
             return;
             case 3:
             this.registrarPatients = ((System.Windows.Controls.RadioButton)(target));

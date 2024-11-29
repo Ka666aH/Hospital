@@ -81,7 +81,8 @@ namespace Информационная_система_для_больницы.Pa
         }
         private void registrarPatientsMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            GetPatients();
+            if (registrarPatientsMainPart.IsEnabled)
+                GetPatients();
         }
 
         private void registrarPatientsAddPatient_Click(object sender, RoutedEventArgs e)

@@ -30,8 +30,8 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
-                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarBedsSearchWard" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarBedsSearchWard_TextChanged" />
-                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarBedsSearchType" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarBedsSearchType_TextChanged" />
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" x:Name="registrarBedsSearchWard" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" IsEditable="False" SelectionChanged="registrarBedsSearchWard_SelectionChanged" />
+                <TextBox  Style="{DynamicResource TextBoxStyle1}" x:Name="registrarBedsSearchType" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarBedsSearchType_TextChanged" />
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
@@ -73,7 +73,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <TextBox x:Name="registrarBedsBedFormWard" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <ComboBox x:Name="registrarBedsBedFormWard" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
                     <TextBox x:Name="registrarBedsBedFormBed" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
                     <TextBox x:Name="registrarBedsBedFormType" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
 

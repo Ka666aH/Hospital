@@ -65,5 +65,10 @@ namespace Информационная_система_для_больницы
         {
             mainframe.Content = regWards;
         }
+
+        private void registrarRegistrarions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

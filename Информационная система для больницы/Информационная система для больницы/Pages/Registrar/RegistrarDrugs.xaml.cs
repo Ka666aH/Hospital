@@ -70,7 +70,8 @@ namespace Информационная_система_для_больницы.Pa
         }
         private void registrarDrugsMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            GetDrugs();
+            if (registrarDrugsMainPart.IsEnabled)
+                GetDrugs();
         }
 
         private void registrarDrugsAddDrug_Click(object sender, RoutedEventArgs e)

@@ -70,7 +70,8 @@ namespace Информационная_система_для_больницы.Pa
         }
         private void registrarProceduresMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            GetProcedures();
+            if (registrarProceduresMainPart.IsEnabled)
+                GetProcedures();
         }
 
         private void registrarProceduresAddProcedure_Click(object sender, RoutedEventArgs e)

@@ -161,7 +161,8 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarIndicatorsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            CheckSelection();
+            if (registrarIndicatorsMainPart.IsEnabled)
+                CheckSelection();
         }
 
         private void registrarIndicatorsSearchFullName_TextChanged(object sender, TextChangedEventArgs e)

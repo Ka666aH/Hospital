@@ -41,11 +41,11 @@ namespace Информационная_система_для_больницы.Pa
             if (string.IsNullOrEmpty(registrarBedsSearchWard.Text) && string.IsNullOrEmpty(registrarBedsSearchType.Text))
                 registrarBedsDataGrid.ItemsSource = beds.ToList();
             if (string.IsNullOrEmpty(registrarBedsSearchWard.Text) && !string.IsNullOrEmpty(registrarBedsSearchType.Text))
-                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.type == registrarBedsSearchType.Text);
+                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.type.ToLower().Contains(registrarBedsSearchType.Text.ToLower()));
             if (!string.IsNullOrEmpty(registrarBedsSearchWard.Text) && string.IsNullOrEmpty(registrarBedsSearchType.Text))
                 registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()));
             if (!string.IsNullOrEmpty(registrarBedsSearchWard.Text) && !string.IsNullOrEmpty(registrarBedsSearchType.Text))
-                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()) && x.type == registrarBedsSearchType.Text);
+                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()) && x.type.ToLower().Contains(registrarBedsSearchType.Text.ToLower()));
 
 
             if (registrarBedsDataGrid.Items.Count != 0)
@@ -57,6 +57,8 @@ namespace Информационная_система_для_больницы.Pa
 
                 registrarBedsDataGrid.Columns[0].Visibility = Visibility.Collapsed;
 
+                
+
                 registrarBedsDataGrid.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
                 registrarBedsDataGrid.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
                 registrarBedsDataGrid.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
@@ -64,6 +66,8 @@ namespace Информационная_система_для_больницы.Pa
 
                 registrarBedsDataGrid.SelectedIndex = 0;
             }
+
+            registrarBedsSearchWard.ItemsSource = GetWards().Distinct();
 
         }
 
@@ -106,9 +110,18 @@ namespace Информационная_система_для_больницы.Pa
                     bed.bed  = registrarBedsBedFormBed.Text;
                     bed.ward = registrarBedsBedFormWard.Text;
                     bed.type  = registrarBedsBedFormType.Text;
-                    
-                    db.Beds.Add(bed);
-                    db.SaveChanges();
+
+                    var q = from b in db.Beds
+                            select b;
+                    if (q.ToList().Where(x => x.ward == bed.ward && x.bed == bed.bed).Count() == 0)
+                    {
+                        db.Beds.Add(bed);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такая кровать уже существует. Задайте ей другой номер или палату.");
+                    }
                 }
                 else
                 {
@@ -145,6 +158,8 @@ namespace Информационная_система_для_больницы.Pa
         {
             registrarBedsBedForm.Visibility = Visibility.Visible;
             registrarBedsMainPart.IsEnabled = false;
+
+            registrarBedsBedFormWard.ItemsSource = GetWards().Distinct();
         }
         public void CloseBedForm()
         {
@@ -154,6 +169,7 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarBedsMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if (registrarBedsMainPart.IsEnabled)
             GetBeds();
         }
 
@@ -174,6 +190,7 @@ namespace Информационная_система_для_больницы.Pa
         private void registrarBedsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
                 selectedBed = (Bed)registrarBedsDataGrid.SelectedItem;
+
             if (registrarBedsDataGrid.SelectedItem == null)
             {
                 registrarBedsAlterBed.IsEnabled = false;
@@ -181,19 +198,40 @@ namespace Информационная_система_для_больницы.Pa
             }
             else
             {
+                //MessageBox.Show($"{selectedBed.id} {selectedBed.ward} {selectedBed.bed} {selectedBed.type}");
                 registrarBedsAlterBed.IsEnabled = true;
                 registrarBedsDeleteBed.IsEnabled = true;
             }
-        }
-
-        private void registrarBedsSearchWard_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            GetBeds();
         }
 
         private void registrarBedsSearchType_TextChanged(object sender, TextChangedEventArgs e)
         {
             GetBeds();
         }
+
+        private void registrarBedsSearchWard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(registrarBedsSearchWard.SelectedValue != null)
+                registrarBedsSearchWard.Text = registrarBedsSearchWard.SelectedValue.ToString();
+            else
+                registrarBedsSearchWard.Text = string.Empty;
+            GetBeds();
+        }
+
+        public List<string> GetWards()
+        {
+            var wards = from b in db.Beds
+                        select b.ward;
+
+            List<string> wardList = new List<string>();
+            wardList.Add(string.Empty);
+            foreach (var item in wards)
+            {
+                wardList.Add(item.ToString());
+            }
+
+            return wardList;
+        }
+
     }
 }

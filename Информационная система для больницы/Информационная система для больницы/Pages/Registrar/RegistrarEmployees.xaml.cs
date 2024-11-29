@@ -165,7 +165,8 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarEmployeesMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            GetEmployees();
+            if (registrarEmployeesMainPart.IsEnabled)
+                GetEmployees();
         }
 
         private void registrarEmployeesDeleteEmloyee_Click(object sender, RoutedEventArgs e)
@@ -207,6 +208,7 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarEmloyeesSearchFullName_TextChanged(object sender, TextChangedEventArgs e)
         {
+
             GetEmployees();
         }
 

@@ -129,6 +129,9 @@
     <Compile Include="Pages\Registrar\RegistrarProcedures.xaml.cs">
       <DependentUpon>RegistrarProcedures.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Registrar\RegistrarRegistrations.xaml.cs">
+      <DependentUpon>RegistrarRegistrations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registrar\RegistrarWards.xaml.cs">
       <DependentUpon>RegistrarWards.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Registrar\RegistrarProcedures.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Registrar\RegistrarRegistrations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
