@@ -21,12 +21,21 @@ namespace Информационная_система_для_больницы
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        AdminMenu adminMenu;
+        RegistrarMenu registrarMenu;
+        DoctorMenu doctorMenu;
+        NurseMenu nurseMenu;
+
         ViewSettingsPage viewSettingsPage;
         InfoPage infoPage;
+
+        UserControl userMenuButtons;
         public MainWindow()
         {
             InitializeComponent();
+
+            //Loaded += MainWindow_Loaded;
+
             Height = MinHeight;
             Width = MinWidth;
 
@@ -35,20 +44,24 @@ namespace Информационная_система_для_больницы
 
             mainFrame.Content = infoPage;
 
+            userMenuButtons = menuButtons.Content as UserControl;
+
+
             MaxHeight = SystemParameters.WorkArea.Height;
             MaxWidth = SystemParameters.WorkArea.Width;
+
         }
 
         private void GetUserMenu(string access)
         {
-           if(access == "Администратор")
-                    menuButtons.Content = new AdminMenu();
+            if (access == "Администратор")
+                menuButtons.Content = new AdminMenu(); //adminMenu
             if (access == "Регистратор")
-                menuButtons.Content = new RegistrarMenu();
+                menuButtons.Content = new RegistrarMenu(); /*registrarMenu*/
             if (access == "Врач")
-                menuButtons.Content = new DoctorMenu();
+                menuButtons.Content = new DoctorMenu(); /*doctorMenu*/
             if (access == "Медицинский персонал")
-                menuButtons.Content = new NurseMenu();
+                menuButtons.Content = new NurseMenu(); /*nurseMenu*/
             if (access == "Нет")
                 {
                     MessageBox.Show("У вас пока нет доступа к системе. Обратитесь к системному администратору для получения доступа.");
@@ -63,6 +76,9 @@ namespace Информационная_система_для_больницы
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
+            generalMenuClose.IsChecked = true;
+            //UncheckUserMenu();
+            MessageBox.Show("Вы уверены, что хотите выйти?");
             App.Current.Shutdown();
         }
 
@@ -124,6 +140,7 @@ namespace Информационная_система_для_больницы
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
+            UncheckUserMenu();
             mainFrame.Content = viewSettingsPage;
         }
 
@@ -143,6 +160,22 @@ namespace Информационная_система_для_больницы
         private void Window_Activated(object sender, EventArgs e)
         {
             GetUserMenu((string)Tag);
+
+        }
+
+        public void UncheckUserMenu()
+        {
+            //foreach (RadioButton radioButton in LogicalTreeHelper.GetChildren(userMenuButtons).OfType<RadioButton>().ToList())
+            //{
+            //    radioButton.IsChecked = false;
+            //}
+        }
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            adminMenu = new AdminMenu();
+            registrarMenu = new RegistrarMenu();
+            doctorMenu = new DoctorMenu();
+            nurseMenu = new NurseMenu();
         }
     }
 }

@@ -223,8 +223,8 @@ namespace Информационная_система_для_больницы.Pa
             var wards = from b in db.Beds
                         select b.ward;
 
-            List<string> wardList = new List<string>();
-            wardList.Add(string.Empty);
+            List<string> wardList = new List<string>{string.Empty};
+
             foreach (var item in wards)
             {
                 wardList.Add(item.ToString());
@@ -232,6 +232,5 @@ namespace Информационная_система_для_больницы.Pa
 
             return wardList;
         }
-
     }
 }

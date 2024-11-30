@@ -10,7 +10,7 @@ namespace Информационная_система_для_больницы.Da
     class Status
     {
         public string id { get; set; }
-        public string group { get; set; }
+        //public string group { get; set; }
         public string statusName { get; set; }
         public string description { get; set; }
     }

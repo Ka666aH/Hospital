@@ -18,8 +18,8 @@ namespace Информационная_система_для_больницы.Da
         public virtual Employee doctor { get; set; }
         public string bedId { get; set; }
         public virtual Bed bed { get; set; }
-        public string statusId { get; set; }
-        public virtual Status status { get; set; }
+        //public string statusId { get; set; }
+        //public virtual Status status { get; set; }
 
     }
 }

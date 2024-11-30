@@ -24,7 +24,7 @@
 
             <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список оформлений госпитализаций" FontSize="15" Foreground="{DynamicResource textColor}"/>
 
-            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center" FontFamily="Bahnschrift" FontSize="13" Margin="0 5 0 15" Height="25" Content="Количество текущих госпитализаций :" Foreground="{DynamicResource textColor}"/>
+            <Label x:Name="registrarRegistrationsCurrentRegistrationsAmount" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center" FontFamily="Bahnschrift" FontSize="13" Margin="0 5 0 15" Height="25" Content="Количество текущих госпитализаций :" Foreground="{DynamicResource textColor}"/>
 
             <Button x:Name="registrarRegistrationsAddRegistration" Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 5 0 15" Click="registrarRegistrationsAddRegistration_Click"/>
 
@@ -76,15 +76,15 @@
                 </Border>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button x:Name="registrarRegistrationsListFormAlter" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Padding="15 0 15 0" Margin="0 5 10 5" Click="registrarRegistrationsRegistrationFormAccept_Click"/>
-                    <Button x:Name="registrarRegistrationsListFormDelete" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Padding="15 0 15 0" Margin="0 5 10 5" Click="registrarRegistrationsRegistrationFormAccept_Click"/>
+                    <Button x:Name="registrarRegistrationsListFormAlter" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Padding="15 0 15 0" Margin="0 5 10 5" Click="registrarRegistrationsListFormAlter_Click"/>
+                    <Button x:Name="registrarRegistrationsListFormDelete" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Padding="15 0 15 0" Margin="0 5 10 5" Click="registrarRegistrationsListFormDelete_Click"/>
                 </StackPanel>
-                <Button x:Name="registrarRegistrationsRegistrationFormCancel" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 10" Click="registrarRegistrationsRegistrationFormCancel_Click"/>
+                <Button x:Name="registrarRegistrationsRegistrationListFormCancel" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 10" Click="registrarRegistrationsRegistrationListFormCancel_Click"/>
             </Grid>
         </Border>
 
         <!--Форма оформления-->
-        <Border  Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="375" MaxWidth="450" Visibility="Collapsed">
+        <Border x:Name="registrarRegistrationsRegistrationForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="340" MaxWidth="450" Visibility="Visible">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="175"/>
@@ -105,23 +105,21 @@
                     <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Лечащий врач" Foreground="{DynamicResource textColor}"/>
                     <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Палата" Foreground="{DynamicResource textColor}"/>
                     <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Кровать" Foreground="{DynamicResource textColor}"/>
-                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Статус" Foreground="{DynamicResource textColor}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <ComboBox  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                    <TextBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="50" TextWrapping="Wrap" AcceptsReturn="True" Style="{DynamicResource TextBoxStyle1}"/>
-                    <DatePickerTextBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{DynamicResource TextBoxStyle1}"/>
-                    <DatePickerTextBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{DynamicResource TextBoxStyle1}"/>
-                    <ComboBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                    <ComboBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                    <ComboBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                    <ComboBox FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormPatient" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                    <TextBox x:Name="registrarRegistrationsRegistrationFormReason" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="50" TextWrapping="Wrap" AcceptsReturn="True" Style="{DynamicResource TextBoxStyle1}"/>
+                    <DatePickerTextBox x:Name="registrarRegistrationsRegistrationFormStart" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{DynamicResource TextBoxStyle1}"/>
+                    <DatePickerTextBox x:Name="registrarRegistrationsRegistrationFormEnd" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{DynamicResource TextBoxStyle1}"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormDoctor" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormWard" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="registrarRegistrationsRegistrationFormWard_SelectionChanged"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormBed" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button  Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" Click="registrarRegistrationsRegistrationFormAccept_Click"/>
-                    <Button  Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarRegistrationsRegistrationFormCancel_Click"/>
+                    <Button x:Name="registrarRegistrationsRegistrationFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" Click="registrarRegistrationsRegistrationFormAccept_Click"/>
+                    <Button x:Name="registrarRegistrationsRegistrationFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarRegistrationsRegistrationFormCancel_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
