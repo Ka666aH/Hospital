@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Информационная_система_для_больницы.Properties;
 
 namespace Информационная_система_для_больницы
 {
@@ -15,9 +16,8 @@ namespace Информационная_система_для_больницы
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            //AppTheme.ChangeTheme("Blue");
             AppTheme.StartUpTheme();
+            AppTheme.ChangeTheme(Settings.Default.theme);
 
         }
     }

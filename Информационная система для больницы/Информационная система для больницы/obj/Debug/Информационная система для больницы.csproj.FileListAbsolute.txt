@@ -11,15 +11,6 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\EntityFramework.SqlServer.xml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\System.Data.SQLite.xml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.csproj.AssemblyReference.cache
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\buttonsStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\comboboxesStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\datagridsStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\menuButtonsStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\passwordBoxesStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\textboxesStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\windowMenuButtonsStyle.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\Blue.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\GreyBlue.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AdminMenu.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\AuthWindow.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\DoctorMenu.g.cs
@@ -56,7 +47,6 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информац.66CFDA7E.Up2Date
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.exe
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Информационная система для больницы.pdb
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\checkboxStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\Microsoft.CSharp.dll
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\PresentationCore.dll
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\PresentationFramework.Aero2.dll
@@ -74,7 +64,6 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarProcedures.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarIndicators.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarIndicators.baml
-E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\listboxesStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarWards.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarWards.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Registrar\RegistrarRegistrations.g.cs

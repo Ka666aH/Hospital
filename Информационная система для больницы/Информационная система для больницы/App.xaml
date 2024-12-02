@@ -6,16 +6,16 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary x:Name="theme" Source="Themes/Blue.xaml"/>
-                <ResourceDictionary Source="Styles/menuButtonsStyle.xaml"/>
-                <ResourceDictionary Source="Styles/windowMenuButtonsStyle.xaml"/>
-                <ResourceDictionary Source="Styles/buttonsStyle.xaml"/>
-                <ResourceDictionary Source="Styles/comboboxesStyle.xaml"/>
-                <ResourceDictionary Source="Styles/textboxesStyle.xaml"/>
-                <ResourceDictionary Source="Styles/datagridsStyle.xaml"/>
-                <ResourceDictionary Source="Styles/passwordBoxesStyle.xaml"/>
-                <ResourceDictionary Source="Styles/checkboxStyle.xaml"/>
-                <ResourceDictionary Source="Styles/listboxesStyle.xaml"/>
+                <ResourceDictionary x:Name="theme" Source="pack://application:,,,/Themes/Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/menuButtonsStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/windowMenuButtonsStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/buttonsStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/comboboxesStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/textboxesStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/datagridsStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/passwordBoxesStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/checkboxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/listboxesStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -85,6 +85,11 @@ namespace Информационная_система_для_больницы
         private void Info_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = new InfoPage();
+            generalMenuView.IsChecked = false;
+            generalMenuChangeUser.IsChecked = false;
+            generalMenuClose.IsChecked = false;
+            
+            UncheckUserMenu();
         }
 
         private void Min_Click(object sender, RoutedEventArgs e)
@@ -129,7 +134,7 @@ namespace Информационная_система_для_больницы
                     App.Current.MainWindow.Height = App.Current.MainWindow.MinHeight;
                     App.Current.MainWindow.Width = App.Current.MainWindow.MinWidth;
                 }
-                windowBorder.CornerRadius = new CornerRadius(10);
+                windowBorder.CornerRadius = new CornerRadius(20);
             }
         }
 
