@@ -37,7 +37,7 @@ namespace Информационная_система_для_больницы.Pa
 
         public void GetCurrentRegistrationsAmount()
         {
-
+            db = new Data.AppContext();
             var currentRegistration = from r in db.Registrations
                                       where string.IsNullOrEmpty(r.end) || Convert.ToDateTime(r.end) < DateTime.Today
                                       select r;

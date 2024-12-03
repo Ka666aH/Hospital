@@ -16,8 +16,10 @@ namespace Информационная_система_для_больницы
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            if (string.IsNullOrEmpty(Settings.Default.theme))
+                Settings.Default.theme = "Blue";
             AppTheme.StartUpTheme();
-            AppTheme.ChangeTheme(Settings.Default.theme);
+            //AppTheme.ChangeTheme(Settings.Default.theme);
 
         }
     }

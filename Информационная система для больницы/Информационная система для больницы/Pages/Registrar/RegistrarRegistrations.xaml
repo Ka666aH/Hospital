@@ -84,7 +84,7 @@
         </Border>
 
         <!--Форма оформления-->
-        <Border x:Name="registrarRegistrationsRegistrationForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="340" MaxWidth="450" Visibility="Visible">
+        <Border x:Name="registrarRegistrationsRegistrationForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="340" MaxWidth="450" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="175"/>

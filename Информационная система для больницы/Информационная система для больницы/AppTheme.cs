@@ -20,7 +20,7 @@ namespace Информационная_система_для_больницы
             //themeDic.Add("Blue", "Синяя");
             //themeDic.Add("GreyBlue", "Серо-Синяя");
 
-            //ChangeTheme(Properties.Settings.Default.theme);
+            ChangeTheme(Properties.Settings.Default.theme);
         }
         public static void ChangeTheme(string themeName)
         {
