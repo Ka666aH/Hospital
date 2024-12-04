@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,7 @@ namespace Информационная_система_для_больницы.Pa
         Data.AppContext db;
         bool addMode = false;
         dynamic selectedRegistration = null;
+
         public RegistrarRegistrations()
         {
             InitializeComponent();
@@ -38,10 +41,17 @@ namespace Информационная_система_для_больницы.Pa
         public void GetCurrentRegistrationsAmount()
         {
             db = new Data.AppContext();
-            var currentRegistration = from r in db.Registrations
-                                      where string.IsNullOrEmpty(r.end) || Convert.ToDateTime(r.end) < DateTime.Today
-                                      select r;
-            registrarRegistrationsCurrentRegistrationsAmount.Content = $"Количество текущих госпитализаций : {currentRegistration.ToList().Count()}";
+            //var currentRegistration = from r in db.Registrations
+            //                          where string.IsNullOrEmpty(r.end) || Convert.ToDateTime(r.end) < DateTime.Today
+            //                          select r;
+            //registrarRegistrationsCurrentRegistrationsAmount.Content = $"Количество текущих госпитализаций : {currentRegistration.ToList().Count()}";
+            var allRegistrations = db.Registrations.ToList();
+            var currentRegistrations = from r in allRegistrations
+                                       let endDate = string.IsNullOrEmpty(r.end) ? (DateTime?)null : Convert.ToDateTime(r.end)
+                                       where endDate == null || endDate < DateTime.Today
+                                       select r;
+
+            registrarRegistrationsCurrentRegistrationsAmount.Content = $"Количество текущих госпитализаций : {currentRegistrations.Count()}";
         }
 
         private void registrarRegistrationsAddRegistration_Click(object sender, RoutedEventArgs e)
@@ -137,7 +147,7 @@ namespace Информационная_система_для_больницы.Pa
 
             registrarRegistrationsRegistrationFormPatient.ItemsSource = patients.ToList();
             registrarRegistrationsRegistrationFormDoctor.ItemsSource = doctors.ToList();
-            registrarRegistrationsRegistrationFormWard.ItemsSource = wards.ToList();
+            registrarRegistrationsRegistrationFormWard.ItemsSource = wards.ToList().Distinct().OrderBy(x => x);
 
             registrarRegistrationsRegistrationForm.Visibility = Visibility.Visible;
             if (addMode)
@@ -161,16 +171,50 @@ namespace Информационная_система_для_больницы.Pa
             registrarRegistrationsRegistrationFormBed.Text = string.Empty;
 
             //! r.bedId?
-            var bedsWithLatestEnd = from r in db.Registrations
-                              group r by r.bedId into g
-                              select new
-                              {
-                                  BedId = g.Key,
-                                  LatestEnd = g.Max(r => r.end != null ? Convert.ToDateTime(r.end) : (DateTime?)null),
-                              };
+            //var bedsWithLatestEnd = from r in db.Registrations
+            //                        group r by r.bedId into g
+            //                        select new
+            //                        {
+            //                            BedId = g.Key,
+            //                            LatestEnd = g.Max(r => r.end != null ? Convert.ToDateTime(r.end) : (DateTime?)null),
+            //                        };
+            //var usingBeds = bedsWithLatestEnd.Where(x => x.LatestEnd == null || x.LatestEnd < DateTime.Today).Select(x => x.BedId);
+            //var beds = from b in db.Beds
+            //           where b.ward == registrarRegistrationsRegistrationFormWard.Text && usingBeds.ToList().Contains(b.id)
+            //           select b.bed;
+
+            //registrarRegistrationsRegistrationFormBed.ItemsSource = beds.ToList();
+
+            var registrationsWithDates = db.Registrations.ToList()
+    .Select(r => new {
+        r.bedId,
+        EndDate = r.end != null ? DateTime.ParseExact(r.end, "yyyy-MM-dd", CultureInfo.InvariantCulture) : (DateTime?)null
+    });
+
+            var bedsWithLatestEnd = from r in registrationsWithDates
+                                    group r by r.bedId into g
+                                    select new
+                                    {
+                                        BedId = g.Key,
+                                        LatestEnd = g.Max(r => r.EndDate)
+                                    };
+
+            //var bedsWithLatestEnd = from r in db.Registrations
+            //                        group r by r.bedId into g
+            //                        select new
+            //                        {
+            //                            BedId = g.Key,
+            //                            LatestEnd = g.Max(r => r.end == null ? (DateTime?)null : DateTime.ParseExact(r.end, "yyyy-MM-dd", CultureInfo.InvariantCulture))
+            //                        };
+
             var usingBeds = bedsWithLatestEnd.Where(x => x.LatestEnd == null || x.LatestEnd < DateTime.Today).Select(x => x.BedId);
+
+            // Ensure data is loaded before comparison
+            var bedIds = usingBeds.ToList();
+
             var beds = from b in db.Beds
-                       where b.ward == registrarRegistrationsRegistrationFormWard.Text && usingBeds.ToList().Contains(b.id)
+                       where b.ward == registrarRegistrationsRegistrationFormWard.Text
+                             && bedIds.Contains(b.id)
                        select b.bed;
 
             registrarRegistrationsRegistrationFormBed.ItemsSource = beds.ToList();
