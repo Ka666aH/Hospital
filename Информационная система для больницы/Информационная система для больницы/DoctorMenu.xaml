@@ -8,10 +8,10 @@
              d:DesignHeight="260" d:DesignWidth="260">
     <StackPanel x:Name="doctorMenu" VerticalAlignment="Top">
 
-        <RadioButton x:Name="doctorRegistrarions" Content="Назначения" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
-        <RadioButton x:Name="doctorPatients" Content="Пациенты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
-        <RadioButton x:Name="doctorDrugs" Content="Препараты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
-        <RadioButton x:Name="doctorProcedures" Content="Процедуры" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>
+        <!--<RadioButton x:Name="doctorRegistrarions" Content="Назначения" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>-->
+        <RadioButton x:Name="doctorPatients" Content="Пациенты" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="doctorPatients_Click"/>
+        <RadioButton x:Name="doctorDrugs" Content="Препараты и процедуры" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0" Click="doctorDrugs_Click"/>
+        <!--<RadioButton x:Name="doctorProcedures" Content="Процедуры" Style="{StaticResource menuButtonsStyle}" Margin="0 -1 0 0"/>-->
 
     </StackPanel>
 

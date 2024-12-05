@@ -20,6 +20,7 @@ namespace Информационная_система_для_больницы.Da
         public DbSet<DrugProcedure> DrugsProcedures { get; set; }
         public DbSet<Registration> Registrations { get; set; }
         public DbSet<Indicator> Indicators { get; set; }
+        public DbSet<CollectingIndicator> CollectingIndicators { get; set; }
         public DbSet<PatientCondition> PatientConditions { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
@@ -59,6 +60,8 @@ namespace Информационная_система_для_больницы.Da
                 .ToTable("Patients");
             modelBuilder.Entity<Indicator>()
                 .ToTable("Indicators");
+            modelBuilder.Entity<CollectingIndicator>()
+                .ToTable("CollectingIndicators");
             modelBuilder.Entity<PatientCondition>()
                 .ToTable("PatientsConditions");
             modelBuilder.Entity<Registration>()

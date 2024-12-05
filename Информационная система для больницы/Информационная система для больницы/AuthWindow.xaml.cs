@@ -26,6 +26,12 @@ namespace Информационная_система_для_больницы
             //MessageBox.Show(Guid.NewGuid().ToString());
             InitializeComponent();
             db = new Data.AppContext();
+
+            //db.Registrations.ToList();
+            //db.Indicators.ToList();
+            //db.CollectingIndicators.ToList();
+            //db.PatientConditions.ToList();
+
             FillUsers();
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Информационная_система_для_больницы.Pages.Doctor;
 
 namespace Информационная_система_для_больницы
 {
@@ -20,9 +21,34 @@ namespace Информационная_система_для_больницы
     /// </summary>
     public partial class DoctorMenu : UserControl
     {
+        DoctorPatients docPatients = new DoctorPatients();
+        DoctorDrugsAndProcedures docDrugsAndProcedures = new DoctorDrugsAndProcedures();
+
+        public static MainWindow main = (MainWindow)Application.Current.MainWindow;
+        Frame mainframe = (Frame)main.FindName("mainFrame");
+        RadioButton viewButton = (RadioButton)main.FindName("generalMenuView");
+        RadioButton changeUserButton = (RadioButton)main.FindName("generalMenuChangeUser");
+        RadioButton closeButton = (RadioButton)main.FindName("generalMenuClose");
         public DoctorMenu()
         {
             InitializeComponent();
+        }
+        private void doctorPatients_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = docPatients;
+            UncheckGeneralMenu();
+        }
+
+        private void doctorDrugs_Click(object sender, RoutedEventArgs e)
+        {
+            mainframe.Content = docDrugsAndProcedures;
+            UncheckGeneralMenu();
+        }
+        public void UncheckGeneralMenu()
+        {
+            viewButton.IsChecked = false;
+            changeUserButton.IsChecked = false;
+            closeButton.IsChecked = false;
         }
     }
 }

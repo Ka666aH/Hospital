@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -36,27 +37,72 @@ namespace Информационная_система_для_больницы.Pa
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             GetCurrentRegistrationsAmount();
+            SetSearchingItems();
         }
 
         public void GetCurrentRegistrationsAmount()
         {
             db = new Data.AppContext();
-            //var currentRegistration = from r in db.Registrations
-            //                          where string.IsNullOrEmpty(r.end) || Convert.ToDateTime(r.end) < DateTime.Today
-            //                          select r;
-            //registrarRegistrationsCurrentRegistrationsAmount.Content = $"Количество текущих госпитализаций : {currentRegistration.ToList().Count()}";
+            
             var allRegistrations = db.Registrations.ToList();
             var currentRegistrations = from r in allRegistrations
                                        let endDate = string.IsNullOrEmpty(r.end) ? (DateTime?)null : Convert.ToDateTime(r.end)
-                                       where endDate == null || endDate < DateTime.Today
+                                       where endDate == null || endDate > DateTime.Today
                                        select r;
 
             registrarRegistrationsCurrentRegistrationsAmount.Content = $"Количество текущих госпитализаций : {currentRegistrations.Count()}";
         }
 
+        public void SetSearchingItems()
+        {
+            registrarRegistrationsSearchPatient.ItemsSource = GetPatientsList();
+            registrarRegistrationsSearchDoctor.ItemsSource = GetDoctorsList();
+            registrarRegistrationsSearchWard.ItemsSource = GetWardsList();
+        }
+
+        public List<string> GetPatientsList()
+        {
+            db = new Data.AppContext();
+
+            var _patients = from p in db.Patients
+                           select p.fullName;
+
+            List<string> patients = new List<string>{string.Empty};
+            patients.AddRange( _patients.OrderBy(x => x).ToList());
+            //registrarRegistrationsSearchPatient.ItemsSource = patients.ToList().OrderBy(x => x);
+            return patients;
+
+        }
+        public List<string> GetDoctorsList()
+        {
+            db = new Data.AppContext();
+            var _doctors = from d in db.Employees
+                          where d.access == "Врач"
+                          select d.fullName;
+            List<string> doctors = new List<string> { string.Empty };
+            doctors.AddRange(_doctors.OrderBy(x => x).ToList());
+            return doctors;
+        }
+        public List<string> GetWardsList()
+        {
+            db = new Data.AppContext();
+            var _wards = from w in db.Beds
+                       select w.ward;
+            List<string> wards = new List<string> { string.Empty };
+            wards.AddRange(_wards.Distinct().OrderBy(x => x).ToList());
+            return wards;
+        }
+
         private void registrarRegistrationsAddRegistration_Click(object sender, RoutedEventArgs e)
         {
             addMode = true;
+            registrarRegistrationsRegistrationFormPatient.Text = string.Empty;
+            registrarRegistrationsRegistrationFormReason.Text = string.Empty;
+            registrarRegistrationsRegistrationFormStart.Text = string.Empty;
+            registrarRegistrationsRegistrationFormEnd.Text = string.Empty;
+            registrarRegistrationsRegistrationFormDoctor.Text = string.Empty;
+            registrarRegistrationsRegistrationFormWard.Text = string.Empty;
+            registrarRegistrationsRegistrationFormBed.Text = string.Empty;
             OpenRegistrationForm();
         }
         private void registrarRegistrationsFindRegistration_Click(object sender, RoutedEventArgs e)
@@ -67,6 +113,10 @@ namespace Информационная_система_для_больницы.Pa
             if(registrations.ToList().Count()>0)
             {
                 registrarRegistrationsDataGrid.ItemsSource = registrations.ToList();
+
+
+                registrarRegistrationsListRegistrationForm.Visibility = Visibility.Visible;
+
             }
             else
             {
@@ -94,7 +144,8 @@ namespace Информационная_система_для_больницы.Pa
                                     Bed = r.bed.bed
                                 };
 
-            return registrations.Select(r => (object)r).ToList();
+            return registrations.AsEnumerable().Cast<dynamic>().ToList();
+            //return registrations.Select(r => (object)r).ToList();
         }
         private void registrarRegistrationsRegistrationListFormCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -115,7 +166,10 @@ namespace Информационная_система_для_больницы.Pa
         private void registrarRegistrationsMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (registrarRegistrationsMainPart.IsEnabled)
+            {
                 GetCurrentRegistrationsAmount();
+                SetSearchingItems();
+            }
         }
 
         private void registrarRegistrationsListFormAlter_Click(object sender, RoutedEventArgs e)
@@ -135,19 +189,10 @@ namespace Информационная_система_для_больницы.Pa
 
         public void OpenRegistrationForm()
         {
-            var patients = from p in db.Patients
-                           select p.fullName;
 
-            var doctors = from p in db.Employees
-                          where p.access == "Врач"
-                          select p.fullName;
-
-            var wards = from w in db.Beds
-                       select w.ward;
-
-            registrarRegistrationsRegistrationFormPatient.ItemsSource = patients.ToList();
-            registrarRegistrationsRegistrationFormDoctor.ItemsSource = doctors.ToList();
-            registrarRegistrationsRegistrationFormWard.ItemsSource = wards.ToList().Distinct().OrderBy(x => x);
+            registrarRegistrationsRegistrationFormPatient.ItemsSource = GetPatientsList();
+            registrarRegistrationsRegistrationFormDoctor.ItemsSource = GetDoctorsList();
+            registrarRegistrationsRegistrationFormWard.ItemsSource = GetWardsList();
 
             registrarRegistrationsRegistrationForm.Visibility = Visibility.Visible;
             if (addMode)
@@ -162,34 +207,23 @@ namespace Информационная_система_для_больницы.Pa
                 registrarRegistrationsMainPart.IsEnabled = true;
             else
                 registrarRegistrationsListRegistrationForm.IsEnabled = true;
-            registrarRegistrationsRegistrationForm.Visibility = Visibility.Visible;
+            registrarRegistrationsRegistrationForm.Visibility = Visibility.Collapsed;
         }
 
         private void registrarRegistrationsRegistrationFormWard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(registrarRegistrationsRegistrationFormWard.SelectedValue != null)
+            {
             registrarRegistrationsRegistrationFormWard.Text = registrarRegistrationsRegistrationFormWard.SelectedValue.ToString();
             registrarRegistrationsRegistrationFormBed.Text = string.Empty;
-
-            //! r.bedId?
-            //var bedsWithLatestEnd = from r in db.Registrations
-            //                        group r by r.bedId into g
-            //                        select new
-            //                        {
-            //                            BedId = g.Key,
-            //                            LatestEnd = g.Max(r => r.end != null ? Convert.ToDateTime(r.end) : (DateTime?)null),
-            //                        };
-            //var usingBeds = bedsWithLatestEnd.Where(x => x.LatestEnd == null || x.LatestEnd < DateTime.Today).Select(x => x.BedId);
-            //var beds = from b in db.Beds
-            //           where b.ward == registrarRegistrationsRegistrationFormWard.Text && usingBeds.ToList().Contains(b.id)
-            //           select b.bed;
-
-            //registrarRegistrationsRegistrationFormBed.ItemsSource = beds.ToList();
+            }
 
             var registrationsWithDates = db.Registrations.ToList()
-    .Select(r => new {
-        r.bedId,
-        EndDate = r.end != null ? DateTime.ParseExact(r.end, "yyyy-MM-dd", CultureInfo.InvariantCulture) : (DateTime?)null
-    });
+                .Select(r => new
+                {
+                    r.bedId,
+                    EndDate = r.end != null ? DateTime.ParseExact(r.end, "dd.MM.yyyy", CultureInfo.InvariantCulture) : (DateTime?)null
+                });
 
             var bedsWithLatestEnd = from r in registrationsWithDates
                                     group r by r.bedId into g
@@ -199,25 +233,14 @@ namespace Информационная_система_для_больницы.Pa
                                         LatestEnd = g.Max(r => r.EndDate)
                                     };
 
-            //var bedsWithLatestEnd = from r in db.Registrations
-            //                        group r by r.bedId into g
-            //                        select new
-            //                        {
-            //                            BedId = g.Key,
-            //                            LatestEnd = g.Max(r => r.end == null ? (DateTime?)null : DateTime.ParseExact(r.end, "yyyy-MM-dd", CultureInfo.InvariantCulture))
-            //                        };
+            var usingBeds = bedsWithLatestEnd.Where(x => x.LatestEnd == null || x.LatestEnd > DateTime.Today).Select(x => x.BedId).ToList();
 
-            var usingBeds = bedsWithLatestEnd.Where(x => x.LatestEnd == null || x.LatestEnd < DateTime.Today).Select(x => x.BedId);
-
-            // Ensure data is loaded before comparison
-            var bedIds = usingBeds.ToList();
 
             var beds = from b in db.Beds
-                       where b.ward == registrarRegistrationsRegistrationFormWard.Text
-                             && bedIds.Contains(b.id)
+                       where b.ward == registrarRegistrationsRegistrationFormWard.Text && !usingBeds.Contains(b.id)
                        select b.bed;
 
-            registrarRegistrationsRegistrationFormBed.ItemsSource = beds.ToList();
+            registrarRegistrationsRegistrationFormBed.ItemsSource = beds.ToList().OrderBy(x => x);
         }
 
         private void registrarRegistrationsListFormDelete_Click(object sender, RoutedEventArgs e)
@@ -272,24 +295,23 @@ namespace Информационная_система_для_больницы.Pa
             {
                     var patient = from p in db.Patients
                                   where p.fullName == registrarRegistrationsRegistrationFormPatient.Text
-                                  select p.id.First();
+                                  select p.id;
 
                     var doctor = from d in db.Employees
                                  where d.fullName == registrarRegistrationsRegistrationFormDoctor.Text
-                                 select d.id.First();
+                                 select d.id;
                     var bed = from b in db.Beds
                               where b.ward == registrarRegistrationsRegistrationFormWard.Text && b.bed == registrarRegistrationsRegistrationFormBed.Text
-                              select b.id.First();
+                              select b.id;
 
                     Registration registration = new Registration();
 
-
-                    registration.patientId = patient.ToString();
+                    registration.patientId = patient.FirstOrDefault().ToString();
                     registration.reason = registrarRegistrationsRegistrationFormReason.Text;
                     registration.start = registrarRegistrationsRegistrationFormStart.Text;
                     registration.end = registrarRegistrationsRegistrationFormEnd.Text;
-                    registration.doctorId = doctor.ToString();
-                    registration.bedId = bed.ToString();
+                    registration.doctorId = doctor.FirstOrDefault().ToString();
+                    registration.bedId = bed.FirstOrDefault().ToString();
                 if (addMode)
                 {
                     registration.id = Guid.NewGuid().ToString();
@@ -300,7 +322,8 @@ namespace Информационная_система_для_больницы.Pa
                     registration.id = selectedRegistration.Id;
                     db.Registrations.AddOrUpdate(registration);
                 }
-                    db.SaveChanges();
+                db.SaveChanges();
+                CloseRegistrationForm();
             }
             else
             {
@@ -314,5 +337,29 @@ namespace Информационная_система_для_больницы.Pa
         }
 
 
+        private void registrarRegistrationsDataGrid_AutoGeneratedColumns(object sender, EventArgs e)
+        {
+            registrarRegistrationsDataGrid.Columns[0].Header = "Идентификатор";
+            registrarRegistrationsDataGrid.Columns[1].Header = "Пациент";
+            registrarRegistrationsDataGrid.Columns[2].Header = "Причина госпитализации";
+            registrarRegistrationsDataGrid.Columns[3].Header = "Дата начала";
+            registrarRegistrationsDataGrid.Columns[4].Header = "Дата окончания";
+            registrarRegistrationsDataGrid.Columns[5].Header = "Лечащий врач";
+            registrarRegistrationsDataGrid.Columns[6].Header = "Палата";
+            registrarRegistrationsDataGrid.Columns[7].Header = "Кровать";
+
+            registrarRegistrationsDataGrid.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            registrarRegistrationsDataGrid.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            registrarRegistrationsDataGrid.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            registrarRegistrationsDataGrid.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            registrarRegistrationsDataGrid.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            registrarRegistrationsDataGrid.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            registrarRegistrationsDataGrid.Columns[6].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            registrarRegistrationsDataGrid.Columns[7].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+
+            registrarRegistrationsDataGrid.Columns[0].Visibility = Visibility.Collapsed;
+
+            registrarRegistrationsDataGrid.SelectedIndex = 0;
+        }
     }
 }

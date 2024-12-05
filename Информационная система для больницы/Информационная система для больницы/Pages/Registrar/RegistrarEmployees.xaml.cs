@@ -62,7 +62,7 @@ namespace Информационная_система_для_больницы.Pa
                 registrarEmployeesDataGrid.Columns[1].Header = "Должность";
                 registrarEmployeesDataGrid.Columns[0].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
                 registrarEmployeesDataGrid.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-                registrarEmployeesDataGrid.SelectedIndex = 0;
+                registrarEmployeesDataGrid.SelectedItem = 0;
             }
             
         }
@@ -197,12 +197,12 @@ namespace Информационная_система_для_больницы.Pa
             if(registrarEmployeesDataGrid.SelectedItem == null)
             {
                 registrarEmployeesAlterEmloyee.IsEnabled = false;
-                registrarEmployeesAddEmloyee.IsEnabled = false;
+                registrarEmployeesDeleteEmloyee.IsEnabled = false;
             }
             else
             {
                 registrarEmployeesAlterEmloyee.IsEnabled = true;
-                registrarEmployeesAddEmloyee.IsEnabled = true;
+                registrarEmployeesDeleteEmloyee.IsEnabled = true;
             }
         }
 
