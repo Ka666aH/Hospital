@@ -68,3 +68,14 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информац.66CFDA7E.Up2Date
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.exe
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Информационная система для больницы.pdb
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\OxyPlot.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\OxyPlot.Wpf.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\OxyPlot.Wpf.Shared.dll
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\OxyPlot.xml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\OxyPlot.Wpf.xml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Release\OxyPlot.Wpf.Shared.xml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Styles\datePickersStyle.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Doctor\DoctorDrugsAndProcedures.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Doctor\DoctorPatients.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Doctor\DoctorDrugsAndProcedures.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Release\Pages\Doctor\DoctorPatients.baml

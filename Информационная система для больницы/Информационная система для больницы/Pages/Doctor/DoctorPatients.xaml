@@ -44,8 +44,8 @@
         <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список назначений" FontSize="15" Foreground="{DynamicResource textColor}"/>
         <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="10">
             <Grid>
-                <Border x:Name="doctorPatientsAppointmentsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource pageColor}"/>
-                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsAppointmentsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="">
+                <Border x:Name="doctorPatientsAppointmentsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
+                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsAppointmentsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged">
                     <DataGrid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=doctorPatientsAppointmentsDataGridBorder}"/>
                     </DataGrid.OpacityMask>
@@ -61,7 +61,7 @@
         <!--#endregion-->
         
         <!--#region Состояние-->
-        <Border x:Name="doctorPatientsConditionForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Visible">
+        <Border x:Name="doctorPatientsConditionForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -72,17 +72,57 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <Label x:Name="doctorPatientsChartLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="" FontSize="15" Foreground="{DynamicResource textColor}" />
-                <!--<oxy:PlotView/>-->
+                <Border Grid.Column="0" Grid.Row="1" Margin="10 5 10 5">
+                    <Grid>
+                        <Border x:Name="doctorPatientsChartBorder"  CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}">
+                            <oxy:PlotView x:Name="doctorPatientsChart" FontFamily="Bahnschrift" Background="{DynamicResource backgroundColor}">
+                                <oxy:PlotView.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=doctorPatientsChartBorder}"/>
+                                </oxy:PlotView.OpacityMask>
+                            </oxy:PlotView>
+                        </Border>
+                    </Grid>
+                </Border>
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="registrarDrugsDrugFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormCancel_Click"/>
+                    <Button x:Name="doctorPatientsConditionFormClose" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormCancel_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
         <!--#endregion-->
 
         <!--#region Расписание-->
-        
-
+        <Border x:Name="doctorPatientsShuduleForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Visible">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="doctorPatientsSheduleLabel" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" FontSize="15" Foreground="{DynamicResource textColor}"/>
+            <Border Grid.Column="0" Grid.Row="1"  CornerRadius="10">
+                <Grid>
+                    <Border x:Name="doctorPatientsSheduleDataGridBorder" Margin="10 5 10 5" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
+                        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsSheduleDataGrid" FontFamily="Bahnschrift" Margin="10 5 10 5" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=doctorPatientsSheduleDataGridBorder}"/>
+                        </DataGrid.OpacityMask>
+                    </DataGrid>
+                </Grid>
+            </Border>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  Margin="0 5 0 0">
+                    <Button x:Name="doctorPatientsSheduleFormAdd" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormAdd_Click"/>
+                    <Button x:Name="doctorPatientsSheduleFormAlter" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormAlter_Click"/>
+                    <Button x:Name="doctorPatientsSheduleFormDelete" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormDelete_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="doctorPatientsSheduleFormClose" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
         <!--#endregion-->
 
     </Grid>

@@ -13,7 +13,7 @@
         <WindowChrome GlassFrameThickness="0,0,0,0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
 
-    <Border x:Name="windowBorder" Background="{DynamicResource backgroundColor}" CornerRadius="20">
+    <Border x:Name="windowBorder" Background="{DynamicResource backgroundColor}" CornerRadius="20" BorderThickness="2.5" BorderBrush="{DynamicResource textColor}">
         <Grid x:Name="windowGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="260"/>

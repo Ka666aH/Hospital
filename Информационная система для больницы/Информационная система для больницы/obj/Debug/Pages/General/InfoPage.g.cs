@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using OxyPlot.Wpf;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -30,7 +29,6 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using Информационная_система_для_больницы.Pages.Doctor;
 using Информационная_система_для_больницы.Pages.General;
 
 

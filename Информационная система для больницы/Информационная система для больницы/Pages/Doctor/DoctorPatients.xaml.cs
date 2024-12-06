@@ -72,5 +72,30 @@ namespace Информационная_система_для_больницы.Pa
         {
 
         }
+
+        private void doctorPatientsAppointmentsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void doctorPatientsSheduleFormAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void doctorPatientsSheduleFormAlter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void doctorPatientsSheduleFormDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void doctorPatientsSheduleFormClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
