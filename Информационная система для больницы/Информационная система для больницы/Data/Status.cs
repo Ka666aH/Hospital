@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Информационная_система_для_больницы.Data
 {
-    class Status
+    public class Status
     {
         public string id { get; set; }
         //public string group { get; set; }

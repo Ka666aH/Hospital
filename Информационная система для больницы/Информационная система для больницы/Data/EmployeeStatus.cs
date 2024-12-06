@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Информационная_система_для_больницы.Data
 {
-    class EmployeeStatus
+    public class EmployeeStatus
     {
         public string id { get; set; }
         public string employeeId { get; set; }

@@ -10,6 +10,7 @@
       Title="DoctorPatients">
 
     <Grid>
+    <Grid x:Name="doctorPatientsMainPart">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <!--<ColumnDefinition Width="125"/>-->
@@ -25,17 +26,17 @@
 
         <!--#region Пациенты-->
         <Label Grid.Column="0"  Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список пациентов" FontSize="15" Foreground="{DynamicResource textColor}"/>
-        <ListBox x:Name="doctorPatientsPatientsList" Grid.Column="0" Grid.Row="1" Margin="0 0 5 0 " Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}"/>
+        <ListBox x:Name="doctorPatientsPatientsList" Grid.Column="0" Grid.Row="1" Margin="0 0 5 0 " Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsPatientsList_SelectionChanged"/>
         <!--#endregion-->
         
         <!--#region Показатели-->
         <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список собираемых показателей" FontSize="15" Foreground="{DynamicResource textColor}"/>
-        <ListBox x:Name="doctorPatientsIndicatorsList" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}"/>
+        <ListBox x:Name="doctorPatientsIndicatorsList" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsIndicatorsList_SelectionChanged"/>
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Margin="10 0 0 0">
-        <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click"/>
+        <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click" IsEnabled="False"/>
         <Button x:Name="doctorPatientAddIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 0 0 5" Click="doctorPatientAddIndicator_Click"/>
-            <Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>
-            <Button x:Name="doctorPatientDeleteIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 0 0 5" Click="doctorPatientDeleteIndicator_Click"/>
+            <!--<Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>-->
+            <Button x:Name="doctorPatientDeleteIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 0 0 5" Click="doctorPatientDeleteIndicator_Click" IsEnabled="False"/>
         </StackPanel>
         <!--<Button x:Name="doctorPatients" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" />-->
         <!--#endregion-->
@@ -45,7 +46,7 @@
         <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="10">
             <Grid>
                 <Border x:Name="doctorPatientsAppointmentsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
-                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsAppointmentsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged">
+                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsAppointmentsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged" AutoGeneratedColumns="doctorPatientsAppointmentsDataGrid_AutoGeneratedColumns">
                     <DataGrid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=doctorPatientsAppointmentsDataGridBorder}"/>
                     </DataGrid.OpacityMask>
@@ -53,12 +54,13 @@
             </Grid>
         </Border>
         <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Vertical" Margin="10 0 0 0">
-            <Button x:Name="doctorPatientShowShedule"       Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать"  Margin="0 0 0 25" Click="doctorPatientShowShedule_Click"/>
+            <Button x:Name="doctorPatientShowShedule"       Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать"  Margin="0 0 0 25" Click="doctorPatientShowShedule_Click" IsEnabled="False"/>
             <Button x:Name="doctorPatientAddAppointment"    Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить"  Margin="0 0 0 5 " Click="doctorPatientAddAppointment_Click"/>
-            <Button x:Name="doctorPatientAlterAppointment"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить"  Margin="0 0 0 5 " Click="doctorPatientAlterAppointment_Click"/>
-            <Button x:Name="doctorPatientDeleteAppointment" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить"   Margin="0 0 0 5 " Click="doctorPatientDeleteAppointment_Click"/>
+            <Button x:Name="doctorPatientAlterAppointment"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить"  Margin="0 0 0 5 " Click="doctorPatientAlterAppointment_Click" IsEnabled="False"/>
+            <Button x:Name="doctorPatientDeleteAppointment" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить"   Margin="0 0 0 5 " Click="doctorPatientDeleteAppointment_Click" IsEnabled="False"/>
         </StackPanel>
         <!--#endregion-->
+    </Grid>
         
         <!--#region Состояние-->
         <Border x:Name="doctorPatientsConditionForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
@@ -91,7 +93,7 @@
         <!--#endregion-->
 
         <!--#region Расписание-->
-        <Border x:Name="doctorPatientsShuduleForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Visible">
+        <Border x:Name="doctorPatientsShuduleForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

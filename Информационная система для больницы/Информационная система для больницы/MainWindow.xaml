@@ -45,6 +45,9 @@
 
             </StackPanel>
 
+
+            <Label x:Name="currentUser" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="10 5 0 5" FontFamily="Bahnschrift" FontSize="15" Foreground="{DynamicResource textColor}" MouseDown="DragMove"/>
+
             <StackPanel x:Name="windowMenu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Background="Transparent" MouseLeftButtonDown="DragMove">
                 <Menu VerticalAlignment="Stretch" HorizontalAlignment="Right" Padding="0 5 10 0" Background="Transparent">
                     <MenuItem Style="{StaticResource windowMenuButtonsStyle}" Margin="0 0 20 0" Click="Info_Click"><!--Command="{Binding infoButtonClick}"-->

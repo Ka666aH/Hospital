@@ -70,6 +70,7 @@ namespace Информационная_система_для_больницы
                         Application.Current.MainWindow = main;
                         Application.Current.MainWindow.Tag = employee.access;
                         this.Close();
+                        main.currentUser.Content = userPicker.Text;
                         main.Show();
                     }
                     else

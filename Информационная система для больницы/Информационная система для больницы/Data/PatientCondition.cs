@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Информационная_система_для_больницы.Data
 {
-    class PatientCondition
+    public class PatientCondition
     {
         public string id { get; set; }
         public string collectingIndicatorId { get; set; }
