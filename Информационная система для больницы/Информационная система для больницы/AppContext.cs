@@ -32,8 +32,8 @@ namespace Информационная_система_для_больницы.Da
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Status>()
-                .ToTable("Statuses");
+            //modelBuilder.Entity<Status>()
+            //    .ToTable("Statuses");
             modelBuilder.Entity<Employee>()
                 .ToTable("Employees");
             //modelBuilder.Entity<EmployeeStatus>()

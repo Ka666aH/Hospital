@@ -1,68 +1,108 @@
-﻿<Page x:Class="Информационная_система_для_больницы.Pages.Doctor.DoctorPatients"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Информационная_система_для_больницы.Pages.Doctor"
       xmlns:oxy ="http://oxyplot.org/wpf"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Информационная_система_для_больницы.Pages.Doctor.DoctorPatients"
       mc:Ignorable="d" 
       d:DesignHeight="415" d:DesignWidth="620"
       Title="DoctorPatients">
 
     <Grid>
-    <Grid x:Name="doctorPatientsMainPart">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <!--<ColumnDefinition Width="125"/>-->
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="125"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="doctorPatientsMainPart">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="125"/>-->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="125"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!--#region Пациенты-->
-        <Label Grid.Column="0"  Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список пациентов" FontSize="15" Foreground="{DynamicResource textColor}"/>
-        <ListBox x:Name="doctorPatientsPatientsList" Grid.Column="0" Grid.Row="1" Margin="0 0 5 0 " Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsPatientsList_SelectionChanged"/>
+            <!--#region Пациенты-->
+            <Label Grid.Column="0"  Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список пациентов" FontSize="15" Foreground="{DynamicResource textColor}"/>
+            <ListBox x:Name="doctorPatientsPatientsList" Grid.Column="0" Grid.Row="1" Margin="0 0 5 0 " Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsPatientsList_SelectionChanged"/>
+            <!--#endregion-->
+
+            <!--#region Показатели-->
+            <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список собираемых показателей" FontSize="15" Foreground="{DynamicResource textColor}"/>
+            <ListBox x:Name="doctorPatientsIndicatorsList" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsIndicatorsList_SelectionChanged"/>
+            <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Margin="10 0 0 0">
+                <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click" IsEnabled="False"/>
+                <Button x:Name="doctorPatientAddIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 0 0 5" Click="doctorPatientAddIndicator_Click" IsEnabled="False"/>
+                <!--<Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>-->
+                <Button x:Name="doctorPatientDeleteIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 0 0 5" Click="doctorPatientDeleteIndicator_Click" IsEnabled="False"/>
+            </StackPanel>
+            <!--<Button x:Name="doctorPatients" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" />-->
+            <!--#endregion-->
+
+            <!--#region Назначения-->
+            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список назначений" FontSize="15" Foreground="{DynamicResource textColor}"/>
+            <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="10">
+                <Grid>
+                    <Border x:Name="doctorPatientsAppointmentsDataGridBorder" Margin="0 0 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
+                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsAppointmentsDataGrid" FontFamily="Bahnschrift" Margin="0 0 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged" AutoGeneratedColumns="doctorPatientsAppointmentsDataGrid_AutoGeneratedColumns">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=doctorPatientsAppointmentsDataGridBorder}"/>
+                        </DataGrid.OpacityMask>
+                    </DataGrid>
+                </Grid>
+            </Border>
+            <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Vertical" Margin="10 0 0 0 " VerticalAlignment="Top">
+                <Button x:Name="doctorPatientShowSchedule"       Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать"  Margin="0 0 0 25" Click="doctorPatientShowSchedule_Click" IsEnabled="False"/>
+                <Button x:Name="doctorPatientAddAppointment"    Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить"  Margin="0 0 0 5 " Click="doctorPatientAddAppointment_Click" IsEnabled="False"/>
+                <!--<Button x:Name="doctorPatientAlterAppointment"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить"  Margin="0 0 0 5 " Click="doctorPatientAlterAppointment_Click" IsEnabled="False"/>-->
+                <Button x:Name="doctorPatientDeleteAppointment" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить"   Margin="0 0 0 5 " Click="doctorPatientDeleteAppointment_Click" IsEnabled="False"/>
+            </StackPanel>
+            <!--#endregion-->
+        </Grid>
+
         <!--#endregion-->
-        
-        <!--#region Показатели-->
-        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список собираемых показателей" FontSize="15" Foreground="{DynamicResource textColor}"/>
-        <ListBox x:Name="doctorPatientsIndicatorsList" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsIndicatorsList_SelectionChanged"/>
-        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Margin="10 0 0 0">
-        <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click" IsEnabled="False"/>
-        <Button x:Name="doctorPatientAddIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 0 0 5" Click="doctorPatientAddIndicator_Click"/>
-            <!--<Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>-->
-            <Button x:Name="doctorPatientDeleteIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 0 0 5" Click="doctorPatientDeleteIndicator_Click" IsEnabled="False"/>
-        </StackPanel>
-        <!--<Button x:Name="doctorPatients" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" />-->
-        <!--#endregion-->
-        
-        <!--#region Назначения-->
-        <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список назначений" FontSize="15" Foreground="{DynamicResource textColor}"/>
-        <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="10">
-            <Grid>
-                <Border x:Name="doctorPatientsAppointmentsDataGridBorder" Margin="0 5 10 0" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
-                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsAppointmentsDataGrid" FontFamily="Bahnschrift" Margin="0 5 10 0" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged" AutoGeneratedColumns="doctorPatientsAppointmentsDataGrid_AutoGeneratedColumns">
-                    <DataGrid.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=doctorPatientsAppointmentsDataGridBorder}"/>
-                    </DataGrid.OpacityMask>
-                </DataGrid>
+
+        <!--#region Форма назначения-->
+        <Border x:Name="doctorPatientsAddAppointmentForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="320" MaxWidth="500" Visibility="Collapsed">            
+            <Grid>                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Добавление назначения" FontSize="15" Foreground="{DynamicResource textColor}" />
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
+                    <Label FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" Content="! Препарат или процедура" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" Content="Дата начала" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" Content="Дата конца" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" Content="Количество в день" Foreground="{DynamicResource textColor}"/>
+                    <Label FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" Content="Дополнительная информация" Foreground="{DynamicResource textColor}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
+                    <ComboBox x:Name="doctorPatientsAddAppointmentFormDrugOrProcedure" FontFamily="Bahnschrift" VerticalContentAlignment="Center" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{StaticResource ComboBoxItemContainerStyle1}"/>
+                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="doctorPatientsAddAppointmentStart" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" />
+                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="doctorPatientsAddAppointmentEnd" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" />
+                    <TextBox x:Name="doctorPatientsAddAppointmentTimes" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="doctorPatientsAddAppointmentNote" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="doctorPatientsAddAppointmentFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Padding="15 0 15 0" Margin="0 0 10 5" Click="doctorPatientsAddAppointmentFormAccept_Click"/>
+                    <Button x:Name="doctorPatientsAddAppointmentFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsAddAppointmentFormCancel_Click"/>
+                </StackPanel>
             </Grid>
         </Border>
-        <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Vertical" Margin="10 0 0 0">
-            <Button x:Name="doctorPatientShowShedule"       Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать"  Margin="0 0 0 25" Click="doctorPatientShowShedule_Click" IsEnabled="False"/>
-            <Button x:Name="doctorPatientAddAppointment"    Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить"  Margin="0 0 0 5 " Click="doctorPatientAddAppointment_Click"/>
-            <Button x:Name="doctorPatientAlterAppointment"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить"  Margin="0 0 0 5 " Click="doctorPatientAlterAppointment_Click" IsEnabled="False"/>
-            <Button x:Name="doctorPatientDeleteAppointment" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить"   Margin="0 0 0 5 " Click="doctorPatientDeleteAppointment_Click" IsEnabled="False"/>
-        </StackPanel>
         <!--#endregion-->
-    </Grid>
-        
-        <!--#region Состояние-->
+
+            <!--#region Состояние-->
         <Border x:Name="doctorPatientsConditionForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -90,42 +130,119 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <!--#endregion-->
-
-        <!--#region Расписание-->
-        <Border x:Name="doctorPatientsShuduleForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
+        <!--#region Добавление показателя-->
+        <Border x:Name="doctorPatientsAddIndicatorForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="105" MaxWidth="300" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label x:Name="doctorPatientsSheduleLabel" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" FontSize="15" Foreground="{DynamicResource textColor}"/>
-            <Border Grid.Column="0" Grid.Row="1"  CornerRadius="10">
-                <Grid>
-                    <Border x:Name="doctorPatientsSheduleDataGridBorder" Margin="10 5 10 5" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
-                        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsSheduleDataGrid" FontFamily="Bahnschrift" Margin="10 5 10 5" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsAppointmentsDataGrid_SelectedCellsChanged">
-                        <DataGrid.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=doctorPatientsSheduleDataGridBorder}"/>
-                        </DataGrid.OpacityMask>
-                    </DataGrid>
-                </Grid>
-            </Border>
-                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  Margin="0 5 0 0">
-                    <Button x:Name="doctorPatientsSheduleFormAdd" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormAdd_Click"/>
-                    <Button x:Name="doctorPatientsSheduleFormAlter" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormAlter_Click"/>
-                    <Button x:Name="doctorPatientsSheduleFormDelete" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormDelete_Click"/>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Добавление собираемого показателя" FontSize="15" Foreground="{DynamicResource textColor}" />
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
+                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Название" Foreground="{DynamicResource textColor}"/>
                 </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
+                    <ComboBox x:Name="doctorPatientsIndicatorFormName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{StaticResource ComboBoxItemContainerStyle1}"/>
+                </StackPanel>
+
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="doctorPatientsSheduleFormClose" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSheduleFormClose_Click"/>
+                    <Button x:Name="doctorPatientsIndicatorFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Padding="15 0 15 0" Margin="0 0 10 5" Click="doctorPatientsIndicatorFormAccept_Click"/>
+                    <Button x:Name="doctorPatientsIndicatorFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsIndicatorFormCancel_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
-        <!--#endregion-->
+        <!--#region Расписания-->
+        <Border x:Name="doctorPatientsSchedulesForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="300" MaxWidth="550" Visibility="Collapsed">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="doctorPatientsScheduleLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="10 5 10 5" HorizontalAlignment="Center" FontFamily="Bahnschrift" FontSize="15" TextWrapping="Wrap" Foreground="{DynamicResource textColor}"/>
+                <Border Grid.Column="0" Grid.Row="1"  CornerRadius="10">
+                    <Grid>
+                        <Border x:Name="doctorPatientsScheduleDataGridBorder" Margin="10 5 10 5" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
+                        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="doctorPatientsScheduleDataGrid" FontFamily="Bahnschrift" Margin="10 5 10 5" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True" SelectedCellsChanged="doctorPatientsScheduleDataGrid_SelectedCellsChanged" AutoGeneratedColumns="doctorPatientsScheduleDataGrid_AutoGeneratedColumns">
+                            <DataGrid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=doctorPatientsScheduleDataGridBorder}"/>
+                            </DataGrid.OpacityMask>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  Margin="0 5 0 0">
+                    <Button x:Name="doctorPatientsSchedulesFormAdd" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSchedulesFormAdd_Click"/>
+                    <!--<Button x:Name="doctorPatientsSchedulesFormAlter" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSchedulesFormAlter_Click"/>-->
+                    <Button x:Name="doctorPatientsSchedulesFormDelete" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Padding="10 0 10 0" Margin="0 0 10 5" IsEnabled="False" Click="doctorPatientsSchedulesFormDelete_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="doctorPatientsSchedulesFormClose" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsSchedulesFormClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--#region Форма расписания-->
+        <Border x:Name="doctorPatientsScheduleForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="105" MaxWidth="300" Visibility="Collapsed">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Форма расписания" FontSize="15" Foreground="{DynamicResource textColor}" />
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
+
+                    <Label FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" Content="! Дата и время" Foreground="{DynamicResource textColor}"/>
+                    <!--<Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Время" Foreground="{DynamicResource textColor}"/>-->
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
+                    <!--<DatePicker Style="{DynamicResource DatePickerStyle1}" x:Name="doctorPatientsScheduleFormDate" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="doctorPatientsScheduleFormTime"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25"/>-->
+                    <!--<Grid>
+                        <Border x:Name="doctorPatientsScheduleFormDateTimeBorder" Margin="0 5 0 5" Height="25" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}">
+                        <xctk:DateTimePicker x:Name="doctorPatientsScheduleFormDateTime" FontFamily="Bahnschrift" VerticalContentAlignment="Center"  Height="25" ShowButtonSpinner="False" TimePickerShowButtonSpinner="False">
+                            <xctk:DateTimePicker.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=doctorPatientsScheduleFormDateTimeBorder}"/>
+                            </xctk:DateTimePicker.OpacityMask>
+                        </xctk:DateTimePicker>
+                        </Border>
+                    </Grid>-->
+
+                    <Border Grid.Column="0" Grid.Row="1" CornerRadius="10">
+                        <Grid>
+                            <Border x:Name="doctorPatientsScheduleFormDateTimeBorder" Margin="0 5 0 5" Height="25" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="0" Background="{DynamicResource backgroundColor}"/>
+                            <xctk:DateTimePicker x:Name="doctorPatientsScheduleFormDateTime" FontFamily="Bahnschrift" VerticalContentAlignment="Center"  Height="25" ShowButtonSpinner="False" TimePickerShowButtonSpinner="False">
+                                <xctk:DateTimePicker.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=doctorPatientsScheduleFormDateTimeBorder}"/>
+                                </xctk:DateTimePicker.OpacityMask>
+                            </xctk:DateTimePicker>
+                        </Grid>
+                    </Border>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="doctorPatientsScheduleFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Padding="15 0 15 0" Margin="0 0 10 5" Click="doctorPatientsScheduleFormAccept_Click"/>
+                    <Button x:Name="doctorPatientsScheduleFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="doctorPatientsScheduleFormCancel_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
     </Grid>
 </Page>

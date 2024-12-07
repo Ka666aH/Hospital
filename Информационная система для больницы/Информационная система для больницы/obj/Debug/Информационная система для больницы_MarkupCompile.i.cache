@@ -1,0 +1,20 @@
+﻿Информационная система для больницы
+
+
+winexe
+C#
+.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\
+Информационная_система_для_больницы
+none
+false
+DEBUG;TRACE
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\App.xaml
+20-2023356852
+
+38-715539028
+301558180139
+AdminMenu.xaml;AuthWindow.xaml;DoctorMenu.xaml;MainWindow.xaml;NurseMenu.xaml;Pages\Admin\AdminEmployees.xaml;Pages\Doctor\DoctorDrugsAndProcedures.xaml;Pages\Doctor\DoctorPatients.xaml;Pages\General\InfoPage.xaml;Pages\General\ViewSettingsPage.xaml;Pages\Registrar\RegistrarDrugs.xaml;Pages\Registrar\RegistrarEmployees.xaml;Pages\Registrar\RegistrarIndicators.xaml;Pages\Registrar\RegistrarPatients.xaml;Pages\Registrar\RegistrarProcedures.xaml;Pages\Registrar\RegistrarRegistrations.xaml;Pages\Registrar\RegistrarWards.xaml;RegistrarMenu.xaml;Styles\datePickersStyle.xaml;Styles\dateTimePickersStyle.xaml;
+
+True
+

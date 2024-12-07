@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Styles/checkboxStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles/listboxesStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles/datePickersStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/dateTimePickersStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
