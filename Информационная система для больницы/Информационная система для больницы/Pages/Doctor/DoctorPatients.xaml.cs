@@ -525,12 +525,15 @@ namespace Информационная_система_для_больницы.Pa
 
         private void doctorPatientsAddAppointmentFormAccept_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(doctorPatientsAddAppointmentFormDrugOrProcedure.Text))
+            if (!string.IsNullOrEmpty(doctorPatientsAddAppointmentFormDrugOrProcedure.Text))
             {
+                if (!string.IsNullOrEmpty(doctorPatientsAddAppointmentStart.Text) && (!string.IsNullOrEmpty(doctorPatientsAddAppointmentEnd.Text)) && (!string.IsNullOrEmpty(doctorPatientsAddAppointmentTimes.Text)))
+                {
+
                 if (Convert.ToDateTime(doctorPatientsAddAppointmentStart.Text) < Convert.ToDateTime(doctorPatientsAddAppointmentEnd.Text))
                 {
                     //добавить проверку для дат на вхождение в период регистрации
-                    if(int.TryParse(doctorPatientsAddAppointmentTimes.Text,out int times) && times>0 && times <= 720)
+                    if (int.TryParse(doctorPatientsAddAppointmentTimes.Text, out int times) && times > 0 && times <= 720)
                     {
                         Appointment appointment = new Appointment();
                         appointment.id = Guid.NewGuid().ToString();
@@ -543,9 +546,9 @@ namespace Информационная_система_для_больницы.Pa
                         {
                             db.Appointments.Add(appointment);
 
-                            for(DateTime d = Convert.ToDateTime(doctorPatientsAddAppointmentStart.Text); d.Ticks <= Convert.ToDateTime(doctorPatientsAddAppointmentEnd.Text).Ticks; d = d.AddDays(1))
+                            for (DateTime d = Convert.ToDateTime(doctorPatientsAddAppointmentStart.Text); d.Ticks <= Convert.ToDateTime(doctorPatientsAddAppointmentEnd.Text).Ticks; d = d.AddDays(1))
                             {
-                                for(int i = 0; i < times;i++)
+                                for (int i = 0; i < times; i++)
                                 {
                                     Schedule schedule = new Schedule();
                                     schedule.id = Guid.NewGuid().ToString();
@@ -554,13 +557,13 @@ namespace Информационная_система_для_больницы.Pa
 
                                     if (times > 1)
                                     {
-                                    int inverval = 720 / (times-1);
-                                    schedule.dateTime = $"{d.Date.ToString("dd.MM.yyyy")} {(8+ Math.Floor((decimal)i*inverval/60)):00}:{(i*inverval) - (Math.Floor((decimal)i * inverval / 60)*60):00}";
+                                        int inverval = 720 / (times - 1);
+                                        schedule.dateTime = $"{d.Date.ToString("dd.MM.yyyy")} {(8 + Math.Floor((decimal)i * inverval / 60)):00}:{(i * inverval) - (Math.Floor((decimal)i * inverval / 60) * 60):00}";
                                     }
                                     else
                                         schedule.dateTime = $"{d.Date.ToString("dd.MM.yyyy")} 14:00";
 
-                                    if(Convert.ToDateTime(schedule.dateTime)<DateTime.Now)
+                                    if (Convert.ToDateTime(schedule.dateTime) < DateTime.Now)
                                     {
                                         schedule.status = completed;
                                     }
@@ -582,6 +585,18 @@ namespace Информационная_система_для_больницы.Pa
                 else
                 {
                     MessageBox.Show("Дата начала должна быть раньше даты конца");
+                }
+            }
+                else
+                {
+                    Appointment appointment = new Appointment();
+                    appointment.id = Guid.NewGuid().ToString();
+                    appointment.registrationId = selectedPatient.id;
+                    appointment.doctorId = db.Employees.Where(x => x.fullName == main.currentUser.Content.ToString()).Select(x => x.id).FirstOrDefault();
+                    appointment.drugProcedureId = db.DrugsProcedures.Where(x => x.name == doctorPatientsAddAppointmentFormDrugOrProcedure.Text).Select(x => x.id).FirstOrDefault();
+                    appointment.note = doctorPatientsAddAppointmentNote.Text;
+
+                        db.Appointments.Add(appointment);
                 }
             }
             else

@@ -150,6 +150,9 @@
     <Compile Include="Pages\Doctor\DoctorPatients.xaml.cs">
       <DependentUpon>DoctorPatients.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Nurse\NursePatients.xaml.cs">
+      <DependentUpon>NursePatients.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registrar\RegistrarDrugs.xaml.cs">
       <DependentUpon>RegistrarDrugs.xaml</DependentUpon>
     </Compile>
@@ -236,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\General\ViewSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Nurse\NursePatients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -421,9 +428,7 @@
   <ItemGroup>
     <Resource Include="colorfulhospital.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Nurse\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -36,11 +36,11 @@ namespace Информационная_система_для_больницы.Pa
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            GetCurrentRegistrationsAmount();
+            SetCurrentRegistrationsAmount();
             SetSearchingItems();
         }
 
-        public void GetCurrentRegistrationsAmount()
+        public void SetCurrentRegistrationsAmount()
         {
             db = new Data.AppContext();
             
@@ -167,7 +167,7 @@ namespace Информационная_система_для_больницы.Pa
         {
             if (registrarRegistrationsMainPart.IsEnabled)
             {
-                GetCurrentRegistrationsAmount();
+                SetCurrentRegistrationsAmount();
                 SetSearchingItems();
             }
         }
@@ -208,7 +208,7 @@ namespace Информационная_система_для_больницы.Pa
             else
                 registrarRegistrationsListRegistrationForm.IsEnabled = true;
             registrarRegistrationsRegistrationForm.Visibility = Visibility.Collapsed;
-            GetCurrentRegistrationsAmount();
+            SetCurrentRegistrationsAmount();
         }
 
         private void registrarRegistrationsRegistrationFormWard_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -264,7 +264,7 @@ namespace Информационная_система_для_больницы.Pa
                 db.Entry(registration).State = EntityState.Deleted;
                 db.SaveChanges();
                 registrarRegistrationsDataGrid.ItemsSource = GetFiltredRegistrations().ToList();
-                GetCurrentRegistrationsAmount();
+                SetCurrentRegistrationsAmount();
             }
         }
 
