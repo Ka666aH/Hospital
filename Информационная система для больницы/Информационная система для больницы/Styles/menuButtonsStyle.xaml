@@ -4,6 +4,8 @@
            TargetType="{x:Type RadioButton}"
            x:Key="menuButtonsStyle">
         <Style.Setters>
+            <!--<Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="Padding" Value="-10 0 0 0"/>-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
@@ -17,7 +19,7 @@
                                        VerticalAlignment="Center"
                                        FontSize="20" 
                                        Foreground="{DynamicResource textColor}"
-                                       Margin="30 5 0 5"
+                                       Margin="20 5 0 5"
                                        FontFamily="Bahnschrift"/>
 
                         </Grid>

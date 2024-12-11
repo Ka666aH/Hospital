@@ -78,8 +78,17 @@ namespace Информационная_система_для_больницы
         {
             generalMenuClose.IsChecked = true;
             //UncheckUserMenu();
-            MessageBox.Show("Вы уверены, что хотите выйти?");
-            App.Current.Shutdown();
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите выйти?","Подтверждение выхода",MessageBoxButton.YesNo);
+            if(result == MessageBoxResult.Yes)
+            {
+                App.Current.Shutdown();
+            }
+            else
+            {
+                generalMenuClose.IsChecked = false;
+                if (mainFrame.Content == viewSettingsPage)
+                    generalMenuView.IsChecked = true;
+            }
         }
 
         private void Info_Click(object sender, RoutedEventArgs e)
@@ -155,21 +164,28 @@ namespace Информационная_система_для_больницы
             if(authWindow.ShowDialog() == true)
             {
                 mainFrame.Content = infoPage;
+                generalMenuView.IsChecked = false;
+                generalMenuChangeUser.IsChecked = false;
+                generalMenuClose.IsChecked = false;
                 GetUserMenu((string)Tag);
-                
             }
             else
+            {
                 generalMenuChangeUser.IsChecked = false;
+                if(mainFrame.Content == viewSettingsPage)
+                    generalMenuView.IsChecked= true;
+            }
         }
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            GetUserMenu((string)Tag);
+            //GetUserMenu((string)Tag);
 
         }
 
         public void UncheckUserMenu()
         {
+            GetUserMenu((string)Tag);
             //foreach (RadioButton radioButton in LogicalTreeHelper.GetChildren(userMenuButtons).OfType<RadioButton>().ToList())
             //{
             //    radioButton.IsChecked = false;
@@ -181,6 +197,11 @@ namespace Информационная_система_для_больницы
             registrarMenu = new RegistrarMenu();
             doctorMenu = new DoctorMenu();
             nurseMenu = new NurseMenu();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetUserMenu((string)Tag);
         }
     }
 }

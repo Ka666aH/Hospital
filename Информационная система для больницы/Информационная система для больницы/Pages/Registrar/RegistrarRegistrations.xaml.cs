@@ -184,7 +184,7 @@ namespace Информационная_система_для_больницы.Pa
             registrarRegistrationsRegistrationFormWard.Text     = (string)selectedRegistration.Ward;
             registrarRegistrationsRegistrationFormBed.Text      = (string)selectedRegistration.Bed;
 
-            OpenRegistrationForm();
+            OpenRegistrationForm();    
         }
 
         public void OpenRegistrationForm()
@@ -208,6 +208,7 @@ namespace Информационная_система_для_больницы.Pa
             else
                 registrarRegistrationsListRegistrationForm.IsEnabled = true;
             registrarRegistrationsRegistrationForm.Visibility = Visibility.Collapsed;
+            GetCurrentRegistrationsAmount();
         }
 
         private void registrarRegistrationsRegistrationFormWard_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -263,6 +264,7 @@ namespace Информационная_система_для_больницы.Pa
                 db.Entry(registration).State = EntityState.Deleted;
                 db.SaveChanges();
                 registrarRegistrationsDataGrid.ItemsSource = GetFiltredRegistrations().ToList();
+                GetCurrentRegistrationsAmount();
             }
         }
 

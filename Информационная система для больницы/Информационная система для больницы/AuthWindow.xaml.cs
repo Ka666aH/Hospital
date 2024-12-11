@@ -37,13 +37,11 @@ namespace Информационная_система_для_больницы
 
         public void FillUsers()
         {
-
             List<Employee> employees = db.Employees.ToList();
             foreach (Employee employee in employees)
             {
                 userPicker.Items.Add(employee.fullName);
             }
-
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -64,22 +62,22 @@ namespace Информационная_система_для_больницы
 
                 if (employee.password == pass.Password)
                 {
+                    MainWindow main;
                     if (Application.Current.MainWindow == this)
                     {
-                        MainWindow main = new MainWindow();
+                        main = new MainWindow();
                         Application.Current.MainWindow = main;
                         Application.Current.MainWindow.Tag = employee.access;
-                        this.Close();
-                        main.currentUser.Content = userPicker.Text;
-                        main.Show();
                     }
                     else
                     {
                         this.DialogResult = true;
                         Application.Current.MainWindow.Tag = employee.access;
-                        this.Close();
+                        main =  Application.Current.MainWindow as MainWindow;
                     }
-                    //this.Close();
+                        this.Close();
+                        main.currentUser.Content = userPicker.Text;
+                        main.Show();
                 }
                 else
                 {

@@ -35,8 +35,7 @@
             <ListBox x:Name="doctorPatientsIndicatorsList" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsIndicatorsList_SelectionChanged"/>
             <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Margin="10 0 0 0">
                 <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click" IsEnabled="False"/>
-                <Button x:Name="doctorPatientAddIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 0 0 5" Click="doctorPatientAddIndicator_Click" IsEnabled="False"/>
-                <!--<Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>-->
+                <Button x:Name="doctorPatientAddIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 0 0 5" Click="doctorPatientAddIndicator_Click" IsEnabled="False"/>                <!--<Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>-->
                 <Button x:Name="doctorPatientDeleteIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 0 0 5" Click="doctorPatientDeleteIndicator_Click" IsEnabled="False"/>
             </StackPanel>
             <!--<Button x:Name="doctorPatients" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" />-->
@@ -90,7 +89,7 @@
                     <ComboBox x:Name="doctorPatientsAddAppointmentFormDrugOrProcedure" FontFamily="Bahnschrift" VerticalContentAlignment="Center" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{StaticResource ComboBoxItemContainerStyle1}"/>
                     <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="doctorPatientsAddAppointmentStart" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" />
                     <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="doctorPatientsAddAppointmentEnd" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" />
-                    <TextBox x:Name="doctorPatientsAddAppointmentTimes" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="doctorPatientsAddAppointmentTimes" FontFamily="Bahnschrift" VerticalContentAlignment="Center"  Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
                     <TextBox x:Name="doctorPatientsAddAppointmentNote" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
                 </StackPanel>
 
