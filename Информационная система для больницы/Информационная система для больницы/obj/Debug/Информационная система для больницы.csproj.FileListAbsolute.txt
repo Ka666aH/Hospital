@@ -99,3 +99,4 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\dateTimePickersStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Nurse\NursePatients.g.cs
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Nurse\NursePatients.baml

@@ -34,7 +34,7 @@
             <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список собираемых показателей" FontSize="15" Foreground="{DynamicResource textColor}"/>
             <ListBox x:Name="doctorPatientsIndicatorsList" Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="doctorPatientsIndicatorsList_SelectionChanged"/>
             <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Margin="10 0 0 0">
-                <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click" IsEnabled="False"/>
+                <Button x:Name="doctorPatientShowCondition" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать" Margin="0 0 0 25" Click="doctorPatientShowCondition_Click" IsEnabled="False" />
                 <Button x:Name="doctorPatientAddIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить" Margin="0 0 0 5" Click="doctorPatientAddIndicator_Click" IsEnabled="False"/>                <!--<Button x:Name="doctorPatientAlterIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Собирать" Margin="0 0 0 5" Click="doctorPatientAlterIndicator_Click"/>-->
                 <Button x:Name="doctorPatientDeleteIndicator" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="0 0 0 5" Click="doctorPatientDeleteIndicator_Click" IsEnabled="False"/>
             </StackPanel>
@@ -54,15 +54,13 @@
                 </Grid>
             </Border>
             <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Vertical" Margin="10 0 0 0 " VerticalAlignment="Top">
-                <Button x:Name="doctorPatientShowSchedule"       Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать"  Margin="0 0 0 25" Click="doctorPatientShowSchedule_Click" IsEnabled="False"/>
+                <Button x:Name="doctorPatientShowSchedule"       Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Показать"  Margin="0 0 0 25" Click="doctorPatientShowSchedule_Click" IsEnabled="False" />
                 <Button x:Name="doctorPatientAddAppointment"    Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить"  Margin="0 0 0 5 " Click="doctorPatientAddAppointment_Click" IsEnabled="False"/>
                 <!--<Button x:Name="doctorPatientAlterAppointment"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить"  Margin="0 0 0 5 " Click="doctorPatientAlterAppointment_Click" IsEnabled="False"/>-->
                 <Button x:Name="doctorPatientDeleteAppointment" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить"   Margin="0 0 0 5 " Click="doctorPatientDeleteAppointment_Click" IsEnabled="False"/>
             </StackPanel>
             <!--#endregion-->
         </Grid>
-
-        <!--#endregion-->
 
         <!--#region Форма назначения-->
         <Border x:Name="doctorPatientsAddAppointmentForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="320" MaxWidth="500" Visibility="Collapsed">            
@@ -112,8 +110,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label x:Name="doctorPatientsChartLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="" FontSize="15" Foreground="{DynamicResource textColor}" />
-                <Border Grid.Column="0" Grid.Row="1" Margin="10 5 10 5">
+                <Label x:Name="doctorPatientsChartLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Значения показателя X у пациента X" FontSize="12" Foreground="{DynamicResource textColor}" />
+                <oxy:PlotView x:Name="doctorPatientsChart" Grid.Column="0" Grid.Row="1" Margin="10 5 10 5" FontFamily="Bahnschrift" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" Background="Red"/> 
+                <!--<Border Grid.Column="0" Grid.Row="1" Margin="10 5 10 5">
                     <Grid>
                         <Border x:Name="doctorPatientsChartBorder"  CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}">
                             <oxy:PlotView x:Name="doctorPatientsChart" FontFamily="Bahnschrift" Background="{DynamicResource backgroundColor}">
@@ -123,7 +122,7 @@
                             </oxy:PlotView>
                         </Border>
                     </Grid>
-                </Border>
+                </Border>-->
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="doctorPatientsConditionFormClose" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormCancel_Click"/>
                 </StackPanel>

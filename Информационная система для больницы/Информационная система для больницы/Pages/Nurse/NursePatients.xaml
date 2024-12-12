@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Информационная_система_для_больницы.Pages.Nurse"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="415" d:DesignWidth="620"
       Title="NursePatients">
@@ -38,9 +39,9 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="2">
-                <ComboBox x:Name="nursePatientsSearchPatient" FontFamily="Bahnschrift" Margin="0 15 10 5" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                <ComboBox x:Name="nursePatientsSearchPatient" FontFamily="Bahnschrift" Margin="0 15 10 5" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="nursePatientsSearchPatient_SelectionChanged"/>
                 <!--<ComboBox x:Name="nursePatientsSearchDoctor" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>-->
-                <ComboBox x:Name="nursePatientsSearchWard" FontFamily="Bahnschrift" Margin="0 5 10 15" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                <ComboBox x:Name="nursePatientsSearchWard" FontFamily="Bahnschrift" Margin="0 5 10 15" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="nursePatientsSearchWard_SelectionChanged"/>
                 <!--<DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="nursePatientsSearchDate" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" VerticalContentAlignment="Center"/>-->
             </StackPanel>
             <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" CornerRadius="10">
@@ -55,18 +56,18 @@
             </Border>
 
             <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
-                <Button x:Name="nursePatientsListShowCondition" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Состояние" Padding="15 0 15 0" Margin="0 5 10 5" Click="nursePatientsListShowCondition_Click"/>
-                <Button x:Name="nursePatientsListShowSchedule" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Расписание" Padding="15 0 15 0" Margin="0 5 10 5" Click="nursePatientsListShowSchedule_Click"/>
+                <Button x:Name="nursePatientsListShowCondition" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Состояние" Padding="15 0 15 0" Margin="0 5 10 5" Click="nursePatientsListShowCondition_Click" IsEnabled="False"/>
+                <Button x:Name="nursePatientsListShowSchedule" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Расписание" Padding="15 0 15 0" Margin="0 5 10 5" Click="nursePatientsListShowSchedule_Click" IsEnabled="False"/>
             </StackPanel>
         </Grid>
+        
         <!--#endregion-->
-        
-        
-        <!--#region Форма состояния-->
-        <Border x:Name="nursePatientsConditionsForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="340" MaxWidth="450" Visibility="Collapsed">
+                
+        <!--#region Состояния-->
+        <Border x:Name="nursePatientsConditionsForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="340" MaxWidth="550" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -79,13 +80,13 @@
                 <Label x:Name="nursePatientsConditionstLabel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Состояние пациента X" FontSize="15" Foreground="{DynamicResource textColor}"/>
                 
                 <Label Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Список показателей" FontSize="15" Foreground="{DynamicResource textColor}"/>
-                <ListBox x:Name="nursePatientsConditionsIndicatorsList" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Margin="10 5 5 5" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}"/>
+                <ListBox x:Name="nursePatientsConditionsIndicatorsList" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Margin="10 5 5 5" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" SelectionChanged="nursePatientsConditionsIndicatorsList_SelectionChanged"/>
                 
                 <Label Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Значения показателя" FontSize="15" Foreground="{DynamicResource textColor}"/>
                 <Border Grid.Column="1" Grid.Row="3"  CornerRadius="10">
                     <Grid>
                         <Border x:Name="nursePatientsConditionsDataGridBorder" Margin="5 5 10 5" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
-                        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Margin="5 5 10 5" x:Name="nursePatientsConditionsDataGrid" FontFamily="Bahnschrift"  BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True"  SelectedCellsChanged="nursePatientsDataGrid_SelectedCellsChanged" AutoGeneratedColumns="nursePatientsDataGrid_AutoGeneratedColumns" >
+                        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Margin="5 5 10 5" x:Name="nursePatientsConditionsDataGrid" FontFamily="Bahnschrift"  BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True"  SelectedCellsChanged="nursePatientsConditionsDataGrid_SelectedCellsChanged" AutoGeneratedColumns="nursePatientsConditionsDataGrid_AutoGeneratedColumns" >
                             <DataGrid.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=nursePatientsConditionsDataGridBorder}"/>
                             </DataGrid.OpacityMask>
@@ -96,16 +97,63 @@
                 <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 5 10 0">
                 <Button x:Name="nursePatientsConditionsAdd" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Добавить"      Margin="0 0 2.5 0" Width="80" Click="nursePatientsConditionsAdd_Click" />
                 <Button x:Name="nursePatientsConditionsAlter" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить"  Margin="2.5 0 2.5 0" Width="80" Click="nursePatientsConditionsAlter_Click" IsEnabled="False"/>
-                    <Button x:Name="nursePatientsConditionsDelete" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="2.5 0 0 0" Width="80" Click="nursePatientsConditionsAlter_Click" IsEnabled="False"/>
+                    <Button x:Name="nursePatientsConditionsDelete" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Margin="2.5 0 0 0" Width="80" Click="nursePatientsConditionsDelete_Click" IsEnabled="False"/>
                 </StackPanel>
 
                 <Button x:Name="nursePatientsConditionsFormClose" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="15 0 15 0" Margin="0 0 10 5" Click="nursePatientsConditionsFormClose_Click"/>
 
             </Grid>
         </Border>
+
+
+        <!--#region Форма состояния-->
+        <Border x:Name="nursePatientsConditionForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="250" MaxWidth="450" Visibility="Collapsed">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Форма состояния" FontSize="15" Foreground="{DynamicResource textColor}"/>
+
+                <StackPanel Grid.Column="0" Grid.Row="1">
+                    <Label HorizontalContentAlignment="Left" Height="25" Margin="0 5 0 5" FontFamily="Bahnschrift" Content="! Дата и время" FontSize="15" Foreground="{DynamicResource textColor}"/>
+                    <Label HorizontalContentAlignment="Left" Height="25" Margin="0 5 0 5" FontFamily="Bahnschrift" Content="! Значение" FontSize="15" Foreground="{DynamicResource textColor}"/>
+                    <Label HorizontalContentAlignment="Left" Height="25" Margin="0 5 0 0" FontFamily="Bahnschrift" Content="Дополнительная " FontSize="15" Foreground="{DynamicResource textColor}"/>
+                    <Label HorizontalContentAlignment="Left" Height="25" VerticalContentAlignment="Top" FontFamily="Bahnschrift" Content="информация" FontSize="15" Foreground="{DynamicResource textColor}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <Border Grid.Column="0" Grid.Row="1" CornerRadius="10">
+                        <Grid>
+                            <Border x:Name="nursePatientsConditionFormDateTimeBorder" Margin="0 5 0 5" Height="25" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="0" Background="{DynamicResource backgroundColor}"/>
+                            <xctk:DateTimePicker x:Name="nursePatientsConditionFormDateTime" FontFamily="Bahnschrift" VerticalContentAlignment="Center"  Height="25" ShowButtonSpinner="False" TimePickerShowButtonSpinner="False">
+                                <xctk:DateTimePicker.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=nursePatientsConditionFormDateTimeBorder}"/>
+                                </xctk:DateTimePicker.OpacityMask>
+                            </xctk:DateTimePicker>
+                        </Grid>
+                    </Border>
+                    <TextBox x:Name="nursePatientsConditionFormValue" FontFamily="Bahnschrift" VerticalContentAlignment="Center"  Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="nursePatientsConditionFormNote" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="nursePatientsConditionFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" Click="nursePatientsConditionFormAccept_Click"/>
+                    <Button x:Name="nursePatientsConditionFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="nursePatientsConditionFormCancel_Click"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
         <!--#endregion-->
 
-        <!--#region Форма расписания-->
+        <!--#endregion-->
+
+        <!--#region Расписания-->
         <Border x:Name="nursePatientsSchedulesForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="400" MaxWidth="500" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>

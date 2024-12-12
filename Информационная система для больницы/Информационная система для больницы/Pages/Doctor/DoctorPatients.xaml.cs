@@ -184,14 +184,14 @@ namespace Информационная_система_для_больницы.Pa
 
         private void doctorPatientShowCondition_Click(object sender, RoutedEventArgs e)
         {
-            doctorPatientsChartLabel.Content = doctorPatientsIndicatorsList.SelectedValue.ToString();
-            SetChart();
             OpenConditionsForm();
         }
 
         public void OpenConditionsForm()
         {
             doctorPatientsMainPart.IsEnabled = false;
+            doctorPatientsChartLabel.Content = $"Значения показателя \"{doctorPatientsIndicatorsList.SelectedValue.ToString()}\" у пациента \"{doctorPatientsPatientsList.SelectedValue.ToString()}\"";
+            SetChart();
             doctorPatientsConditionForm.Visibility = Visibility.Visible;
         }
 
@@ -200,16 +200,32 @@ namespace Информационная_система_для_больницы.Pa
             db = new Data.AppContext();
 
             PlotModel plotModel = new PlotModel();
+
+            var backgroundColor = OxyColor.Parse(((Color)Application.Current.FindResource("background")).ToString());
+            plotModel.PlotAreaBackground = backgroundColor;
+
+            var textColor = OxyColor.Parse(((Color)Application.Current.FindResource("text")).ToString());
+            plotModel.PlotAreaBorderColor = textColor;
+            plotModel.TextColor = textColor;
+            plotModel.DefaultFontSize = 13;
+            plotModel.AxisTierDistance = -5;
+            plotModel.Padding = new OxyThickness(2.5, -5,-30,2.5);
+
+            plotModel.DefaultFont = "Bahnschrift";
+
             LinearAxis xAxis = new DateTimeAxis
             {
                 Title = "Дата",
                 Position = AxisPosition.Bottom,
-                StringFormat = "dd.MM.yyyy HH:mm"
+                TicklineColor = textColor,
+                StringFormat = "dd.MM.yyyy HH:mm",
+                IntervalLength = 50,
             };
             LinearAxis yAxis = new LinearAxis
             {
                 Title = "Значение",
                 Position = AxisPosition.Left,
+                TicklineColor = textColor,
             };
 
             plotModel.Axes.Add(xAxis);
@@ -220,11 +236,16 @@ namespace Информационная_система_для_больницы.Pa
             var _dataPoints = from pc in pcs
                               join ci in cis on pc.collectingIndicatorId equals ci.id
                               where ci.indicatorId == selectedIndicator.id && ci.registrationId == selectedPatient.id
-                              select new DataPoint(Convert.ToDouble(Convert.ToDateTime(pc.dateTime)), Convert.ToDouble(pc.value));
+                              orderby Convert.ToDateTime(pc.dateTime)
+                              select new DataPoint(DateTimeAxis.ToDouble(Convert.ToDateTime(pc.dateTime)), Convert.ToDouble(pc.value));
 
             List<DataPoint> dataPoints = _dataPoints.ToList();
             LineSeries series = new LineSeries();
+            var lineColor = OxyColor.Parse(((Color)Application.Current.FindResource("menu")).ToString());
+            series.Color = lineColor;
+            series.MarkerFill = lineColor;
             series.ItemsSource = dataPoints;
+            plotModel.Series.Add(series);
 
             doctorPatientsChart.Model = plotModel;
         }
@@ -241,6 +262,7 @@ namespace Информационная_система_для_больницы.Pa
         }
         private void doctorPatientAddIndicator_Click(object sender, RoutedEventArgs e)
         {
+            OpenAddIndicatorForm();
             OpenAddIndicatorForm();
         }
 
