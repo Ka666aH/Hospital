@@ -227,7 +227,8 @@ namespace Информационная_система_для_больницы.Pa
                 Title = "Дата",
                 Position = AxisPosition.Bottom,
                 TicklineColor = textColor,
-                StringFormat = "dd.MM.yyyy",
+                StringFormat = "dd.MM HH:mm",
+                //StringFormat = "hh:mm",
                 IntervalLength = 50,
                 TitleFontSize = 15,
                 AbsoluteMinimum = dataPoints.Min(x => x.X),
@@ -410,8 +411,8 @@ namespace Информационная_система_для_больницы.Pa
                                Patient = s.appointment.registration.patient.fullName,
                                Doctor = s.appointment.doctor.fullName,
                                DateAndTime = Convert.ToDateTime(s.dateTime).ToString("dd.MM.yyyy HH:mm"),
+                               Status = s.status,
                                Note = s.note,
-                               Status = s.status
                            };
             doctorPatientsScheduleDataGrid.ItemsSource = schedule.ToList();
             doctorPatientsScheduleDataGrid.SelectedItem = null;
@@ -422,16 +423,16 @@ namespace Информационная_система_для_больницы.Pa
             doctorPatientsScheduleDataGrid.Columns[1].Header = "Пациент";
             doctorPatientsScheduleDataGrid.Columns[2].Header = "Врач";
             doctorPatientsScheduleDataGrid.Columns[3].Header = "Дата";
-            doctorPatientsScheduleDataGrid.Columns[4].Header = "Дополнительная информация";
-            doctorPatientsScheduleDataGrid.Columns[5].Header = "Статус";
+            doctorPatientsScheduleDataGrid.Columns[4].Header = "Статус";
+            doctorPatientsScheduleDataGrid.Columns[5].Header = "Дополнительная информация";
 
             doctorPatientsScheduleDataGrid.Columns[0].Visibility = Visibility.Collapsed;
 
             doctorPatientsScheduleDataGrid.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             doctorPatientsScheduleDataGrid.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             doctorPatientsScheduleDataGrid.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            doctorPatientsScheduleDataGrid.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            doctorPatientsScheduleDataGrid.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            doctorPatientsScheduleDataGrid.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            doctorPatientsScheduleDataGrid.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
         private void doctorPatientsScheduleDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {

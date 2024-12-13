@@ -80,25 +80,6 @@
         </Setter>
     </Style>
 
-    <!--<Style x:Key="DataGridCellStyle1" TargetType="{x:Type DataGridCell}">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Height" Value="Auto"/>
-        <Setter Property="Foreground" Value="{DynamicResource textColor}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type DataGridCell}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                        <TextBlock Text="{Binding}" 
-                               TextWrapping="Wrap" 
-                               VerticalAlignment="Center" 
-                               Foreground="{TemplateBinding Foreground}"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>-->
-
         <Style x:Key="DataGridCellStyle1" TargetType="{x:Type DataGridCell}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="auto"/>
@@ -137,4 +118,48 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <!--<Style x:Key="DataGridCellStyle1" TargetType="{x:Type DataGridCell}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="Foreground" Value="{DynamicResource textColor}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        SnapsToDevicePixels="True">
+                        <TextBlock Text="{Binding}" 
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource menuColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource textColor}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource textColor}"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static DataGrid.FocusBorderBrushKey}}"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="true"/>
+                    <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource menuColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource textColor}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource textColor}"/>
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>-->
 </ResourceDictionary>
