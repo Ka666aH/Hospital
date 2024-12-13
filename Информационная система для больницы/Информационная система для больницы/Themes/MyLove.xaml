@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--<BitmapImage x:Key="logo" UriSource="pack://application:,,,/Images/whitehands.png"/>
+    <BitmapImage x:Key="info" UriSource="pack://application:,,,/Images/whiteboldinfo.png"/>
+    <BitmapImage x:Key="minus" UriSource="pack://application:,,,/Images/whiteboldminus.png"/>
+    <BitmapImage x:Key="square" UriSource="pack://application:,,,/Images/whiteboldsquare.png"/>
+    <BitmapImage x:Key="cross" UriSource="pack://application:,,,/Images/whiteboldcross.png"/>-->
+    <BitmapImage x:Key="logo" UriSource="pack://application:,,,/Images/hands.png"/>
+    <BitmapImage x:Key="info" UriSource="pack://application:,,,/Images/boldinfo.png"/>
+    <BitmapImage x:Key="minus" UriSource="pack://application:,,,/Images/boldminus.png"/>
+    <BitmapImage x:Key="square" UriSource="pack://application:,,,/Images/boldsquare.png"/>
+    <BitmapImage x:Key="cross" UriSource="pack://application:,,,/Images/boldcross.png"/>
+
+    <SolidColorBrush x:Key="backgroundColor" Color="#CCCCCC"></SolidColorBrush>
+    <SolidColorBrush x:Key="menuColor" Color="#139393"></SolidColorBrush>
+    <SolidColorBrush x:Key="pageColor" Color="#8DCCCC"></SolidColorBrush>
+    <SolidColorBrush x:Key="buttonColor" Color="#139393"></SolidColorBrush>
+    <!--<SolidColorBrush x:Key="textColor" Color="#F8FBFB"></SolidColorBrush>-->
+    <SolidColorBrush x:Key="textColor" Color="#000000"></SolidColorBrush>
+
+    <Color x:Key="background">#CCCCCC</Color>
+    <Color x:Key="menu">#139393</Color>
+    <Color x:Key="page">#8DCCCC</Color>
+    <Color x:Key="button">#139393</Color>
+    <!--<Color x:Key="text">#F8FBFB</Color>-->
+    <Color x:Key="text">#000000</Color>
+
+</ResourceDictionary>

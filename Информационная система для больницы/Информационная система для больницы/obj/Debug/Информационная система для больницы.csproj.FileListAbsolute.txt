@@ -100,3 +100,7 @@ E:\Saaaveeesss\Курсач41\Информационная система для
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Styles\dateTimePickersStyle.baml
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Nurse\NursePatients.g.cs
 E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Pages\Nurse\NursePatients.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\Sienna.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\MyLove.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\HealthHarmony.baml
+E:\Saaaveeesss\Курсач41\Информационная система для больницы\Информационная система для больницы\obj\Debug\Themes\Red.baml

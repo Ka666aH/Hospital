@@ -17,6 +17,10 @@ namespace Информационная_система_для_больницы
         {
             themeList.Add(new ComboBoxItem { Name = "Blue", Content = "Синяя" });
             themeList.Add(new ComboBoxItem { Name = "GreyBlue", Content = "Серо-Синяя" });
+            themeList.Add(new ComboBoxItem { Name = "Sienna", Content = "Охра" });
+            themeList.Add(new ComboBoxItem { Name = "Red", Content = "Красная" });
+            themeList.Add(new ComboBoxItem { Name = "MyLove", Content = "Надежда" });
+            themeList.Add(new ComboBoxItem { Name = "HealthHarmony", Content = "Гармония здоровья" });
             //themeDic.Add("Blue", "Синяя");
             //themeDic.Add("GreyBlue", "Серо-Синяя");
 

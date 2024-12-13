@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <BitmapImage x:Key="logo" UriSource="pack://application:,,,/Images/hands.png"/>
+    <BitmapImage x:Key="info" UriSource="pack://application:,,,/Images/boldinfo.png"/>
+    <BitmapImage x:Key="minus" UriSource="pack://application:,,,/Images/boldminus.png"/>
+    <BitmapImage x:Key="square" UriSource="pack://application:,,,/Images/boldsquare.png"/>
+    <BitmapImage x:Key="cross" UriSource="pack://application:,,,/Images/boldcross.png"/>
+
+    <SolidColorBrush x:Key="backgroundColor" Color="#ffffff"></SolidColorBrush>
+    <SolidColorBrush x:Key="menuColor" Color="#8c4c48"></SolidColorBrush>
+    <SolidColorBrush x:Key="pageColor" Color="#b57a76"></SolidColorBrush>
+    <SolidColorBrush x:Key="buttonColor" Color="#b57a76"></SolidColorBrush>
+    <SolidColorBrush x:Key="textColor" Color="#000000"></SolidColorBrush>
+
+    <Color x:Key="background">#ffffff</Color>
+    <Color x:Key="menu">#8c4c48</Color>
+    <Color x:Key="page">#b57a76</Color>
+    <Color x:Key="button">#b57a76</Color>
+    <Color x:Key="text">#000000</Color>
+</ResourceDictionary>
