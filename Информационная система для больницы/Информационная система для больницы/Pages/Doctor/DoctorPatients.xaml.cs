@@ -229,7 +229,6 @@ namespace Информационная_система_для_больницы.Pa
                 TicklineColor = textColor,
                 StringFormat = "dd.MM.yyyy",
                 IntervalLength = 50,
-                //MinorStep = 5,
                 TitleFontSize = 15,
                 AbsoluteMinimum = dataPoints.Min(x => x.X),
                 AbsoluteMaximum = dataPoints.Max(x => x.X),
