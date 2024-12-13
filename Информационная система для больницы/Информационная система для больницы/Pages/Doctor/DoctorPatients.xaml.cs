@@ -199,38 +199,6 @@ namespace Информационная_система_для_больницы.Pa
         {
             db = new Data.AppContext();
 
-            PlotModel plotModel = new PlotModel();
-
-            var backgroundColor = OxyColor.Parse(((Color)Application.Current.FindResource("background")).ToString());
-            plotModel.PlotAreaBackground = backgroundColor;
-
-            var textColor = OxyColor.Parse(((Color)Application.Current.FindResource("text")).ToString());
-            plotModel.PlotAreaBorderColor = textColor;
-            plotModel.TextColor = textColor;
-            plotModel.DefaultFontSize = 13;
-            plotModel.AxisTierDistance = -5;
-            plotModel.Padding = new OxyThickness(2.5, -5,-30,2.5);
-
-            plotModel.DefaultFont = "Bahnschrift";
-
-            LinearAxis xAxis = new DateTimeAxis
-            {
-                Title = "Дата",
-                Position = AxisPosition.Bottom,
-                TicklineColor = textColor,
-                StringFormat = "dd.MM.yyyy HH:mm",
-                IntervalLength = 50,
-            };
-            LinearAxis yAxis = new LinearAxis
-            {
-                Title = "Значение",
-                Position = AxisPosition.Left,
-                TicklineColor = textColor,
-            };
-
-            plotModel.Axes.Add(xAxis);
-            plotModel.Axes.Add(yAxis);
-
             var pcs = db.PatientConditions.ToList();
             var cis = db.CollectingIndicators.ToList();
             var _dataPoints = from pc in pcs
@@ -240,6 +208,47 @@ namespace Информационная_система_для_больницы.Pa
                               select new DataPoint(DateTimeAxis.ToDouble(Convert.ToDateTime(pc.dateTime)), Convert.ToDouble(pc.value));
 
             List<DataPoint> dataPoints = _dataPoints.ToList();
+
+            PlotModel plotModel = new PlotModel();
+
+            var backgroundColor = OxyColor.Parse(((Color)Application.Current.FindResource("background")).ToString());
+            plotModel.PlotAreaBackground = backgroundColor;
+
+            var textColor = OxyColor.Parse(((Color)Application.Current.FindResource("text")).ToString());
+            plotModel.PlotAreaBorderColor = textColor;
+            plotModel.TextColor = textColor;
+            plotModel.DefaultFontSize = 12;
+            plotModel.AxisTierDistance = -5;
+            plotModel.Padding = new OxyThickness(2.5, -2.5,-10,2.5);
+            plotModel.DefaultFont = "Bahnschrift";
+
+            LinearAxis xAxis = new DateTimeAxis
+            {
+                Title = "Дата",
+                Position = AxisPosition.Bottom,
+                TicklineColor = textColor,
+                StringFormat = "dd.MM.yyyy",
+                IntervalLength = 50,
+                //MinorStep = 5,
+                TitleFontSize = 15,
+                AbsoluteMinimum = dataPoints.Min(x => x.X),
+                AbsoluteMaximum = dataPoints.Max(x => x.X),
+            };
+            LinearAxis yAxis = new LinearAxis
+            {
+                Title = "Значение",
+                Position = AxisPosition.Left,
+                TicklineColor = textColor,
+                TitleFontSize = 15,
+                //StringFormat = "F",
+                IntervalLength = 10,
+                AbsoluteMinimum = dataPoints.Min(x => x.Y),
+                AbsoluteMaximum = dataPoints.Max(x => x.Y),
+            };
+
+            plotModel.Axes.Add(xAxis);
+            plotModel.Axes.Add(yAxis);
+
             LineSeries series = new LineSeries();
             var lineColor = OxyColor.Parse(((Color)Application.Current.FindResource("menu")).ToString());
             series.Color = lineColor;
