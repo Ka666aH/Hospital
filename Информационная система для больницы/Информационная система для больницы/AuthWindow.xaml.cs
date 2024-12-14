@@ -59,6 +59,8 @@ namespace Информационная_система_для_больницы
                          where em.fullName == userPicker.Text
                          select em;
                 Employee employee = q1.FirstOrDefault();
+                if(employee != null)
+                {
 
                 if (employee.password == pass.Password)
                 {
@@ -81,7 +83,12 @@ namespace Информационная_система_для_больницы
                 }
                 else
                 {
-                    MessageBox.Show("Неправильное имя пользователя или пароль.");
+                    MessageBox.Show("Неправильный пароль.");
+                }
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь не найден.");
                 }
             }
             else

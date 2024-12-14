@@ -7,16 +7,16 @@
     <BitmapImage x:Key="square" UriSource="pack://application:,,,/Images/boldsquare.png"/>
     <BitmapImage x:Key="cross" UriSource="pack://application:,,,/Images/boldcross.png"/>
 
-    <SolidColorBrush x:Key="backgroundColor" Color="#EBB3A8"></SolidColorBrush>
-    <SolidColorBrush x:Key="menuColor" Color="#FF7874 "></SolidColorBrush>
-    <SolidColorBrush x:Key="pageColor" Color="#FF9D98"></SolidColorBrush>
-    <SolidColorBrush x:Key="buttonColor" Color="#B84B3D"></SolidColorBrush>
+    <SolidColorBrush x:Key="backgroundColor" Color="#E7C683"></SolidColorBrush>
+    <SolidColorBrush x:Key="menuColor" Color="#B88F3D"></SolidColorBrush>
+    <SolidColorBrush x:Key="pageColor" Color="#E7C176"></SolidColorBrush>
+    <SolidColorBrush x:Key="buttonColor" Color="#B88F3D"></SolidColorBrush>
     <SolidColorBrush x:Key="textColor" Color="#000000"></SolidColorBrush>
 
-    <Color x:Key="background">#EBB3A8</Color>
-    <Color x:Key="menu">#E5AA9A</Color>
-    <Color x:Key="page">#EBADA8</Color>
-    <Color x:Key="button">#B84B3D</Color>
+    <Color x:Key="background">#E7C683</Color>
+    <Color x:Key="menu">#B88F3D</Color>
+    <Color x:Key="page">#E7C176</Color>
+    <Color x:Key="button">#B88F3D</Color>
     <Color x:Key="text">#000000</Color>
 
 </ResourceDictionary>
