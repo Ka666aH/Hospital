@@ -8,10 +8,41 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Background="Transparent"
       Title="ViewSettings">
-
-    <StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+    <StackPanel Grid.Column="0">
         <Label Content="Тема" FontSize="15" FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}"/>
-        <ComboBox x:Name="themePicker" Height="Auto" Width="200" HorizontalAlignment="Left" FontSize="15" FontFamily="Bahnschrift" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="themePicker_SelectionChanged"/>
+            <ComboBox x:Name="themePicker" Height="Auto"  HorizontalAlignment="Stretch" Margin="0 0 5 0" FontSize="15" FontFamily="Bahnschrift" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}" SelectionChanged="themePicker_SelectionChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label Content="Примеры элементов" FontSize="15" FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}"/>
+            <TextBox Style="{StaticResource TextBoxStyle1}" FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Height="25" Margin="5 5 0 5" Text="Текст"/>
+            <ComboBox Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{StaticResource ComboBoxItemContainerStyle1}" FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}"  VerticalContentAlignment="Center" Height="25" Margin="5 5 0 5">
+                <ComboBoxItem/>
+                <ComboBoxItem FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Content="Элемент 1"/>
+                <ComboBoxItem FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Content="Элемент 2" IsSelected="True"/>
+                <ComboBoxItem FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Content="Элемент 3"/>
+            </ComboBox>
+            <ListBox Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" Margin="5 5 0 5">
+                <ListBoxItem FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Content="Элемент 1"/>
+                <ListBoxItem FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Content="Элемент 2" IsSelected="True"/>
+                <ListBoxItem FontFamily="Bahnschrift" Foreground="{DynamicResource textColor}" Content="Элемент 3"/>
+            </ListBox>
 
-    </StackPanel>
+            <Border CornerRadius="10">
+                <Grid>
+                    <Border x:Name="DataGridBorder" Margin="5 5 0 5" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="1" Background="{DynamicResource backgroundColor}"/>
+                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="DataGrid" FontFamily="Bahnschrift" Margin="5 5 0 5" BorderBrush="{x:Null}" HeadersVisibility="Column" SelectionMode="Single" Background="{DynamicResource backgroundColor}" HorizontalGridLinesBrush="{DynamicResource textColor}" VerticalGridLinesBrush="{DynamicResource textColor}" IsReadOnly="True">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=DataGridBorder}"/>
+                        </DataGrid.OpacityMask>
+                    </DataGrid>
+                </Grid>
+            </Border>
+            <Button Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Кнопка" Height="25" Margin="5 5 0 5"/>
+        </StackPanel>
+    </Grid>
 </Page>

@@ -10,6 +10,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource textColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource textColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="CaretBrush" Value="{DynamicResource textColor}"/>
         <!--<Setter Property="Margin" Value="10 0 0 20"/>-->
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
