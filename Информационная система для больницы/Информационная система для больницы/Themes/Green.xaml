@@ -8,14 +8,15 @@
     <BitmapImage x:Key="cross" UriSource="pack://application:,,,/Images/boldcross.png"/>
 
     <SolidColorBrush x:Key="backgroundColor" Color="#F1FFE6"></SolidColorBrush>
-    <SolidColorBrush x:Key="menuColor" Color="#357a00"></SolidColorBrush>
-    <SolidColorBrush x:Key="pageColor" Color="#b7ff80"></SolidColorBrush>
+    <SolidColorBrush x:Key="menuColor" Color="#357a20"></SolidColorBrush>
+    <SolidColorBrush x:Key="pageColor" Color="#64e650"></SolidColorBrush>
     <SolidColorBrush x:Key="buttonColor" Color="#2c3d1f"></SolidColorBrush>
     <SolidColorBrush x:Key="textColor" Color="#000000"></SolidColorBrush>
 
     <Color x:Key="background">#F1FFE6</Color>
-    <Color x:Key="menu">#357a00</Color>
-    <Color x:Key="page">#b7ff80</Color>
+    <Color x:Key="menu">#357a20</Color>
+    <Color x:Key="page">#64e650</Color>
+    <!--<Color x:Key="page">#b7ff80</Color>-->
     <Color x:Key="button">#2c3d1f</Color>
     <Color x:Key="text">#000000</Color>
 
