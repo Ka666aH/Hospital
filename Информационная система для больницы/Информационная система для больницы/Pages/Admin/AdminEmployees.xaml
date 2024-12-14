@@ -83,8 +83,8 @@
                     <TextBox x:Name="adminEmloyeesEmployeeFormPassword" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
                     <ComboBox x:Name="adminEmloyeesEmployeeFormAccess" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}">
                         <ComboBoxItem Content="Нет" />
-                        <ComboBoxItem Content="Администратор" />
-                        <ComboBoxItem Content="Регистратор" />
+                        <ComboBoxItem Content="Администратор"/>
+                        <ComboBoxItem Content="Регистратор"/>
                         <ComboBoxItem Content="Врач"/>
                         <ComboBoxItem Content="Медицинский персонал"/>
                     </ComboBox>

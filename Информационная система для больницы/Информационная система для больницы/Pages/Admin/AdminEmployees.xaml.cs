@@ -77,7 +77,6 @@ namespace Информационная_система_для_больницы.Pa
 
         private void adminEmployeesAlterEmloyeePassword_Click(object sender, RoutedEventArgs e)
         {
-
             adminEmloyeesEmployeeFormPassword.Focus();
             OpenEmployeeForm();
         }
@@ -93,6 +92,8 @@ namespace Информационная_система_для_больницы.Pa
         {
             if(adminEmloyeesEmployeeFormPassword.Text != selectedPassword || adminEmloyeesEmployeeFormAccess.Text != selectedAccess)
             {
+            if(!((selectedAccess == "Администратор" && db.Employees.Where(x => x.access == "Администратор").Count() < 2 && adminEmloyeesEmployeeFormAccess.Text != selectedAccess) || (selectedAccess == "Регистратор" && db.Employees.Where(x => x.access == "Регистратор").Count() < 2 && adminEmloyeesEmployeeFormAccess.Text != selectedAccess)))
+            {
                 var q = from em in db.Employees
                         where em.access == selectedAccess && em.fullName == selectedName
                         select em;
@@ -104,11 +105,17 @@ namespace Информационная_система_для_больницы.Pa
                     employee.password = adminEmloyeesEmployeeFormPassword.Text;
                     employee.access= adminEmloyeesEmployeeFormAccess.Text;
                     db.SaveChanges();
+                        CloseEmployeeForm();
                 }
                 else
                 {
                     MessageBox.Show("Невозможно установить пустой пароль.");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Невозможно изменить уровень доступ последнего сотрудника с этим уровнем доступа.");
+            }
             }
 
             CloseEmployeeForm();

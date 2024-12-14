@@ -38,8 +38,12 @@ namespace Информационная_система_для_больницы.Pa
         {
             db = new Data.AppContext();
 
-            var employess = from em in db.Employees
-                            where em.access != "Администратор"
+            var _employess = db.Employees.ToList();
+
+
+            var employess = from em in _employess
+                                //where em.access != "Администратор"
+                            where (string.IsNullOrEmpty(registrarEmloyeesSearchFullName.Text) || em.fullName.ToLower().Contains(registrarEmloyeesSearchFullName.Text.ToLower()))&&(string.IsNullOrEmpty(registrarEmloyeesSearchAccess.Text) || em.access.ToLower().Contains(registrarEmloyeesSearchAccess.Text.ToLower()))
                             select new
                             {
                                 Name = em.fullName,
@@ -174,7 +178,8 @@ namespace Информационная_система_для_больницы.Pa
             var selectedEmployee = registrarEmployeesDataGrid.SelectedItem;
             selectedName = selectedEmployee.GetType().GetProperty("Name").GetValue(selectedEmployee).ToString();
             selectedAccess = selectedEmployee.GetType().GetProperty("Access").GetValue(selectedEmployee).ToString();
-
+            if(!((selectedAccess == "Администратор" && db.Employees.Where(x => x.access == "Администратор").Count()<2)||((selectedAccess == "Регистратор" && db.Employees.Where(x => x.access == "Регистратор").Count() < 2))))
+            {
             var q = from em in db.Employees
                     where em.access == selectedAccess && em.fullName == selectedName
                     select em;
@@ -189,6 +194,13 @@ namespace Информационная_система_для_больницы.Pa
                 db.SaveChanges();
                 GetEmployees();
             }
+
+            }
+            else
+            {
+                MessageBox.Show("Невозможно удалить последнего сотрудника с этим уровнем доступа.");
+            }
+
 
         }
 
@@ -208,7 +220,6 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarEmloyeesSearchFullName_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             GetEmployees();
         }
 
