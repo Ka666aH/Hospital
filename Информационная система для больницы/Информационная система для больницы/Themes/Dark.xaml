@@ -13,7 +13,7 @@
     <SolidColorBrush x:Key="buttonColor" Color="#211D2B"></SolidColorBrush>
     <SolidColorBrush x:Key="textColor" Color="White"></SolidColorBrush>
 
-    <Color x:Key="background">#3E3A49</Color>
+    <Color x:Key="background">#4E4A59</Color>
     <Color x:Key="menu">#2A2732</Color>
     <Color x:Key="page">#3C3945</Color>
     <Color x:Key="button">#211D2B</Color>

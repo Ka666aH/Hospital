@@ -27,7 +27,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
-                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarPatientsSearchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarPatientsSearchFullName_TextChanged" />
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarPatientsSearchFullName" FontFamily="Bahnschrift"   Height="25" Margin="0 5 0 5" TextChanged="registrarPatientsSearchFullName_TextChanged" />
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
@@ -68,14 +68,14 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <TextBox x:Name="registrarPatientsPatientFormFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
-                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarPatientsPatientFormBirthDate" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25"/>
-                    <ComboBox x:Name="registrarPatientsPatientFormGender" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5">
+                    <TextBox x:Name="registrarPatientsPatientFormFullName" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarPatientsPatientFormBirthDate" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25"/>
+                    <ComboBox x:Name="registrarPatientsPatientFormGender" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Center"  Height="25" Margin="0 5 0 5">
                         <ComboBoxItem Content=""/>
                         <ComboBoxItem Content="Мужской"/>
                         <ComboBoxItem Content="Женский"/>
                     </ComboBox>
-                    <TextBox x:Name="registrarPatientsPatientFormOMC" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="registrarPatientsPatientFormOMC" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">

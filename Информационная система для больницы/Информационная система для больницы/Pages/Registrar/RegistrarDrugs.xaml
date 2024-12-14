@@ -28,7 +28,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
-                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarDrugsSearchName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="registrarDrugsSearchFullName_TextChanged" />
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="registrarDrugsSearchName" FontFamily="Bahnschrift"   Height="25" Margin="0 5 0 5" TextChanged="registrarDrugsSearchFullName_TextChanged" />
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
@@ -67,7 +67,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <TextBox x:Name="registrarDrugsDrugFormName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="registrarDrugsDrugFormName" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
                     <TextBox x:Name="registrarDrugsDrugFormDescription" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
                 </StackPanel>
 

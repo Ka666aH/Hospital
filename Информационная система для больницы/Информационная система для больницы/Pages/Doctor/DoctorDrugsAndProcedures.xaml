@@ -35,7 +35,7 @@
                     <ComboBoxItem Content="Препараты"/>
                     <ComboBoxItem Content="Процедуры"/>-->
                 </ComboBox>
-                <TextBox  Style="{DynamicResource TextBoxStyle1}" x:Name="doctorDrugsAndProceduresSearchName" FontFamily="Bahnschrift" FontSize="14" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="doctorDrugsAndProceduresSearchType_TextChanged" />
+                <TextBox  Style="{DynamicResource TextBoxStyle1}" x:Name="doctorDrugsAndProceduresSearchName" FontFamily="Bahnschrift" FontSize="14" Height="25" Margin="0 5 0 5" TextChanged="doctorDrugsAndProceduresSearchType_TextChanged" />
             </StackPanel>
 
             <ListBox x:Name="doctorDrugsAndProceduresList" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Style="{StaticResource ListBoxStyle1}" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" Margin="0 5 5 0" SelectionChanged="doctorDrugsAndProceduresList_SelectionChanged" />

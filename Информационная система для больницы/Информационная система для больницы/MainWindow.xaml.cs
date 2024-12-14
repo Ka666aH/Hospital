@@ -30,6 +30,8 @@ namespace Информационная_система_для_больницы
         InfoPage infoPage;
 
         UserControl userMenuButtons;
+        
+        List<object> data = new List<object>();
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +43,10 @@ namespace Информационная_система_для_больницы
 
             infoPage = new InfoPage();
             viewSettingsPage = new ViewSettingsPage();
+
+            data.Add(new {Column1 = "Значение", Column2 = "Значение" });
+            data.Add(new {Column1 = "Значение", Column2 = "Значение" });
+            data.Add(new {Column1 = "Значение", Column2 = "Значение" });
 
             mainFrame.Content = infoPage;
 
@@ -155,6 +161,8 @@ namespace Информационная_система_для_больницы
         private void View_Click(object sender, RoutedEventArgs e)
         {
             UncheckUserMenu();
+            viewSettingsPage = new ViewSettingsPage();
+            viewSettingsPage.DataGrid.ItemsSource = data;
             mainFrame.Content = viewSettingsPage;
         }
 

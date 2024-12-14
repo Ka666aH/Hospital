@@ -94,7 +94,7 @@ namespace Информационная_система_для_больницы.Pa
                             }).ToList().OrderBy(x => x.Ward).ThenBy(x => x.Bed).ThenBy(x => x.Patient);
 
             nursePatientsDataGrid.ItemsSource = patients;
-            nursePatientsDataGrid.SelectedIndex = -1;
+            nursePatientsDataGrid.SelectedIndex = 0;
         }
 
         private void nursePatientsSearchPatient_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -128,7 +128,7 @@ namespace Информационная_система_для_больницы.Pa
         private void nursePatientsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
 
-            if (nursePatientsDataGrid.SelectedItem == null)
+            if (nursePatientsDataGrid.SelectedIndex == -1)
             {
                 nursePatientsListShowCondition.IsEnabled = false;
                 nursePatientsListShowSchedule.IsEnabled = false;

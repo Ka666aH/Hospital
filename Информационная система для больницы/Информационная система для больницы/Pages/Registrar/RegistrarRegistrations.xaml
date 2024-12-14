@@ -42,9 +42,9 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="2">
-                <ComboBox x:Name="registrarRegistrationsSearchPatient" FontFamily="Bahnschrift" Margin="0 15 10 5" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                <ComboBox x:Name="registrarRegistrationsSearchDoctor" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                <ComboBox x:Name="registrarRegistrationsSearchWard" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" VerticalContentAlignment="Bottom" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                <ComboBox x:Name="registrarRegistrationsSearchPatient" FontFamily="Bahnschrift" Margin="0 15 10 5" Height="25"   Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                <ComboBox x:Name="registrarRegistrationsSearchDoctor" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25"   Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                <ComboBox x:Name="registrarRegistrationsSearchWard" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25"   Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
                 <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarRegistrationsSearchDate" FontFamily="Bahnschrift" Margin="0 5 10 5" Height="25" VerticalContentAlignment="Center"/>
             </StackPanel>
         </Grid>
@@ -108,13 +108,13 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <ComboBox x:Name="registrarRegistrationsRegistrationFormPatient" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormPatient" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
                     <TextBox x:Name="registrarRegistrationsRegistrationFormReason" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Padding="0 5 0 0" Height="50" TextWrapping="Wrap" AcceptsReturn="True" Style="{DynamicResource TextBoxStyle1}"/>
-                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarRegistrationsRegistrationFormStart" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" />
-                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarRegistrationsRegistrationFormEnd" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" />
-                    <ComboBox x:Name="registrarRegistrationsRegistrationFormDoctor" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
-                    <ComboBox x:Name="registrarRegistrationsRegistrationFormWard" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="registrarRegistrationsRegistrationFormWard_SelectionChanged"/>
-                    <ComboBox x:Name="registrarRegistrationsRegistrationFormBed" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarRegistrationsRegistrationFormStart" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" />
+                    <DatePicker  Style="{DynamicResource DatePickerStyle1}" x:Name="registrarRegistrationsRegistrationFormEnd" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" />
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormDoctor" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormWard" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="registrarRegistrationsRegistrationFormWard_SelectionChanged"/>
+                    <ComboBox x:Name="registrarRegistrationsRegistrationFormBed" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" IsEditable="True" Style="{StaticResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">

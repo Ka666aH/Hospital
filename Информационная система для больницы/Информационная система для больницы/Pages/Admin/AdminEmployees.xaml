@@ -30,7 +30,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 10 0">
-                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="adminEmloyeesSearchFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5" TextChanged="adminEmloyeesSearchFullName_TextChanged" />
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="adminEmloyeesSearchFullName" FontFamily="Bahnschrift" Height="25" Margin="0 5 0 5" TextChanged="adminEmloyeesSearchFullName_TextChanged" />
                 <ComboBox x:Name="adminEmloyeesSearchAccess" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}"  FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Height="25" Margin="0 5 0 5">
                     <ComboBoxItem Content="" Selected="ComboBoxItem_Selected"/>
                     <ComboBoxItem Content="Нет" Selected="ComboBoxItem_Selected"/>
@@ -79,9 +79,9 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <TextBox x:Name="adminEmloyeesEmployeeFormFullName" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" IsReadOnly="True" Style="{StaticResource TextBoxStyle1}"/>
-                    <TextBox x:Name="adminEmloyeesEmployeeFormPassword" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
-                    <ComboBox x:Name="adminEmloyeesEmployeeFormAccess" FontFamily="Bahnschrift" VerticalContentAlignment="Bottom" Margin="0 5 0 5" Height="25" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}">
+                    <TextBox x:Name="adminEmloyeesEmployeeFormFullName" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" IsReadOnly="True" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="adminEmloyeesEmployeeFormPassword" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
+                    <ComboBox x:Name="adminEmloyeesEmployeeFormAccess" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource ComboBoxStyle1}">
                         <ComboBoxItem Content="Нет" />
                         <ComboBoxItem Content="Администратор" />
                         <ComboBoxItem Content="Регистратор" />
