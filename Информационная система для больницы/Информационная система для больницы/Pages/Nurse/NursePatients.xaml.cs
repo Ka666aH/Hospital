@@ -147,6 +147,7 @@ namespace Информационная_система_для_больницы.Pa
 
         private void nursePatientsMainPart_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if(nursePatientsMainPart.IsEnabled == true)
             SetData();
         }
         #endregion
@@ -248,6 +249,7 @@ namespace Информационная_система_для_больницы.Pa
         {
             conditionAddMode = false;
 
+            nursePatientsConditionsDataGrid.ItemsSource = null;
             nursePatientsConditionFormDateTime.Value = Convert.ToDateTime(selectedCondition.dateTime);
             nursePatientsConditionFormValue.Text = selectedCondition.value;
             nursePatientsConditionFormNote.Text = selectedCondition.note;
@@ -262,7 +264,8 @@ namespace Информационная_система_для_больницы.Pa
                 db.PatientConditions.Attach(selectedCondition);
                 db.Entry(selectedCondition).State = EntityState.Deleted;
                 db.SaveChanges();
-                SetData();
+                //SetData();
+                SetConditions();
             }
         }
 
@@ -290,7 +293,7 @@ namespace Информационная_система_для_больницы.Pa
             DateTime dateAndTime = Convert.ToDateTime(nursePatientsConditionFormDateTime.Text);
             if(dateAndTime>Convert.ToDateTime(selectedPatient.start) && dateAndTime < Convert.ToDateTime(selectedPatient.end))
             {
-                    if(double.TryParse(nursePatientsConditionFormValue.Text.Replace(',','.'),out double value))
+                    if(double.TryParse(nursePatientsConditionFormValue.Text.Replace('.', ',').Trim(),out double value))
                     {
                         if(db.PatientConditions.Where(x => x.collectingIndicatorId == selectedIndicator.id && x.dateTime == nursePatientsConditionFormDateTime.Text).Count() == 0)
                         {
@@ -321,7 +324,7 @@ namespace Информационная_система_для_больницы.Pa
                     }
                     else
                     {
-                        MessageBox.Show("Содержимое поля Значение должно быть числовым");
+                        MessageBox.Show("Содержимое поля \"Значение\" должно быть числовым");
                     }
                 }
             else

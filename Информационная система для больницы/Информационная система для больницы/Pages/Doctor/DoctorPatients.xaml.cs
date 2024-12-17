@@ -207,9 +207,13 @@ namespace Информационная_система_для_больницы.Pa
                               orderby Convert.ToDateTime(pc.dateTime)
                               select new DataPoint(DateTimeAxis.ToDouble(Convert.ToDateTime(pc.dateTime)), Convert.ToDouble(pc.value));
 
+            PlotModel plotModel = new PlotModel();
+            if(_dataPoints.Count()>0)
+            {
+
+
             List<DataPoint> dataPoints = _dataPoints.ToList();
 
-            PlotModel plotModel = new PlotModel();
 
             var backgroundColor = OxyColor.Parse(((Color)Application.Current.FindResource("background")).ToString());
             plotModel.PlotAreaBackground = backgroundColor;
@@ -255,6 +259,7 @@ namespace Информационная_система_для_больницы.Pa
             series.MarkerFill = lineColor;
             series.ItemsSource = dataPoints;
             plotModel.Series.Add(series);
+            }
 
             doctorPatientsChart.Model = plotModel;
         }
@@ -561,7 +566,7 @@ namespace Информационная_система_для_больницы.Pa
                 if (!string.IsNullOrEmpty(doctorPatientsAddAppointmentStart.Text) && (!string.IsNullOrEmpty(doctorPatientsAddAppointmentEnd.Text)) && (!string.IsNullOrEmpty(doctorPatientsAddAppointmentTimes.Text)))
                 {
 
-                if (Convert.ToDateTime(doctorPatientsAddAppointmentStart.Text) < Convert.ToDateTime(doctorPatientsAddAppointmentEnd.Text))
+                if (Convert.ToDateTime(doctorPatientsAddAppointmentStart.Text) <= Convert.ToDateTime(doctorPatientsAddAppointmentEnd.Text))
                 {
                     //добавить проверку для дат на вхождение в период регистрации
                     if (int.TryParse(doctorPatientsAddAppointmentTimes.Text, out int times) && times > 0 && times <= 720)
