@@ -100,7 +100,7 @@
         <!--#endregion-->
 
             <!--#region Состояние-->
-        <Border x:Name="doctorPatientsConditionForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
+        <Border x:Name="doctorPatientsConditionForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" Margin="110 100 110 100"  Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -156,7 +156,7 @@
             </Grid>
         </Border>
         <!--#region Расписания-->
-        <Border x:Name="doctorPatientsSchedulesForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="300" MaxWidth="550" Visibility="Collapsed">
+        <Border x:Name="doctorPatientsSchedulesForm" Grid.ColumnSpan="4" Grid.RowSpan="4" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" Margin="60 57.5 60 57.5" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

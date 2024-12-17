@@ -87,7 +87,10 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarPatientsAddPatient_Click(object sender, RoutedEventArgs e)
         {
-
+            registrarPatientsPatientFormFullName.Text = string.Empty;
+            registrarPatientsPatientFormBirthDate.Text = string.Empty;
+            registrarPatientsPatientFormGender.Text = string.Empty;
+            registrarPatientsPatientFormOMC.Text = string.Empty;
             addMode = true;
             OpenPatientForm();
         }

@@ -77,6 +77,8 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarIndicatorsAddIndicator_Click(object sender, RoutedEventArgs e)
         {
+            registrarIndicatorsIndicatorFormName.Text = string.Empty;
+            registrarIndicatorsIndicatorFormDescription.Text = string.Empty;
 
             addMode = true;
             OpenIndicatorForm();

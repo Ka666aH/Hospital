@@ -192,7 +192,7 @@ namespace Информационная_система_для_больницы.Pa
 
         private void nursePatientsConditionsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            if (nursePatientsConditionsDataGrid.SelectedItem == null)
+            if (nursePatientsConditionsDataGrid.SelectedIndex == -1)
             {
                 nursePatientsConditionsAlter.IsEnabled = false;
                 nursePatientsConditionsDelete.IsEnabled = false;
@@ -249,7 +249,7 @@ namespace Информационная_система_для_больницы.Pa
         {
             conditionAddMode = false;
 
-            nursePatientsConditionsDataGrid.ItemsSource = null;
+            //nursePatientsConditionsDataGrid.ItemsSource = null;
             nursePatientsConditionFormDateTime.Value = Convert.ToDateTime(selectedCondition.dateTime);
             nursePatientsConditionFormValue.Text = selectedCondition.value;
             nursePatientsConditionFormNote.Text = selectedCondition.note;
@@ -283,6 +283,11 @@ namespace Информационная_система_для_больницы.Pa
             nursePatientsConditionFormValue.Text = string.Empty;
             nursePatientsConditionFormNote.Text = string.Empty;
             nursePatientsConditionsForm.IsEnabled = true;
+        }
+        private void nursePatientsConditionsForm_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(nursePatientsConditionsForm.IsEnabled)
+                SetConditions();
         }
 
         #region Форма состояния
@@ -520,6 +525,8 @@ namespace Информационная_система_для_больницы.Pa
             nursePatientsSchedulesForm.IsEnabled = true;
         }
         #endregion
+
         #endregion
+
     }
 }

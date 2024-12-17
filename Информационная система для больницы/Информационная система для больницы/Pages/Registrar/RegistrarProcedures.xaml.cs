@@ -76,7 +76,8 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarProceduresAddProcedure_Click(object sender, RoutedEventArgs e)
         {
-
+            registrarProceduresProcedureFormName.Text = string.Empty;
+            registrarProceduresProcedureFormDescription.Text = string.Empty;
             addMode = true;
             OpenProcedureForm();
         }

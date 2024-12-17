@@ -34,18 +34,21 @@ namespace Информационная_система_для_больницы.Pa
         public void GetBeds()
         {
             db = new Data.AppContext();
+            var _beds = db.Beds.ToList();
+            var beds = from b in _beds
+                       where (string.IsNullOrEmpty(registrarBedsSearchWard.Text) || registrarBedsSearchWard.Text == b.ward) && (string.IsNullOrEmpty(registrarBedsSearchType.Text) || registrarBedsSearchType.Text == b.type)
+                       orderby b.ward, b.bed
+                       select b;
+            registrarBedsDataGrid.ItemsSource = beds.ToList();
 
-            var beds = from b in db.Beds
-                            select b;
-
-            if (string.IsNullOrEmpty(registrarBedsSearchWard.Text) && string.IsNullOrEmpty(registrarBedsSearchType.Text))
-                registrarBedsDataGrid.ItemsSource = beds.ToList();
-            if (string.IsNullOrEmpty(registrarBedsSearchWard.Text) && !string.IsNullOrEmpty(registrarBedsSearchType.Text))
-                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.type.ToLower().Contains(registrarBedsSearchType.Text.ToLower()));
-            if (!string.IsNullOrEmpty(registrarBedsSearchWard.Text) && string.IsNullOrEmpty(registrarBedsSearchType.Text))
-                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()));
-            if (!string.IsNullOrEmpty(registrarBedsSearchWard.Text) && !string.IsNullOrEmpty(registrarBedsSearchType.Text))
-                registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()) && x.type.ToLower().Contains(registrarBedsSearchType.Text.ToLower()));
+            //if (string.IsNullOrEmpty(registrarBedsSearchWard.Text) && string.IsNullOrEmpty(registrarBedsSearchType.Text))
+            //    registrarBedsDataGrid.ItemsSource = beds.ToList();
+            //if (string.IsNullOrEmpty(registrarBedsSearchWard.Text) && !string.IsNullOrEmpty(registrarBedsSearchType.Text))
+            //    registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.type.ToLower().Contains(registrarBedsSearchType.Text.ToLower()));
+            //if (!string.IsNullOrEmpty(registrarBedsSearchWard.Text) && string.IsNullOrEmpty(registrarBedsSearchType.Text))
+            //    registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()));
+            //if (!string.IsNullOrEmpty(registrarBedsSearchWard.Text) && !string.IsNullOrEmpty(registrarBedsSearchType.Text))
+            //    registrarBedsDataGrid.ItemsSource = beds.ToList().Where(x => x.ward.ToLower().Contains(registrarBedsSearchWard.Text.ToLower()) && x.type.ToLower().Contains(registrarBedsSearchType.Text.ToLower()));
 
 
             if (registrarBedsDataGrid.Items.Count != 0)
@@ -220,6 +223,7 @@ namespace Информационная_система_для_больницы.Pa
 
         public List<string> GetWards()
         {
+            
             var wards = from b in db.Beds
                         select b.ward;
 

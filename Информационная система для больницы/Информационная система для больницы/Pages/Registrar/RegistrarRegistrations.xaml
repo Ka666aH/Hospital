@@ -79,7 +79,7 @@
                     <Button x:Name="registrarRegistrationsListFormAlter" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Изменить" Padding="15 0 15 0" Margin="0 5 10 5" Click="registrarRegistrationsListFormAlter_Click"/>
                     <Button x:Name="registrarRegistrationsListFormDelete" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Удалить" Padding="15 0 15 0" Margin="0 5 10 5" Click="registrarRegistrationsListFormDelete_Click"/>
                 </StackPanel>
-                <Button x:Name="registrarRegistrationsRegistrationListFormCancel" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 10" Click="registrarRegistrationsRegistrationListFormCancel_Click"/>
+                <Button x:Name="registrarRegistrationsRegistrationListFormCancel" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Закрыть" Padding="10 0 10 0" Margin="0 0 10 10" Click="registrarRegistrationsRegistrationListFormCancel_Click"/>
             </Grid>
         </Border>
 <!--#endregion-->

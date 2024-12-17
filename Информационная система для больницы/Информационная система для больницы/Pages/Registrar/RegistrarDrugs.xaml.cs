@@ -76,6 +76,8 @@ namespace Информационная_система_для_больницы.Pa
 
         private void registrarDrugsAddDrug_Click(object sender, RoutedEventArgs e)
         {
+            registrarDrugsDrugFormName.Text = string.Empty;
+            registrarDrugsDrugFormDescription.Text = string.Empty;
 
             addMode = true;
             OpenDrugForm();
