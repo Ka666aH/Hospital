@@ -291,14 +291,29 @@ namespace Информационная_система_для_больницы.Pa
 
                 CollectingIndicator collectingIndicator = q.FirstOrDefault();
 
-                db.CollectingIndicators.Attach(collectingIndicator);
-                db.Entry(collectingIndicator).State = EntityState.Deleted;
-                db.SaveChanges();
-                doctorPatientsIndicatorsList.ItemsSource = GetIndicators();
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    db.CollectingIndicators.Attach(collectingIndicator);
+                    db.Entry(collectingIndicator).State = EntityState.Deleted;
+
+                    foreach (var pc in db.PatientConditions.Where(x => x.collectingIndicatorId == collectingIndicator.id))
+                    {
+                        db.PatientConditions.Attach(pc);
+                        db.Entry(pc).State = EntityState.Deleted;
+                    }
+
+                    db.SaveChanges();
+                    transaction.Commit();
+                    doctorPatientsIndicatorsList.ItemsSource = GetIndicators();
+                }
             }
         }
-
-        public void OpenAddIndicatorForm()
+        //foreach (var pc in db.PatientConditions.Where(x=>x.collectingIndicatorId == ci.id))
+        //                    {
+        //                        db.PatientConditions.Attach(pc);
+        //                        db.Entry(pc).State = EntityState.Deleted;
+        //                    }
+    public void OpenAddIndicatorForm()
         {
             doctorPatientsMainPart.IsEnabled = false;
             
@@ -553,9 +568,8 @@ namespace Информационная_система_для_больницы.Pa
 
                     db.SaveChanges();
                     transaction.Commit();
+                    doctorPatientsAppointmentsDataGrid.ItemsSource = GetAppointments();
                 }
-                
-                doctorPatientsAppointmentsDataGrid.ItemsSource = GetAppointments();
             }
         }
 

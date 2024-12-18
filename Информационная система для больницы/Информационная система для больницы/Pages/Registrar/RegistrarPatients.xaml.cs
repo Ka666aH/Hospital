@@ -168,10 +168,49 @@ namespace Информационная_система_для_больницы.Pa
             MessageBoxResult result = MessageBox.Show($"Вы уверены, что хотите безвозвратно удалить пациента \"{selectedPatient.fullName}\"?\nЭто действие нельзя отменить.", "Удаление пациента", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                db.Patients.Attach(selectedPatient);
-                db.Entry(selectedPatient).State = EntityState.Deleted;
-                db.SaveChanges();
-                GetPatients();
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    db.Patients.Attach(selectedPatient);
+                    db.Entry(selectedPatient).State = EntityState.Deleted;
+
+
+                    foreach (var r in db.Registrations.Where( x=> x.patientId == selectedPatient.id).ToList())
+                    {
+                        db.Registrations.Attach(r);
+                        db.Entry(r).State = EntityState.Deleted;
+
+                    //Удаление назначений и расписаний
+                        foreach (var a in db.Appointments.Where( x=> x.registrationId == r.id).ToList())
+                        {
+                            db.Appointments.Attach(a);
+                            db.Entry(a).State = EntityState.Deleted;
+
+                            foreach (var s in db.Schedules.Where( x=> x.appointmentId == a.id).ToList())
+                            {
+                                db.Schedules.Attach(s);
+                                db.Entry(s).State= EntityState.Deleted;
+                            }
+                        }
+                    //Удаление собираемых показателей и состояний
+                        foreach (var ci in db.CollectingIndicators.Where(x=>x.registrationId == r.id).ToList())
+                        {
+                            db.CollectingIndicators.Attach(ci);
+                            db.Entry(ci).State = EntityState.Deleted;
+
+                            foreach (var pc in db.PatientConditions.Where(x=>x.collectingIndicatorId == ci.id))
+                            {
+                                db.PatientConditions.Attach(pc);
+                                db.Entry(pc).State = EntityState.Deleted;
+                            }
+                        }
+                    }
+
+
+                    db.SaveChanges();
+                    transaction.Commit();
+                    GetPatients();
+                }
+                
             }
 
         }

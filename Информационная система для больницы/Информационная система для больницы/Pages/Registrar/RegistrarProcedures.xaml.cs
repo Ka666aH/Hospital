@@ -148,10 +148,27 @@ namespace Информационная_система_для_больницы.Pa
             MessageBoxResult result = MessageBox.Show($"Вы уверены, что хотите безвозвратно удалить процедуру \"{selectedProcedure.name}\"?\nЭто действие нельзя отменить.", "Удаление процедуры", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                db.DrugsProcedures.Attach(selectedProcedure);
-                db.Entry(selectedProcedure).State = EntityState.Deleted;
-                db.SaveChanges();
-                GetProcedures();
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    db.DrugsProcedures.Attach(selectedProcedure);
+                    db.Entry(selectedProcedure).State = EntityState.Deleted;
+
+                    foreach (var a in db.Appointments.Where(x => x.drugProcedureId == selectedProcedure.id).ToList())
+                    {
+                        db.Appointments.Attach(a);
+                        db.Entry(a).State = EntityState.Deleted;
+
+                        foreach (var s in db.Schedules.Where(x => x.appointmentId == a.id).ToList())
+                        {
+                            db.Schedules.Attach(s);
+                            db.Entry(s).State = EntityState.Deleted;
+                        }
+                    }
+
+                    db.SaveChanges();
+                    transaction.Commit();
+                    GetProcedures();
+                }
             }
         }
 

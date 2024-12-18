@@ -54,7 +54,7 @@ namespace Информационная_система_для_больницы.Pa
 
             nursePatientsSearchPatient.Items.Clear();
             nursePatientsSearchPatient.Items.Add(string.Empty);
-            foreach (var item in (GetCurrentRegistration().Select(r => r.patient.fullName).ToList()))
+            foreach (var item in (GetCurrentRegistration().Select(r => r.patient?.fullName).ToList()))
             {
                 nursePatientsSearchPatient.Items.Add(item);   
             }
@@ -83,14 +83,14 @@ namespace Информационная_система_для_больницы.Pa
         public void SetPatientsDataGrid()
         {
             var patients = (from r in GetCurrentRegistration()
-                            where (string.IsNullOrEmpty(nursePatientsSearchPatient.Text) || r.patient.fullName == nursePatientsSearchPatient.Text) && (string.IsNullOrEmpty(nursePatientsSearchWard.Text) || r.bed.ward == nursePatientsSearchWard.Text)
+                            where (string.IsNullOrEmpty(nursePatientsSearchPatient.Text) || r.patient?.fullName == nursePatientsSearchPatient.Text) && (string.IsNullOrEmpty(nursePatientsSearchWard.Text) || r.bed.ward == nursePatientsSearchWard.Text)
                             select new
                             {
                                 Id = r.id,
                                 Ward = Convert.ToInt32(r.bed.ward),
                                 Bed = Convert.ToInt32(r.bed.bed),
-                                Patient = r.patient.fullName,
-                                Doctor = r.doctor.fullName,
+                                Patient = r.patient?.fullName,
+                                Doctor = r.doctor?.fullName,
                             }).ToList().OrderBy(x => x.Ward).ThenBy(x => x.Bed).ThenBy(x => x.Patient);
 
             nursePatientsDataGrid.ItemsSource = patients;
@@ -232,6 +232,7 @@ namespace Информационная_система_для_больницы.Pa
         public void OpenConditonsForm()
         {
             nursePatientsMainPart.IsEnabled = false;
+            SetConditions();
             nursePatientsConditionsForm.Visibility = Visibility.Visible;
         }
 
@@ -364,6 +365,7 @@ namespace Информационная_система_для_больницы.Pa
                 nursePatientsSchedulesDataGrid.ItemsSource = null;
                 selectedAppointment = null;
                 selectedSchedule = null;
+                nursePatientsSchedulesDataGrid.ItemsSource = null;
             }
             else
             {    
@@ -488,8 +490,8 @@ namespace Информационная_система_для_больницы.Pa
                                select new
                                {
                                    Id = a.id,
-                                   DrugOrProcedure = a.drugProcedure.name,
-                                   Doctor = a.doctor.fullName,
+                                   DrugOrProcedure = a.drugProcedure?.name,
+                                   Doctor = a.doctor?.fullName,
                                    Note = a.note
                                }).ToList();
             nursePatientsSchedulesAppointmentsDataGrid.ItemsSource = appointments;

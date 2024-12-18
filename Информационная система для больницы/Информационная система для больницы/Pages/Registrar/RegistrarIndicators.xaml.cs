@@ -149,10 +149,26 @@ namespace Информационная_система_для_больницы.Pa
             MessageBoxResult result = MessageBox.Show($"Вы уверены, что хотите безвозвратно удалить показатель \"{selectedIndicator.name}\"?\nЭто действие нельзя отменить.", "Удаление показателя", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                db.Indicators.Attach(selectedIndicator);
+                using (var transation = db.Database.BeginTransaction())
+                {
+                    db.Indicators.Attach(selectedIndicator);
                 db.Entry(selectedIndicator).State = EntityState.Deleted;
-                db.SaveChanges();
-                GetIndicators();
+
+                foreach (var ci in db.CollectingIndicators.Where(x => x.indicatorId == selectedIndicator.id).ToList())
+                {
+                    db.CollectingIndicators.Attach(ci);
+                    db.Entry(ci).State = EntityState.Deleted;
+
+                    foreach (var pc in db.PatientConditions.Where(x => x.collectingIndicatorId == ci.id))
+                    {
+                        db.PatientConditions.Attach(pc);
+                        db.Entry(pc).State = EntityState.Deleted;
+                    }
+                }
+                    db.SaveChanges();
+                    transation.Commit();
+                    GetIndicators();
+                }
             }
         }
 
