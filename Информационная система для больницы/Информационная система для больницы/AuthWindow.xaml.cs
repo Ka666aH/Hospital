@@ -46,8 +46,6 @@ namespace Информационная_система_для_больницы
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            if(Application.Current.MainWindow != this)
-                this.DialogResult = false;
             Close();
         }
 
