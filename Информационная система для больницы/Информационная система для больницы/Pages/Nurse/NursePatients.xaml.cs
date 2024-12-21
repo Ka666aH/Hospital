@@ -75,7 +75,7 @@ namespace Информационная_система_для_больницы.Pa
         {
             var registrations = db.Registrations.ToList();
             var patients = from r in registrations
-                           where r.end == null || Convert.ToDateTime(r.end) > DateTime.Today
+                           where string.IsNullOrEmpty(r.end) || Convert.ToDateTime(r.end) > DateTime.Today
                            select r;
             return patients.ToList();
         }
@@ -297,7 +297,7 @@ namespace Информационная_система_для_больницы.Pa
             if(!string.IsNullOrEmpty(nursePatientsConditionFormDateTime.Text) && !string.IsNullOrEmpty(nursePatientsConditionFormValue.Text))
             {
             DateTime dateAndTime = Convert.ToDateTime(nursePatientsConditionFormDateTime.Text);
-            if(dateAndTime>Convert.ToDateTime(selectedPatient.start) && dateAndTime < Convert.ToDateTime(selectedPatient.end))
+            if(dateAndTime>Convert.ToDateTime(selectedPatient.start) && (string.IsNullOrEmpty(selectedPatient.end) || dateAndTime < Convert.ToDateTime(selectedPatient.end)))
             {
                     if(double.TryParse(nursePatientsConditionFormValue.Text.Replace('.', ',').Trim(),out double value))
                     {
@@ -452,6 +452,7 @@ namespace Информационная_система_для_больницы.Pa
                 selectedSchedule.status = uncompleted;
 
             db.Schedules.AddOrUpdate(selectedSchedule);
+            db.SaveChanges();
             SetSchedulesData();
 
         }
@@ -510,6 +511,7 @@ namespace Информационная_система_для_больницы.Pa
             {
                 selectedSchedule.note = nursePatientsScheduleFormNote.Text;
                 db.Schedules.AddOrUpdate(selectedSchedule);
+                db.SaveChanges();
             }
             CloseInfoForm();
 

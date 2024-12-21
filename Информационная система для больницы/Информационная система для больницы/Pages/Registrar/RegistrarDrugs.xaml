@@ -49,7 +49,7 @@
             </Border>
         </Grid>
 
-        <Border x:Name="registrarDrugsDrugForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" MaxHeight="215" MaxWidth="400" Visibility="Collapsed">
+        <Border x:Name="registrarDrugsDrugForm" Grid.ColumnSpan="3" Grid.RowSpan="3" CornerRadius="10" BorderBrush="{DynamicResource textColor}" BorderThickness="2.5" Background="{DynamicResource pageColor}" Margin="110 90 110 90" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -57,21 +57,22 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalContentAlignment="Center" FontFamily="Bahnschrift" Content="Форма препарата" FontSize="15" Foreground="{DynamicResource textColor}" />
                 <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 0 0">
                     <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="! Название" Foreground="{DynamicResource textColor}"/>
-                    <Label FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Content="Описание" Foreground="{DynamicResource textColor}"/>
                 </StackPanel>
+                <Label FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="10 5 0 5" Height="25" Content="Описание" Foreground="{DynamicResource textColor}"/>
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 0 10 0">
-                    <TextBox x:Name="registrarDrugsDrugFormName" FontFamily="Bahnschrift"   Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
-                    <TextBox x:Name="registrarDrugsDrugFormDescription" FontFamily="Bahnschrift" VerticalContentAlignment="Top" Margin="0 5 0 5" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
+                    <TextBox x:Name="registrarDrugsDrugFormName" FontFamily="Bahnschrift" Margin="0 5 0 5" Height="25" Style="{StaticResource TextBoxStyle1}"/>
                 </StackPanel>
+                <TextBox x:Name="registrarDrugsDrugFormDescription" FontFamily="Bahnschrift" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" Margin="0 10 10 5" MinHeight="100" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TextBoxStyle1}"/>
 
-                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="registrarDrugsDrugFormAccept" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Сохранить" Padding="15 0 15 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormAccept_Click"/>
                     <Button x:Name="registrarDrugsDrugFormCancel" Style="{StaticResource ButtonStyle1}" FontFamily="Bahnschrift" Content="Отмена" Padding="10 0 10 0" Margin="0 0 10 5" Click="registrarDrugsDrugFormCancel_Click"/>
                 </StackPanel>

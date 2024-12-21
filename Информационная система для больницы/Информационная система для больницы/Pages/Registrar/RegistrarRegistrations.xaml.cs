@@ -223,7 +223,7 @@ namespace Информационная_система_для_больницы.Pa
                 .Select(r => new
                 {
                     r.bedId,
-                    EndDate = r.end != null ? DateTime.ParseExact(r.end, "dd.MM.yyyy", CultureInfo.InvariantCulture) : (DateTime?)null
+                    EndDate = !string.IsNullOrEmpty(r.end)  ? DateTime.ParseExact(r.end, "dd.MM.yyyy", CultureInfo.InvariantCulture) : (DateTime?)null
                 });
 
             var bedsWithLatestEnd = from r in registrationsWithDates
@@ -231,7 +231,8 @@ namespace Информационная_система_для_больницы.Pa
                                     select new
                                     {
                                         BedId = g.Key,
-                                        LatestEnd = g.Max(r => r.EndDate)
+                                        LatestEnd = g.Any(r => r.EndDate == null) ? (DateTime?)null : g.Max(r => r.EndDate)
+                                        //LatestEnd = g.Max(r => r.EndDate)
                                     };
 
             var usingBeds = bedsWithLatestEnd.Where(x => x.LatestEnd == null || x.LatestEnd > DateTime.Today).Select(x => x.BedId).ToList();

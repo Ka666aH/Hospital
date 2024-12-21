@@ -208,7 +208,7 @@ namespace Информационная_система_для_больницы.Pa
                               select new DataPoint(DateTimeAxis.ToDouble(Convert.ToDateTime(pc.dateTime)), Convert.ToDouble(pc.value));
 
             PlotModel plotModel = new PlotModel();
-            if(_dataPoints.Count()>0)
+            if(_dataPoints.Count()>1)
             {
 
 
@@ -480,7 +480,7 @@ namespace Информационная_система_для_больницы.Pa
 
         private void doctorPatientsScheduleFormAccept_Click(object sender, RoutedEventArgs e)
         {
-            if(Convert.ToDateTime(doctorPatientsScheduleFormDateTime.Text)>Convert.ToDateTime(selectedPatient.start) && Convert.ToDateTime(doctorPatientsScheduleFormDateTime.Text) < Convert.ToDateTime(selectedPatient.end))
+            if(Convert.ToDateTime(doctorPatientsScheduleFormDateTime.Text)>Convert.ToDateTime(selectedPatient.start) && (string.IsNullOrEmpty(selectedPatient.end) || Convert.ToDateTime(doctorPatientsScheduleFormDateTime.Text) < Convert.ToDateTime(selectedPatient.end)))
             {
                 
                 Schedule schedule = new Schedule();
