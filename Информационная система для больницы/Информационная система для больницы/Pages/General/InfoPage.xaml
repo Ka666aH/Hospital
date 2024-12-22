@@ -10,6 +10,21 @@
       Title="InfoPage">
 
     <Grid>
-        <Label Content="Справка" FontSize="15" FontFamily="Bahnschrift" HorizontalAlignment="Center" Foreground="{DynamicResource textColor}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Viewbox HorizontalAlignment="Center">
+            <Label Content="Справка" FontSize="15" FontFamily="Bahnschrift"  Foreground="{DynamicResource textColor}"/>
+        </Viewbox>
+        
+        <Viewbox Grid.Row="1" Margin="10 0 25 10" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <TextBlock x:Name="info" FontFamily="Bahnschrift"  Foreground="{DynamicResource textColor}" TextWrapping="Wrap"/>
+        </Viewbox>
+
+        <Viewbox Grid.Row="2" Margin="10 25 10 10" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <TextBlock x:Name="credits" FontFamily="Bahnschrift"  Foreground="{DynamicResource textColor}"/>
+        </Viewbox>
     </Grid>
 </Page>
